@@ -114,14 +114,14 @@ const Login = () => {
           <div className="hidden md:block bg-[#03a8ef] absolute top-[100px] left-[550px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
 
           {/* Login container */}
-          <div className="relative  z-20 p-5 bg-[rgba(255,255,255,255)] shadow-lg">
+          <div className="relative z-20 p-5  bg-[rgba(255,255,255,255)] shadow-lg">
             {/* form container */}
             <div className="">
               {backendErrors.show && (
                 <div className="login-error">{backendErrors.message}</div>
               )}
               <form
-                className="flex flex-col gap-4 min-w-[300px]"
+                className="flex flex-col gap-4 sm:min-w-[300px]"
                 onSubmit={handleSubmit}
               >
                 <div className="flex justify-center items-center">
@@ -171,7 +171,7 @@ const Login = () => {
                 </div>
                 {/* </Link> */}
                 {/* Link for sign-up */}
-                <div className="flex gap-2 justify-between">
+                <div className="flex sm:flex-row flex-col xs:items-center gap-2 justify-between">
                   <div>
                     <label className="text-nowrap">
                       Don't have an account?{" "}
