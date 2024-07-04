@@ -10,10 +10,10 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
-const userName = "praveenterax";
-const password = "NblCRcF6hjo1BC3s";
+// const userName = "praveenterax";
+// const password = "NblCRcF6hjo1BC3s";
 
-const MONGO_URI = `mongodb+srv://${userName}:${password}@cluster0.tbhhh.mongodb.net/jobPortal?retryWrites=true&w=majority`;
+// const MONGO_URI = `mongodb+srv://${userName}:${password}@cluster0.tbhhh.mongodb.net/jobPortal?retryWrites=true&w=majority`;
 
 app.use(bodyParser.json());
 
@@ -43,7 +43,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(MONGO_URI)
+  .connect('mongodb://localhost:27017/')
   .then((result) => {
     console.log("Connected to Database");
     app.listen(8080);

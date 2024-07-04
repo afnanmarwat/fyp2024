@@ -2,7 +2,7 @@ import React from "react";
 
 import { Link, useNavigate, NavLink } from "react-router-dom";
 import classes from "./Navigation.module.css";
-import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
 
@@ -22,14 +22,15 @@ const Navigation = () => {
   };
 
   return (
-    <Navbar
+    // Navbar
+    <div
       fixed="top"
       variant="dark"
       expand="md"
       bg="primary"
-      className={classes.nav}
+      className="fixed top-0 w-full h-[65px] p-2 bg-blue-500"
     >
-      <Container fluid>
+      <div className="w-full flex flex-row justify-between items-center">
         {/* <Navbar.Brand href="/dashboard" className={classes.brand}>
           Job Hunt
         </Navbar.Brand> */}
@@ -44,10 +45,13 @@ const Navigation = () => {
           </span>
           Job Hunt
         </NavLink>
-        <Navbar.Toggle aria-controls="navbar-dark-example" />
-        <Navbar.Collapse id="navbar-dark-example">
+        <div aria-controls="navbar-dark-example" />
+        <div
+          id="navbar-dark-example"
+          className="flex justify-between items-center w-[70%]"
+        >
           {redAuthToken.role === "Admin" && (
-            <Nav className={`me-auto ${classes.pageLinks}`}>
+            <div className={`me-auto ${classes.pageLinks}`}>
               <NavLink
                 className={(navData) =>
                   navData.isActive ? classes.active : ""
@@ -72,10 +76,10 @@ const Navigation = () => {
               >
                 Reports
               </NavLink>
-            </Nav>
+            </div>
           )}
           {redAuthToken.role === "Job Provider" && (
-            <Nav className={`me-auto ${classes.pageLinks}`}>
+            <div className={`me-auto ${classes.pageLinks}`}>
               <NavLink
                 className={(navData) =>
                   navData.isActive ? classes.active : ""
@@ -100,10 +104,10 @@ const Navigation = () => {
               >
                 Reports
               </NavLink>
-            </Nav>
+            </div>
           )}
           {redAuthToken.role === "User" && (
-            <Nav className={`me-auto ${classes.pageLinks}`}>
+            <div className={`me-auto ${classes.pageLinks}`}>
               <NavLink
                 className={(navData) =>
                   navData.isActive ? classes.active : ""
@@ -129,37 +133,38 @@ const Navigation = () => {
               >
                 Reports
               </NavLink> */}
-            </Nav>
+            </div>
           )}
-          <Nav>
-            {/* <NavDropdown
-              id="nav-dropdown-dark-example"
-              title={
-                <span className={classes.username}>
-                  <span className={classes.userLogo}>
-                    <i className="bi bi-person-circle"></i>
+          <div>
+            {/* <Nav>
+              <NavDropdown
+                id="nav-dropdown-dark-example"
+                title={
+                  <span className={classes.username}>
+                    <span className={classes.userLogo}>
+                      <i className="bi bi-person-circle"></i>
+                    </span>
+                    {authToken.username}
                   </span>
-                  {authToken.username}
-                </span>
-              }
-              menuVariant="light"
-              align="end"
-              className={classes.user}
-              as={"button"}
-            >
-              <NavDropdown.Item>
-                <NavLink
-                  className={classes.changePassword}
-                  to="/change-password"
-                >
-                  Change Password
-                </NavLink>
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
+                }
+                menuVariant="light"
+                align="end"
+                className={classes.user}
+                as={"button"}
+              >
+                <NavDropdown.Item>
+                  <NavLink
+                    className={classes.changePassword}
+                    to="/change-password"
+                  >
+                    Change Password
+                  </NavLink>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
 
-              <Dropdown.Item href="/login">Logout</Dropdown.Item>
-            </NavDropdown>
-          </Nav> */}
+                <Dropdown.Item href="/login">Logout</Dropdown.Item>
+              </NavDropdown>
+            </Nav> */}
             <Dropdown align={"end"} className={classes.dropDown}>
               <Dropdown.Toggle className={classes.user}>
                 <span className={classes.username}>
@@ -184,10 +189,10 @@ const Navigation = () => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

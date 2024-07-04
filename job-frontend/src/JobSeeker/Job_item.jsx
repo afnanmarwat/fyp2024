@@ -19,7 +19,7 @@ function Jobitem({ item, jobApply }) {
       <ListGroup className="list-group-flush">
         <ListGroupItem>
           <div className="d-flex justify-content-between">
-            <span className="badge bg-primary">Full time</span>
+            <span className="badge bg-primary ">Full time</span>
             <span className="badge bg-primary">Min.1 Year</span>
             <span className="badge bg-primary">Senior Level</span>
           </div>
@@ -48,7 +48,7 @@ function Jobitem({ item, jobApply }) {
             <div>Apply Before:</div>
             <div className={classes.dates}>
               <i className="bi bi-calendar-x"></i>
-              <span className="mx-2">{item.startDate}</span>
+              <span className="mx-2">{item.endDate}</span>
             </div>
           </div>
         </ListGroupItem>

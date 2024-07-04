@@ -67,7 +67,7 @@ const Register = (props) => {
   // const history = useHistory();
   return (
     <React.Fragment>
-      <Header />
+      {/* <Header /> */}
       <Container>
         <h1 className="p-3 text-center rounded" style={{ color: "#2c49ed" }}>
           Register
