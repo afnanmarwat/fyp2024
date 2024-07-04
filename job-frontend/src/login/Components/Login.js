@@ -104,7 +104,7 @@ const Login = () => {
       {/* <title>{Config.TITLE.APP_TITLE}</title> */}
       {/* <Header /> */}
       {/* Full Container */}
-      <div className="md:grid 2xl:items-start 2xl:pt-[100px] justify-center items-center h-[100vh] bg-[rgba(243,247,250,255)] overflow-hidden">
+      <section className="md:grid 2xl:items-start 2xl:pt-[100px] justify-center items-center h-[100vh] bg-[rgba(243,247,250,255)] overflow-hidden">
         <div className="relative ">
           {/* large circle design */}
           <div className="hidden md:block bg-[rgba(28,220,199,255)] absolute top-[-90px] left-[180px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
@@ -190,7 +190,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </React.Fragment>
 
     // </div>

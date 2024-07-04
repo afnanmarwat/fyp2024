@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import Header from "./Header";
+// import Header from "./Header";
 import classes from "./Register.module.css";
 import {
   NumberInput,
@@ -68,18 +68,13 @@ const Register = (props) => {
   return (
     <React.Fragment>
       {/* <Header /> */}
-      <Container>
-        <h1 className="p-3 text-center rounded" style={{ color: "#2c49ed" }}>
-          Register
+      <section className="h-full grid justify-center items-center p-5">
+        <h1 className="flex items-center justify-center text-xl font-bold ">
+          Sign-Up
         </h1>
         {showSpinner && <SpinnerComponent />}
         <Row className="mb-5">
-          <Col
-            lg={7}
-            md={6}
-            sm={12}
-            className={`${classes.formContainer} p-5 m-auto shadow-sm rounded-lg`}
-          >
+          <Col className={`${classes.formContainer} p-5 m-auto shadow-sm rounded-lg`}>
             <Formik
               initialValues={initialValues}
               validationSchema={Yup.object({
@@ -115,6 +110,7 @@ const Register = (props) => {
               {(formik) => (
                 <div className={classes.main}>
                   <Form>
+                    {/* name */}
                     <div className={classes.formInputs}>
                       <TextInput
                         label="Name"
@@ -123,6 +119,7 @@ const Register = (props) => {
                         mandatory={"true"}
                       />
                     </div>
+                    {/* email */}
                     <div className={classes.formInputs}>
                       <TextInput
                         label="Email"
@@ -131,6 +128,7 @@ const Register = (props) => {
                         mandatory={"true"}
                       />
                     </div>
+                    {/* password */}
                     <div className={classes.formInputs}>
                       <TextInput
                         label="Password"
@@ -140,6 +138,7 @@ const Register = (props) => {
                         mandatory={"true"}
                       />
                     </div>
+                    {/* mobile number */}
                     <div className={classes.formInputs}>
                       <TextInput
                         label="Mobile No"
@@ -149,6 +148,7 @@ const Register = (props) => {
                       />
                     </div>
                     <div className={classes["formInputs__side"]}>
+                      {/* age */}
                       <div
                         className={`${classes["formInputs__side__inner"]} ${classes.age}`}
                       >
@@ -159,11 +159,13 @@ const Register = (props) => {
                           mandatory={"true"}
                         />
                       </div>
+                      {/* Gender */}
                       <div className={classes["formInputs__side__inner"]}>
                         <label>
                           Gender<span className="text-danger">*</span>
                         </label>
                         <div className={classes.gender}>
+                          {/* male */}
                           <div>
                             <Field
                               type="radio"
@@ -173,6 +175,7 @@ const Register = (props) => {
                             />
                             <label htmlFor="Male">Male</label>
                           </div>
+                          {/* female */}
                           <div>
                             <Field
                               type="radio"
@@ -189,6 +192,7 @@ const Register = (props) => {
                       </div>
                     </div>
                     <div className={classes["formInputs__side"]}>
+                      {/* Qualification input */}
                       <div className={classes["formInputs__side__inner"]}>
                         <SelectInput
                           name="qualification"
@@ -203,6 +207,7 @@ const Register = (props) => {
                           <option value="High School">High School</option>
                         </SelectInput>
                       </div>
+                      {/* Experience Input */}
                       <div className={classes["formInputs__side__inner"]}>
                         <SelectInput
                           name="experience"
@@ -217,6 +222,7 @@ const Register = (props) => {
                         </SelectInput>
                       </div>
                     </div>
+                    {/* Role */}
                     <div className={classes.formInputs}>
                       <SelectInput name="role" id="role" label="Role">
                         <option value="User">User</option>
@@ -242,7 +248,7 @@ const Register = (props) => {
             </Formik>
           </Col>
         </Row>
-      </Container>
+      </section>
     </React.Fragment>
   );
 };
