@@ -114,7 +114,7 @@ const Login = () => {
           <div className="hidden md:block bg-[#03a8ef] absolute top-[100px] left-[550px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
 
           {/* Login container */}
-          <div className="relative z-20 p-5  bg-[rgba(255,255,255,255)] shadow-lg">
+          <div className="relative z-20 p-5 rounded bg-[rgba(255,255,255,255)] shadow-lg">
             {/* form container */}
             <div className="">
               {backendErrors.show && (
