@@ -5,15 +5,15 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 const Job = require("../models/job");
 
-exports.signup = (req, res, next) => {
-  const errors = validationResult(req);
+exports.signup = (req, res) => {
+  // const errors = validationResult(req);
 
-  if (!errors.isEmpty()) {
-    const error = new Error("Validation failed");
-    error.statusCode = 422;
-    error.data = errors.array();
-    throw error;
-  }
+  // if (!errors.isEmpty()) {
+  //   const error = new Error("Validation failed");
+  //   error.statusCode = 422;
+  //   error.data = errors.array();
+  //   throw error;
+  // }
 
   const password = req.body.password;
 
@@ -27,10 +27,11 @@ exports.signup = (req, res, next) => {
       res.status(201).json({ message: "Registered Successfully!" });
     })
     .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-      next(err);
+      console.log(err);
+      // if (!err.statusCode) {
+      //   err.statusCode = 500;
+      // }
+      // next(err);
     });
 };
 

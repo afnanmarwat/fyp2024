@@ -18,28 +18,28 @@ const userSchema = new Schema(
     },
     age: {
       type: Number,
-      required: true,
+      required: false,
     },
     mobile: {
       type: String,
-      required: true,
+      required: false,
     },
     gender: {
       type: String,
-      required: true,
+      required: false,
     },
     qualification: {
       type: String,
-      required: true,
+      required: false,
     },
     experience: {
       type: String,
-      required: true,
+      required: false,
     },
     role: {
       type: String,
       default: "User",
-      required: true,
+      required: false,
     },
     jobsPosted: [
       {
