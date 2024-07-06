@@ -1,6 +1,10 @@
 import React from "react";
 
 import { Link, useNavigate, NavLink } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { IoIosLogOut } from "react-icons/io";
 import classes from "./Navigation.module.css";
 import { Dropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -23,13 +27,7 @@ const Navigation = () => {
 
   return (
     // Navbar
-    <div
-      fixed="top"
-      variant="dark"
-      expand="md"
-      bg="primary"
-      className="fixed top-0 w-full h-[65px] p-2 bg-blue-500"
-    >
+    <nav className="w-full fixed top-0 h-[50px] px-3 py-1 font-sans">
       <div className="w-full flex flex-row justify-between items-center">
         {/* <Navbar.Brand href="/dashboard" className={classes.brand}>
           Job Hunt
@@ -37,19 +35,19 @@ const Navigation = () => {
 
         <NavLink
           // activeClassName={classes.active}
-          className={classes.brand}
+          className="flex gap-1 justify-center items-center text-[#0f1137] text-2xl font-medium "
           to="/dashboard"
         >
-          <span className={classes.logo}>
-            <i className="bi bi-search"></i>
+          {/* icon */}
+          <span className="text-[#1A75E8] text-3xl">
+            {/* <i className="bi bi-search"></i> */}
+            <FaHome />
           </span>
-          Job Hunt
+          Job
+          <span className="text-[#1A75E8]">Hunt</span>
         </NavLink>
-        <div aria-controls="navbar-dark-example" />
-        <div
-          id="navbar-dark-example"
-          className="flex justify-between items-center w-[70%]"
-        >
+        {/* <div aria-controls="navbar-dark-example" /> */}
+        <div id="navbar-dark-example">
           {redAuthToken.role === "Admin" && (
             <div className={`me-auto ${classes.pageLinks}`}>
               <NavLink
@@ -107,22 +105,30 @@ const Navigation = () => {
             </div>
           )}
           {redAuthToken.role === "User" && (
-            <div className={`me-auto ${classes.pageLinks}`}>
+            <div className="w-fullfont-sans p-1 flex gap-3 justify-center items-center text-[#0f1137] text-md  ">
               <NavLink
-                className={(navData) =>
-                  navData.isActive ? classes.active : ""
-                }
+                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                to="/"
+              >
+                Home
+              </NavLink>
+              <NavLink
+                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
                 to="/dashboard"
               >
                 Apply
               </NavLink>
               <NavLink
-                className={(navData) =>
-                  navData.isActive ? classes.active : ""
-                }
+                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
                 to="/appliedJobs"
               >
                 Applied Jobs
+              </NavLink>
+              <NavLink
+                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                to="/"
+              >
+                Companies
               </NavLink>
               {/* <NavLink
                 className={(navData) =>
@@ -135,8 +141,10 @@ const Navigation = () => {
               </NavLink> */}
             </div>
           )}
-          <div>
-            {/* <Nav>
+        </div>
+        {/* DropDown Section */}
+        <div>
+          {/* <Nav>
               <NavDropdown
                 id="nav-dropdown-dark-example"
                 title={
@@ -165,34 +173,38 @@ const Navigation = () => {
                 <Dropdown.Item href="/login">Logout</Dropdown.Item>
               </NavDropdown>
             </Nav> */}
-            <Dropdown align={"end"} className={classes.dropDown}>
-              <Dropdown.Toggle className={classes.user}>
-                <span className={classes.username}>
-                  <span className={classes.userLogo}>
-                    <i className="bi bi-person-circle"></i>
-                  </span>
-                  {redAuthToken.userName}
-                </span>
-              </Dropdown.Toggle>
+          <Dropdown>
+            <Dropdown.Toggle className="bg-gray-200 text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
+              <span>
+                {redAuthToken.userName}
+              </span>
+            </Dropdown.Toggle>
 
-              <Dropdown.Menu>
-                <Link to="/change-password" className={classes.changePassword}>
+            <Dropdown.Menu className="transition-all duration-300 ease-in-out">
+              <Dropdown.Item className="flex gap-2 items-center">
+                <CgProfile className="text-[#1A75E8] text-lg" />
+                <span>Profile</span>
+              </Dropdown.Item>
+              <Dropdown.Item>
+                <Link className="flex gap-2 items-center" to="/change-password">
+                  <RiLockPasswordLine className="text-green-600 text-lg" />
                   Change Password
                 </Link>
-                <Dropdown.Divider />
-                <Dropdown.Item
-                  as={"button"}
-                  onClick={logoutHandler}
-                  className={classes.changePassword}
-                >
-                  Logout
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item
+                as={"button"}
+                onClick={logoutHandler}
+                className="flex gap-2 items-center text-red-600 "
+              >
+                <IoIosLogOut/>
+                Logout
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
