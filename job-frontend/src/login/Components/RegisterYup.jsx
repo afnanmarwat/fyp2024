@@ -68,16 +68,16 @@ const Register = (props) => {
   return (
     <React.Fragment>
       {/* <Header /> */}
-      <section className="h-full bg-[rgba(243,247,250,255)] py-4 px-1 grid place-items-center overflow-hidden">
+      <section className="h-[150vh] md:h-[130vh] 2xl:h-[100vh] bg-[rgba(243,247,250,255)] md:py-4 px-1 grid sm:place-items-center  overflow-hidden">
         <div className="relative">
           {/* large circle design */}
-          <div className="hidden md:block bg-[rgba(28,220,199,255)] absolute top-[-90px] left-[300px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
-          <div className="hidden md:block bg-[rgba(152,145,212,255)] absolute top-[450px] left-[-120px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
+          <div className="hidden sm:block bg-[rgba(28,220,199,255)] absolute top-[-90px] left-[300px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
+          <div className="hidden sm:block bg-[rgba(152,145,212,255)] absolute top-[450px] left-[-120px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
           {/* small circle design */}
-          <div className="hidden md:block bg-[#1de6b5] absolute top-[400px] left-[-180px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
-          <div className="hidden md:block bg-[#03a8ef] absolute top-[250px] left-[600px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
+          <div className="hidden sm:block bg-[#1de6b5] absolute top-[400px] left-[-180px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
+          <div className="hidden sm:block bg-[#03a8ef] absolute top-[250px] left-[600px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
           {showSpinner && <SpinnerComponent />}
-          <div className="flex flex-col gap-4 relative z-20 bg-white px-5 py-3 shadow-lg min-w-[500px] rounded">
+          <div className="flex flex-col gap-4 relative z-20 bg-white xs:px-3 xs:py-2 sm:px-5 sm:py-3 shadow-lg md:min-w-[500px] min-w-[250px] rounded">
             <h1 className="flex items-center justify-center text-xl font-bold ">
               Sign-Up
             </h1>
@@ -163,9 +163,9 @@ const Register = (props) => {
                       />
                     </div>
                     {/* age and gender */}
-                    <div className="flex flex-row items-center justify-center gap-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-3">
                       {/* age */}
-                      <div className="w-[50%]">
+                      <div className="sm:w-[50%] w-full">
                         <Form.Control
                           name="age"
                           id="age"
@@ -175,7 +175,7 @@ const Register = (props) => {
                         />
                       </div>
                       {/* Gender */}
-                      <div className="w-[50%]">
+                      <div className="sm:w-[50%] w-full">
                         <Form.Label>
                           Gender
                         </Form.Label>
