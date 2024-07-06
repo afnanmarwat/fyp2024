@@ -43,7 +43,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect('mongodb://localhost:27017/jobKor')
+  .connect('mongodb://localhost:27017/jobfinder')
   .then((result) => {
     console.log("Connected to Database");
     app.listen(8080);
