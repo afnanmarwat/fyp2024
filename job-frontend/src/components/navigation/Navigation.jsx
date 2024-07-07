@@ -9,7 +9,9 @@ import classes from "./Navigation.module.css";
 import { Dropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
-
+import profilepic from '../../assets/profile.png'
+import profilepic2 from '../../assets/profile2.png'
+import logo from '../../assets/logo.png'
 const Navigation = () => {
   // const selectauthToken = (rootstate) => rootstate.authToken;
   // const authToken = useSelector(selectauthToken);
@@ -27,7 +29,7 @@ const Navigation = () => {
 
   return (
     // Navbar
-    <nav className="w-full fixed top-0 h-[50px] px-3 py-2 font-sans bg-[#f5f6fb]">
+    <nav className="w-full fixed top-0 h-[50px] px-3 py-1 font-sans">
       <div className="w-full flex flex-row justify-between items-center">
         {/* <Navbar.Brand href="/dashboard" className={classes.brand}>
           Job Hunt
@@ -35,16 +37,17 @@ const Navigation = () => {
 
         <NavLink
           // activeClassName={classes.active}
-          className="flex gap-1 justify-center items-center text-[#0f1137] text-2xl font-medium  tracking-tighter"
+          className="flex gap-1 justify-center items-center text-[#0f1137] text-2xl font-medium "
           to="/dashboard"
         >
           {/* icon */}
-          <span className="text-[#1A75E8] text-3xl">
+          <span className="">
             {/* <i className="bi bi-search"></i> */}
-            <FaHome />
+            {/* <FaHome /> */}
+            <img src={logo} alt="" className="text-[#1A75E8]" width='30px' height='28px'/>
           </span>
-          Job
-          <span className="text-[#1A75E8]">Hunt</span>
+          <span className="">JOB</span>
+          <span className="text-[#1A75E8]">KOR</span>
         </NavLink>
         {/* <div aria-controls="navbar-dark-example" /> */}
         <div id="navbar-dark-example">
@@ -112,12 +115,12 @@ const Navigation = () => {
               >
                 Home
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
                 to="/dashboard"
               >
                 Apply
-              </NavLink>
+              </NavLink> */}
               <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
                 to="/appliedJobs"
@@ -174,13 +177,17 @@ const Navigation = () => {
               </NavDropdown>
             </Nav> */}
           <Dropdown>
-            <Dropdown.Toggle className="bg-[#f5f6fb] text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
+            <Dropdown.Toggle className="bg-gray-200 text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
               <span>
-                {redAuthToken.userName}
+                <img src={profilepic2} alt="" width='32px' height='32px'/>
               </span>
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="transition-all duration-300 ease-in-out">
+            <Dropdown.Item className="flex gap-2 items-center">
+                <CgProfile className="text-[#1A75E8] text-lg" />
+                <span>{redAuthToken.userName}</span>
+              </Dropdown.Item>
               <Dropdown.Item className="flex gap-2 items-center">
                 <CgProfile className="text-[#1A75E8] text-lg" />
                 <span>Profile</span>
