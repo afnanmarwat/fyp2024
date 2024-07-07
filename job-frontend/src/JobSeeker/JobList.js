@@ -65,7 +65,7 @@ const Jobs = () => {
             Work remotely to companies in worldwide
           </p>
           {/* Search */}
-          <form className="flex flex-col gap-4">
+          <form className="flex flex-col gap-5">
             <div className="flex flex-row justify-around items-center bg-white w-full rounded-lg py-2 shadow-xl">
               <IoSearch className="text-[#aeb4c1] text-3xl" />
               <input
@@ -93,7 +93,7 @@ const Jobs = () => {
           </form>
         </div>
         {/* image section */}
-        <div className="w-[50%]">
+        <div className="w-[50%] p-2 mb-5">
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
       </section>
