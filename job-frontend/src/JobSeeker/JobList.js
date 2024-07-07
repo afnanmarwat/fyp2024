@@ -56,7 +56,7 @@ const Jobs = () => {
         <div className="w-[50%] flex flex-col sm:gap-2 md:gap-3 xl:gap-4">
           {/* heading */}
           <div className="w-full ">
-            <h1 className="text-xl md:text-2xl lg:text-4xl xl:text-5xl font-extrabold text-[#0f1137] tracking-wide">
+            <h1 className="text-xl md:text-2xl lg:text-4xl 2xl:text-5xl font-extrabold text-[#0f1137] tracking-wide">
               Your <span className="text-[#1875e8]">Ultimate Job</span> <br />
               Search with <span className="text-[#1875e8]">Companion</span>
             </h1>
@@ -69,17 +69,17 @@ const Jobs = () => {
             <div className="flex flex-row justify-around items-center bg-white w-full rounded-lg sm:px-2 md:px-2 lg:px-0 py-2 shadow-xl">
               <IoSearch className="text-[#aeb4c1] sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
               <input
-                className="focus:outline-none focus:border-none sm:text-md md:text-lg lg:text-xl xl:text-3xl tracking-wider"
+                className="focus:outline-none focus:border-none sm:text-sm md:text-lg lg:text-xl xl:text-3xl tracking-wider"
                 type="search"
                 onChange={jobSearchHandler}
                 placeholder="Search for job title"
               ></input>
-              <button className="bg-[#1875e8] text-white sm:px-2.5 md:px-3 lg:px-4 xl:px-6 sm:text-sm md:text-lg lg:text-xl xl:text-2xl sm:py-1 md:py-2 lg:py-2.5 xl:py-3.5 rounded">
+              <button className="bg-[#1875e8] text-white sm:px-2.5 md:px-3 lg:px-4 xl:px-6 sm:text-sm md:text-lg lg:text-xl  sm:py-1 md:py-2 lg:py-2.5  rounded">
                 Search
               </button>
             </div>
             {/* Examples */}
-            <div className="flex items-center sm:gap-2 md:gap-3 lg:gap-4 sm:text-xs md:text-md lg:text-lg xl:text-2xl text-[#aeb4c1]">
+            <div className="flex items-center sm:gap-1 md:gap-3 lg:gap-4 sm:text-xs md:text-md lg:text-lg xl:text-xl text-[#aeb4c1]">
               <p className=" border-[#aeb4c1] rounded">Example:</p>
               <p className="border-1 border-[#aeb4c1] text-nowrap rounded px-2 ">
                 Front-End
