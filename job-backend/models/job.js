@@ -29,6 +29,22 @@ const jobSchema = new Schema(
       ref: "User",
       required: true,
     },
+    location: {
+      type: String,
+      required: false,
+    },
+    numberOfPositions: {
+      type: Number,
+      required: false,
+    },
+    salaryRange: {
+      type: String,
+      required: false,
+    },
+    age: {
+      type: Number,
+      required: false,
+    },
   },
   { timestamps: true }
 );
