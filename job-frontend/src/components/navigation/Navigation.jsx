@@ -29,7 +29,7 @@ const Navigation = () => {
 
   return (
     // Navbar
-    <nav className="w-full fixed top-0 h-[50px] px-3 py-1 font-sans">
+    <nav className="w-full fixed top-0 h-[50px] px-3 py-1 font-sans bg-[#edeef2]">
       <div className="w-full flex flex-row justify-between items-center">
         {/* <Navbar.Brand href="/dashboard" className={classes.brand}>
           Job Hunt
@@ -111,7 +111,7 @@ const Navigation = () => {
             <div className="w-full font-sans p-1 flex gap-4 justify-center items-center text-[#0f1137] text-md tracking-tighter">
               <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
-                to="/"
+                to="/dashboard"
               >
                 Home
               </NavLink>
@@ -179,7 +179,7 @@ const Navigation = () => {
           <Dropdown>
             <Dropdown.Toggle className="bg-gray-200 text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
               <span>
-                <img src={profilepic2} alt="" width='32px' height='32px'/>
+                <img src={profilepic2} alt="" width='25px' height='25px'/>
               </span>
             </Dropdown.Toggle>
 

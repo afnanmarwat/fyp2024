@@ -80,8 +80,8 @@ const Jobs = () => {
             </div>
             <div className="flex items-center gap-4 p-1 text-lg  text-[#aeb4c1]">
               Example: 
-              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Front-End</p>
-              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Back-End</p>
+              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Reactjs</p>
+              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Flutter</p>
               <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Designer</p>
             </div>
           </form>
