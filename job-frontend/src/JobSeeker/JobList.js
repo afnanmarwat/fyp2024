@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Row, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
+import { IoSearch } from "react-icons/io5";
 import axios from "axios";
 import Jobitem from "./Job_item";
 import ApplyModal from "./ApplyModal";
@@ -50,19 +51,46 @@ const Jobs = () => {
 
   return (
     <div>
-      <Container>
-        <Row style={{ marginTop: "20px", marginLeft: "85px" }}>
-          <Col sm={3}></Col>
-          <Col sm={5}>
-            <input
-              className="form-control"
-              type="search"
-              onChange={jobSearchHandler}
-              placeholder="Search Jobs"
-            ></input>
-          </Col>
-        </Row>
-      </Container>
+      <section  className="container px-3 flex gap-5 justify-center items-center font-sans bg-[#f5f6fb] h-[100vh]">
+        {/* Search Section */}
+        <div className="flex flex-col gap-4 w-[50%]">
+          {/* heading */}
+          <div className="w-full ">
+            <h1 className="text-5xl font-extrabold text-[#0f1137] leading-[60px] tracking-tight">
+              Your <span className="text-[#1875e8]">Ultimate Job</span> <br />
+              Search with <span className="text-[#1875e8]">Companion</span>
+            </h1>
+          </div>
+          <p className="text-2xl tracking-widest">
+            Work remotely to companies in worldwide
+          </p>
+          {/* Search */}
+          <form className="flex flex-col gap-4">
+            <div className="flex flex-row justify-around items-center bg-white w-full rounded-lg px-2 py-3 shadow-xl">
+              <IoSearch className="text-[#aeb4c1] text-3xl" />
+              <input
+                className="focus:outline-none focus:border-none text-2xl tracking-wider"
+                type="search"
+                onChange={jobSearchHandler}
+                placeholder="Search for job title"
+              ></input>
+              <button className="bg-[#1875e8] text-white px-[40px] text-lg py-[15px] rounded">
+                Search
+              </button>
+            </div>
+            <div className="flex items-center gap-4 p-1 text-lg  text-[#aeb4c1]">
+              Example: 
+              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Front-End</p>
+              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Back-End</p>
+              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Designer</p>
+            </div>
+          </form>
+        </div>
+        {/* image section */}
+        <div className="w-[50%]">
+          <img src="./images/JobList/joblist.svg" alt="" />
+        </div>
+      </section>
       <Container fluid>
         <div className={classes.grid}>
           {jobs.map((jobItem) => (

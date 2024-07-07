@@ -27,7 +27,7 @@ const Navigation = () => {
 
   return (
     // Navbar
-    <nav className="w-full fixed top-0 h-[50px] px-3 py-1 font-sans">
+    <nav className="w-full fixed top-0 h-[50px] px-3 py-2 font-sans bg-[#f5f6fb]">
       <div className="w-full flex flex-row justify-between items-center">
         {/* <Navbar.Brand href="/dashboard" className={classes.brand}>
           Job Hunt
@@ -35,7 +35,7 @@ const Navigation = () => {
 
         <NavLink
           // activeClassName={classes.active}
-          className="flex gap-1 justify-center items-center text-[#0f1137] text-2xl font-medium "
+          className="flex gap-1 justify-center items-center text-[#0f1137] text-2xl font-medium  tracking-tighter"
           to="/dashboard"
         >
           {/* icon */}
@@ -105,7 +105,7 @@ const Navigation = () => {
             </div>
           )}
           {redAuthToken.role === "User" && (
-            <div className="w-fullfont-sans p-1 flex gap-3 justify-center items-center text-[#0f1137] text-md  ">
+            <div className="w-full font-sans p-1 flex gap-4 justify-center items-center text-[#0f1137] text-md tracking-tighter">
               <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
                 to="/"
@@ -174,7 +174,7 @@ const Navigation = () => {
               </NavDropdown>
             </Nav> */}
           <Dropdown>
-            <Dropdown.Toggle className="bg-gray-200 text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
+            <Dropdown.Toggle className="bg-[#f5f6fb] text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
               <span>
                 {redAuthToken.userName}
               </span>
@@ -197,7 +197,7 @@ const Navigation = () => {
                 onClick={logoutHandler}
                 className="flex gap-2 items-center text-red-600 "
               >
-                <IoIosLogOut/>
+                <IoIosLogOut />
                 Logout
               </Dropdown.Item>
             </Dropdown.Menu>

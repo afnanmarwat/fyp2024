@@ -9,7 +9,7 @@ export default function JobSeekerScreen() {
   return (
     <React.Fragment>
       <Navigation />
-      <div style={{ width: "100%", marginTop: "100px" }}>
+      <div>
         <Routes>
           <Route path="/" element={<Navigate replace to="/dashboard" />} />
 
