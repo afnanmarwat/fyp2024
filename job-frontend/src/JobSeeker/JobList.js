@@ -50,13 +50,13 @@ const Jobs = () => {
   }, [action]);
 
   return (
-    <div>
-      <section className="container px-3 flex gap-5 justify-center items-center font-sans bg-[#f5f6fb] h-[100vh]">
+    <div className="container px-3">
+      <header className="flex gap-5 justify-center items-center font-sans bg-[#f5f6fb] h-[100vh]">
         {/* Search Section */}
         <div className="w-[50%] flex flex-col gap-3">
           {/* heading */}
           <div className="w-full ">
-            <h1 className="text-5xl font-extrabold text-[#0f1137] tracking-wide">
+            <h1 className="text-xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-[#0f1137] tracking-wide">
               Your <span className="text-[#1875e8]">Ultimate Job</span> <br />
               Search with <span className="text-[#1875e8]">Companion</span>
             </h1>
@@ -79,9 +79,7 @@ const Jobs = () => {
               </button>
             </div>
             <div className="flex items-center gap-4  text-lg  text-[#aeb4c1]">
-            <p className=" border-[#aeb4c1] rounded px-2 ">
-                Example:
-              </p>
+              <p className=" border-[#aeb4c1] rounded px-2 ">Example:</p>
               <p className="border-1 border-[#aeb4c1] rounded px-2 ">
                 Front-End
               </p>
@@ -91,7 +89,6 @@ const Jobs = () => {
               <p className="border-1 border-[#aeb4c1] rounded px-2 ">
                 Designer
               </p>
-
             </div>
           </form>
         </div>
@@ -99,7 +96,7 @@ const Jobs = () => {
         <div className="w-[50%] mb-20">
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
-      </section>
+      </header>
       <Container fluid>
         <div className={classes.grid}>
           {jobs.map((jobItem) => (
