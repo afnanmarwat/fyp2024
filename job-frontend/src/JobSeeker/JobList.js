@@ -53,7 +53,7 @@ const Jobs = () => {
     <div>
       <section className="container px-3 flex gap-5 justify-center items-center font-sans bg-[#f5f6fb] h-[100vh]">
         {/* Search Section */}
-        <div className="flex flex-col gap-5 w-[50%]">
+        <div className="w-[50%] flex flex-col gap-5">
           {/* heading */}
           <div className="w-full ">
             <h1 className="text-5xl font-extrabold text-[#0f1137] leading-[60px] tracking-tight">
@@ -93,7 +93,7 @@ const Jobs = () => {
           </form>
         </div>
         {/* image section */}
-        <div className="w-[50%] p-2 mb-5">
+        <div className="w-[50%] p-2 mb-20">
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
       </section>
