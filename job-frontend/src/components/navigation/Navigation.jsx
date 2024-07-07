@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Link, useNavigate, NavLink } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
+// import { FaHome } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
@@ -9,7 +9,7 @@ import classes from "./Navigation.module.css";
 import { Dropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
-import profilepic from '../../assets/profile.png'
+// import profilepic from '../../assets/profile.png'
 import profilepic2 from '../../assets/profile2.png'
 import logo from '../../assets/logo.png'
 const Navigation = () => {
@@ -111,7 +111,7 @@ const Navigation = () => {
             <div className="w-full font-sans p-1 flex gap-4 justify-center items-center text-[#0f1137] text-md tracking-tighter">
               <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
-                to="/"
+                to="/dashboard"
               >
                 Home
               </NavLink>
