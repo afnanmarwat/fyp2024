@@ -93,7 +93,7 @@ const Jobs = () => {
           </form>
         </div>
         {/* image section */}
-        <div className="w-[50%] p-2 mb-20">
+        <div className="w-[50%] mb-20">
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
       </section>
