@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Link, useNavigate, NavLink } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
+// import { FaHome } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
@@ -9,7 +9,7 @@ import classes from "./Navigation.module.css";
 import { Dropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
-import profilepic from '../../assets/profile.png'
+// import profilepic from '../../assets/profile.png'
 import profilepic2 from '../../assets/profile2.png'
 import logo from '../../assets/logo.png'
 const Navigation = () => {

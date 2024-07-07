@@ -51,9 +51,9 @@ const Jobs = () => {
 
   return (
     <div>
-      <section  className="container px-3 flex gap-5 justify-center items-center font-sans bg-[#f5f6fb] h-[100vh]">
+      <section className="container px-3 flex gap-5 justify-center items-center font-sans bg-[#f5f6fb] h-[100vh]">
         {/* Search Section */}
-        <div className="flex flex-col gap-4 w-[50%]">
+        <div className="w-[50%] flex flex-col gap-5">
           {/* heading */}
           <div className="w-full ">
             <h1 className="text-5xl font-extrabold text-[#0f1137] leading-[60px] tracking-tight">
@@ -61,12 +61,12 @@ const Jobs = () => {
               Search with <span className="text-[#1875e8]">Companion</span>
             </h1>
           </div>
-          <p className="text-2xl tracking-widest">
+          <p className="text-2xl font-thin tracking-widest">
             Work remotely to companies in worldwide
           </p>
           {/* Search */}
-          <form className="flex flex-col gap-4">
-            <div className="flex flex-row justify-around items-center bg-white w-full rounded-lg px-2 py-3 shadow-xl">
+          <form className="flex flex-col gap-5">
+            <div className="flex flex-row justify-around items-center bg-white w-full rounded-lg py-2 shadow-xl">
               <IoSearch className="text-[#aeb4c1] text-3xl" />
               <input
                 className="focus:outline-none focus:border-none text-2xl tracking-wider"
@@ -74,20 +74,32 @@ const Jobs = () => {
                 onChange={jobSearchHandler}
                 placeholder="Search for job title"
               ></input>
-              <button className="bg-[#1875e8] text-white px-[40px] text-lg py-[15px] rounded">
+              <button className="bg-[#1875e8] text-white px-4 text-xl py-2.5 rounded">
                 Search
               </button>
             </div>
             <div className="flex items-center gap-4 p-1 text-lg  text-[#aeb4c1]">
-              Example: 
+
               <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Reactjs</p>
               <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Flutter</p>
               <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">Designer</p>
+
+              Example:
+              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">
+                Front-End
+              </p>
+              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">
+                Back-End
+              </p>
+              <p className="border-1 border-[#aeb4c1] rounded px-2 py-1">
+                Designer
+              </p>
+
             </div>
           </form>
         </div>
         {/* image section */}
-        <div className="w-[50%]">
+        <div className="w-[50%] mb-20">
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
       </section>
