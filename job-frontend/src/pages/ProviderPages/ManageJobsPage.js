@@ -82,16 +82,20 @@ export default function ManageJobsPage() {
   const editJobItemHandler = (values) => {
     const j_id = values._id;
     const updatedValues = {
-      jobId: values.jobId,
       title: values.title,
       description: values.description,
       category: values.category,
+      startDate: values.startDate,
       endDate: values.endDate,
       providerId: values.providerId,
-      startDate: values.startDate,
+      location: values.location,
+      numberOfPositions: values.numberOfPositions,
+      salaryRange: values.salaryRange,
+      age: values.age,
+      qualification: values.qualification,
     };
     setSpinner(true);
-
+  
     axios
       .put(
         `${Config.SERVER_URL + "provider/edit-job/" + j_id}`,
@@ -103,7 +107,6 @@ export default function ManageJobsPage() {
         }
       )
       .then((result) => {
-        // console.log(result);
         setAction(!action);
         setSpinner(false);
         setEditJobModal((prev) => {
@@ -112,11 +115,11 @@ export default function ManageJobsPage() {
         toast.success(result.data.message);
       })
       .catch((err) => {
-        // console.log(err);
         setSpinner(false);
         toast.error("Oops something went wrong");
       });
   };
+  
   return (
     <>
       <Suspense fallback={<SpinnerComponent />}>

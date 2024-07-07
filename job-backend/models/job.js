@@ -31,19 +31,23 @@ const jobSchema = new Schema(
     },
     location: {
       type: String,
-      required: false,
+      required: true,
     },
     numberOfPositions: {
       type: Number,
-      required: false,
+      required: true,
     },
     salaryRange: {
       type: String,
-      required: false,
+      required: true,
     },
     age: {
-      type: Number,
-      required: false,
+      type: String,
+      required: true,
+    },
+    qualification: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }

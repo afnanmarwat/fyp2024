@@ -81,6 +81,11 @@ exports.addJob = (req, res, next) => {
   }
 
   const newJob = new Job({
+    title: req.body.title,
+    description: req.body.description,
+    location: req.body.location,
+    salary: req.body.salary,
+    type: req.body.type,
     ...req.body,
     providerId: req.userId,
   });
