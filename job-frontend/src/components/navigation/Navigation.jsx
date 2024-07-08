@@ -102,6 +102,7 @@ const Navigation = () => {
                   navData.isActive ? classes.active : ""
                 }
                 to="/provider-report"
+                
               >
                 Reports
               </NavLink>
