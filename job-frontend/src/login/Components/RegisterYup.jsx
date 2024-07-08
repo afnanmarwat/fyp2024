@@ -91,7 +91,7 @@ const Register = (props) => {
   return (
     <React.Fragment>
       {/* <Header /> */}
-      <section className="h-full bg-[rgba(243,247,250,255)] py-4 px-1 grid place-items-center overflow-hidden">
+      <section className="h-full bg-[rgba(243,247,250,255)] sm:py-4 sm:px-1 grid place-items-center  overflow-hidden">
         <div className="relative">
           {/* large circle design */}
           <div className="hidden md:block bg-[rgba(28,220,199,255)] absolute top-[-90px] left-[300px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
@@ -100,7 +100,7 @@ const Register = (props) => {
           <div className="hidden md:block bg-[#1de6b5] absolute top-[400px] left-[-180px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
           <div className="hidden md:block bg-[#03a8ef] absolute top-[250px] left-[600px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
           {showSpinner && <SpinnerComponent />}
-          <div className="flex flex-col gap-4 relative z-20 bg-white px-5 py-3 shadow-lg min-w-[500px] rounded">
+          <div className="flex flex-col gap-4 relative z-20 bg-white px-2 sm:px-5 py-3 shadow-lg xs:min-w-[300] sm:min-w-[500px] rounded">
             <h1 className="flex items-center justify-center text-xl font-bold ">
               Sign-Up
             </h1>
