@@ -143,6 +143,7 @@ const Jobs = () => {
             </div>
           </div>
         </div>
+        
         {/* joblist section */}
         <div className="hidden">
           {jobs.map((jobItem) => (
