@@ -108,7 +108,7 @@ const Jobs = () => {
           {jobs.map((jobItem) => (
             <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
           ))}
-        </div>  
+        </div>
       </main>
       {modal && (
         <ApplyModal
