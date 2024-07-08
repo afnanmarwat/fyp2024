@@ -51,8 +51,8 @@ const Jobs = () => {
   }, [action]);
 
   return (
-    <div className="container font-sans">
-      <header className="flex gap-5 justify-center items-center  bg-[#f5f6f8] h-[100vh]">
+    <div className="font-sans">
+      <header className="container px-5 flex gap-5 justify-center items-center  bg-[#f5f6f8] h-[100vh]">
         {/* Heading and Search Section */}
         <div className="w-full sm:w-[50%] flex flex-col xs:gap-3 sm:gap-2 md:gap-3 xl:gap-4">
           {/* heading */}
@@ -104,40 +104,40 @@ const Jobs = () => {
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
       </header>
-      <main className="flex flex-col bg-white">
+      <main className="container px-5 flex flex-col bg-white">
         {/* Categories section*/}
-        <div className="flex flex-col px-2 gap-5 justify-center h-[60vh]">
+        <div className="flex flex-col py-4 gap-5 justify-center xs:items-center md:items-start w-full h-full">
           {/* Categories heading */}
           <h1 className="font-bold text-2xl  xl:text-3xl">Categories</h1>
           {/* Categories divs */}
-          <div className="flex flex-row lg:gap-3 xl:gap-5">
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 ">
             {/* 1 */}
-            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">Design</p>
             </div>
             {/* 2 */}
-            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">Development</p>
             </div>
             {/* 3 */}
-            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">Security</p>
             </div>
             {/* 4 */}
-            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">Research</p>
             </div>
             {/* 5 */}
-            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">Gaming</p>
             </div>
             {/* 6 */}
-            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">Design</p>
             </div>
@@ -145,7 +145,7 @@ const Jobs = () => {
         </div>
 
         {/* joblist section */}
-        <div className="">
+        <div className="flex flex-col">
           {jobs.map((jobItem) => (
             <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
           ))}

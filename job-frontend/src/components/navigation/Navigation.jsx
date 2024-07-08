@@ -28,7 +28,7 @@ const Navigation = () => {
 
   return (
     // Navbar
-    <nav className="w-full fixed top-0 h-[50px] py-1 font-sans bg-[#edeef2]">
+    <nav className="w-full fixed top-0 z-50 h-[50px] py-1 font-sans bg-white">
       <div className="w-full flex flex-row justify-between items-center">
         {/* <Navbar.Brand href="/dashboard" className={classes.brand}>
           Job Hunt
