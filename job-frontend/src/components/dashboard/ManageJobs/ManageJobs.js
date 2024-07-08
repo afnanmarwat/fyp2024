@@ -62,6 +62,12 @@ export default function ManageJobs() {
       category: values.category,
       startDate: values.startDate,
       endDate: values.endDate,
+      providerId: values.providerId,
+      location: values.location,
+      numberOfPositions: values.numberOfPositions,
+      salaryRange: values.salaryRange,
+      age: values.age,
+      qualification: values.qualification,
     };
     // console.log(editValues);
     setSpinner(true);
@@ -128,9 +134,8 @@ export default function ManageJobs() {
         onHide={() => {
           setAddJobModal(false);
         }}
-        formModal={true}
-        buttonTitle="Add Job"
-        formId="manageJob-form"
+      
+      
       >
         {{
           title: "Add new Job",
