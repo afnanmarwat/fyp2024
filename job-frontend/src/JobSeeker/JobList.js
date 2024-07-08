@@ -2,10 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 // import { Container } from "react-bootstrap";
 import { IoSearch } from "react-icons/io5";
+import { SiVorondesign } from "react-icons/si";
 import axios from "axios";
 import Jobitem from "./Job_item";
 import ApplyModal from "./ApplyModal";
-import classes from "./Modalf.module.css";
+// import classes from "./Modalf.module.css";
 import Config from "../config/Config.json";
 
 let jobsData = [];
@@ -50,8 +51,8 @@ const Jobs = () => {
   }, [action]);
 
   return (
-    <div className="container">
-      <header className="flex gap-5 justify-center items-center font-sans bg-[#f5f6fb] h-[100vh]">
+    <div className="container font-sans">
+      <header className="flex gap-5 justify-center items-center  bg-[#f5f6f8] h-[100vh]">
         {/* Heading and Search Section */}
         <div className="w-full sm:w-[50%] flex flex-col xs:gap-3 sm:gap-2 md:gap-3 xl:gap-4">
           {/* heading */}
@@ -99,12 +100,51 @@ const Jobs = () => {
           </form>
         </div>
         {/* image section */}
-        <div className="hidden sm:block md:w-[50%]  sm:mb-8 md:mb-10 lg:mb-[30px] xl:mb-[40px]">
+        <div className="sm:block md:w-[50%]  sm:mb-8 md:mb-10 lg:mb-[30px] xl:mb-[40px]">
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
       </header>
-      <main>
-        <div className={classes.grid}>
+      <main className="flex flex-col bg-white">
+        {/* Categories section*/}
+        <div className="flex flex-col px-2 gap-5 justify-center h-[60vh]">
+          {/* Categories heading */}
+          <h1 className="font-bold text-2xl  xl:text-3xl">Categories</h1>
+          {/* Categories divs */}
+          <div className="flex flex-row lg:gap-3 xl:gap-5">
+            {/* 1 */}
+            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+              <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
+              <p className="group-hover:text-white text-xl text-[#0f1137]">Design</p>
+            </div>
+            {/* 2 */}
+            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+              <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
+              <p className="group-hover:text-white text-xl text-[#0f1137]">Development</p>
+            </div>
+            {/* 3 */}
+            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+              <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
+              <p className="group-hover:text-white text-xl text-[#0f1137]">Security</p>
+            </div>
+            {/* 4 */}
+            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+              <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
+              <p className="group-hover:text-white text-xl text-[#0f1137]">Research</p>
+            </div>
+            {/* 5 */}
+            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+              <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
+              <p className="group-hover:text-white text-xl text-[#0f1137]">Gaming</p>
+            </div>
+            {/* 6 */}
+            <div className="group w-[150px] xl:w-[170px] h-[150px] xl:h-[170px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+              <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
+              <p className="group-hover:text-white text-xl text-[#0f1137]">Design</p>
+            </div>
+          </div>
+        </div>
+        {/* joblist section */}
+        <div className="hidden">
           {jobs.map((jobItem) => (
             <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
           ))}
