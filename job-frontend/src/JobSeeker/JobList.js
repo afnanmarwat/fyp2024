@@ -53,7 +53,7 @@ const Jobs = () => {
     <div className="container">
       <header className="flex gap-5 justify-center items-center font-sans bg-[#f5f6fb] h-[100vh]">
         {/* Heading and Search Section */}
-        <div className="w-[50%] flex flex-col sm:gap-2 md:gap-3 xl:gap-4">
+        <div className="w-full sm:w-[50%] flex flex-col xs:gap-3 sm:gap-2 md:gap-3 xl:gap-4">
           {/* heading */}
           <div className="w-full ">
             <h1 className="text-xl md:text-2xl lg:text-4xl 2xl:text-5xl font-extrabold text-[#0f1137] tracking-wide">
@@ -62,29 +62,29 @@ const Jobs = () => {
             </h1>
           </div>
           {/* text */}
-          <p className="sm:text-xs md:text-sm text-nowrap lg:text-xl xl:text-2xl font-thin tracking-widest">
+          <p className=" xs:text-xs md:text-sm text-nowrap lg:text-xl xl:text-2xl font-thin tracking-widest">
             Work remotely to companies in worldwide
           </p>
           {/* Search */}
-          <form className="flex flex-col sm:gap-3 md:gap-4 lg:gap-5">
+          <form className="flex flex-col  xs:gap-3 md:gap-4 lg:gap-5">
             {/* Search Div */}
             <div className="flex flex-row justify-around items-center bg-white w-full rounded-lg sm:px-2 md:px-2 lg:px-0 py-2 shadow-xl">
               {/* search icon*/}
-              <IoSearch className="text-[#aeb4c1] sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
+              <IoSearch className="text-[#aeb4c1] xs:text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
               {/* search input */}
               <input
-                className="focus:outline-none focus:border-none sm:text-sm md:text-lg lg:text-xl xl:text-2xl tracking-wider"
+                className="focus:outline-none focus:border-none xs:text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl tracking-wider"
                 type="search"
                 onChange={jobSearchHandler}
                 placeholder="Search for job title"
               ></input>
               {/* Search button */}
-              <button className="bg-[#1875e8] text-white sm:px-2.5 md:px-3 lg:px-4 xl:px-6 sm:text-sm md:text-lg lg:text-xl  sm:py-1 md:py-2 lg:py-2.5  rounded">
+              <button className="bg-[#1875e8] text-white xs:px-2 sm:px-2.5 md:px-3 lg:px-4 xl:px-6 xs:text-xs sm:text-sm md:text-lg lg:text-xl xs:py-1 md:py-2 lg:py-2.5  rounded">
                 Search
               </button>
             </div>
             {/* Examples Div*/}
-            <div className="flex items-center sm:gap-1 md:gap-3 lg:gap-4 sm:text-xs md:text-md lg:text-lg xl:text-xl text-[#aeb4c1]">
+            <div className="flex items-center xs:gap-1 md:gap-3 lg:gap-4 xs:text-xs md:text-md lg:text-lg xl:text-xl text-[#aeb4c1]">
               <p className=" border-[#aeb4c1] rounded">Example:</p>
               <p className="border-1 border-[#aeb4c1] text-nowrap rounded px-2 ">
                 Front-End
@@ -99,11 +99,11 @@ const Jobs = () => {
           </form>
         </div>
         {/* image section */}
-        <div className="hidden sm:block md:w-[60%] lg:w-[50%] sm:mb-8 md:mb-10 lg:mb-[30px] xl:mb-[40px]">
+        <div className="hidden sm:block md:w-[50%]  sm:mb-8 md:mb-10 lg:mb-[30px] xl:mb-[40px]">
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
       </header>
-      <main>
+      <main className="hidden">
         <div className={classes.grid}>
           {jobs.map((jobItem) => (
             <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />

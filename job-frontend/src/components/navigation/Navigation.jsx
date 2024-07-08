@@ -1,7 +1,6 @@
 import React from "react";
 
 import { Link, useNavigate, NavLink } from "react-router-dom";
-// import { FaHome } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
@@ -29,7 +28,7 @@ const Navigation = () => {
 
   return (
     // Navbar
-    <nav className="w-full fixed top-0 h-[50px] px-3 py-1 font-sans bg-[#edeef2]">
+    <nav className="w-full fixed top-0 h-[50px] py-1 font-sans bg-[#edeef2]">
       <div className="w-full flex flex-row justify-between items-center">
         {/* <Navbar.Brand href="/dashboard" className={classes.brand}>
           Job Hunt
@@ -41,12 +40,11 @@ const Navigation = () => {
           to="/dashboard"
         >
           {/* icon */}
-          <span className="">
+          <span>
             {/* <i className="bi bi-search"></i> */}
-            {/* <FaHome /> */}
             <img src={logo} alt="" className="text-[#1A75E8]" width='30px' height='28px'/>
           </span>
-          <span className="">JOB</span>
+          <span>JOB</span>
           <span className="text-[#1A75E8]">KOR</span>
         </NavLink>
         {/* <div aria-controls="navbar-dark-example" /> */}
