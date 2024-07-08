@@ -69,7 +69,7 @@ const Jobs = () => {
             <div className="flex flex-row justify-around items-center bg-white w-full rounded-lg sm:px-2 md:px-2 lg:px-0 py-2 shadow-xl">
               <IoSearch className="text-[#aeb4c1] sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
               <input
-                className="focus:outline-none focus:border-none sm:text-sm md:text-lg lg:text-xl xl:text-3xl tracking-wider"
+                className="focus:outline-none focus:border-none sm:text-sm md:text-lg lg:text-xl xl:text-2xl tracking-wider"
                 type="search"
                 onChange={jobSearchHandler}
                 placeholder="Search for job title"
