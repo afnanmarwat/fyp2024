@@ -104,14 +104,14 @@ const Login = () => {
       {/* <title>{Config.TITLE.APP_TITLE}</title> */}
       {/* <Header /> */}
       {/* Full Container */}
-      <section className="md:grid 2xl:items-start 2xl:pt-[100px] justify-center items-center h-[100vh] bg-[rgba(243,247,250,255)] overflow-hidden">
+      <section className="sm:grid 2xl:items-start 2xl:pt-[100px] justify-center items-center h-[100vh] bg-[rgba(243,247,250,255)] overflow-hidden">
         <div className="relative ">
           {/* large circle design */}
-          <div className="hidden md:block bg-[rgba(28,220,199,255)] absolute top-[-90px] left-[180px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
-          <div className="hidden md:block bg-[rgba(152,145,212,255)] absolute top-[180px] left-[-100px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
+          <div className="hidden sm:block bg-[rgba(28,220,199,255)] absolute top-[-90px] left-[180px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
+          <div className="hidden sm:block bg-[rgba(152,145,212,255)] absolute top-[180px] left-[-100px] z-10 shadow-lg  rounded-full w-[300px] h-[300px]"></div>
           {/* small circle design */}
-          <div className="hidden md:block bg-[#1de6b5] absolute top-[240px] left-[-180px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
-          <div className="hidden md:block bg-[#03a8ef] absolute top-[100px] left-[550px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
+          <div className="hidden sm:block bg-[#1de6b5] absolute top-[240px] left-[-180px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
+          <div className="hidden sm:block bg-[#03a8ef] absolute top-[100px] left-[550px] z-10 shadow-lg  rounded-full w-[20px] h-[20px]"></div>
 
           {/* Login container */}
           <div className="relative z-20 p-5 rounded bg-[rgba(255,255,255,255)] shadow-lg">

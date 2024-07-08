@@ -103,7 +103,7 @@ const Jobs = () => {
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
       </header>
-      <main className="hidden">
+      <main>
         <div className={classes.grid}>
           {jobs.map((jobItem) => (
             <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
