@@ -143,9 +143,9 @@ const Jobs = () => {
             </div>
           </div>
         </div>
-        
+
         {/* joblist section */}
-        <div className="hidden">
+        <div className="">
           {jobs.map((jobItem) => (
             <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
           ))}
