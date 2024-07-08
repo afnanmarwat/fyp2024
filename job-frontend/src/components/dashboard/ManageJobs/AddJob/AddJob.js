@@ -1,9 +1,12 @@
 import React from "react";
 import { Formik } from "formik";
 import { Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import classes from "./AddJob.module.css";
 
 import { TextField, SelectInput } from "./FormTypes";
 import * as Yup from "yup";
+
 export default function AddJob(props) {
   let initialValues = {
     title: "",
@@ -11,6 +14,11 @@ export default function AddJob(props) {
     startDate: "",
     endDate: "",
     category: "",
+    location: "",
+    numberOfPositions: "",
+    salaryRange: "",
+    age: "",
+    qualification: ""
   };
 
   if (props.jobInfo) {
@@ -20,8 +28,18 @@ export default function AddJob(props) {
       startDate: props.jobInfo.startDate,
       endDate: props.jobInfo.endDate,
       category: props.jobInfo.category,
+      location: props.jobInfo.location,
+      numberOfPositions: props.jobInfo.numberOfPositions,
+      salaryRange: props.jobInfo.salaryRange,
+      age: props.jobInfo.age,
+      qualification: props.jobInfo.qualification
     };
   }
+
+  const formSubmitHandler = (values, setSubmitting) => {
+    props.onAdd(values);
+    setSubmitting(false);
+  };
 
   // VALIDATION
   const validate = Yup.object({
@@ -32,6 +50,11 @@ export default function AddJob(props) {
     startDate: Yup.date().required("Required"),
     endDate: Yup.date().required("Required"),
     category: Yup.string().required("Required"),
+    location: Yup.string().required("Required"),
+    numberOfPositions: Yup.number().required("Required").positive().integer(),
+    salaryRange: Yup.string().required("Required"),
+    age: Yup.string().required("Required"),
+    qualification: Yup.string()
   });
 
   return (
@@ -41,33 +64,49 @@ export default function AddJob(props) {
         validationSchema={validate}
         onSubmit={(values, { setSubmitting }) => {
           const editedValues = { ...props.jobInfo, ...values };
-          props.onAdd(editedValues);
+          formSubmitHandler(editedValues, setSubmitting);
         }}
       >
         {(formik) => (
-          // console.log(formik);
-          <Form onSubmit={formik.handleSubmit} id="manageJob-form">
+          <Form onSubmit={formik.handleSubmit}>
             <div>
               <TextField label="Title" name="title" type="text" />
-              <TextField
-                label="Description "
-                name="description"
-                type="text-area"
-              />
-              <SelectInput label="Category " name="category">
+              <TextField label="Description" name="description" type="textarea" />
+              <SelectInput label="Category" name="category">
                 <option value="">Select</option>
-                <option value="Software Development">
-                  Software Development
-                </option>
+                <option value="Software Development">Software Development</option>
                 <option value="HR Department">HR Department</option>
-                <option value="Techincal and Hardware">
-                  Techincal and Hardware
-                </option>
+                <option value="Technical and Hardware">Technical and Hardware</option>
                 <option value="Front Desk">Front Desk</option>
               </SelectInput>
-              <TextField label="Start date " name="startDate" type="date" />
-              <TextField label="  End date " name="endDate" type="date" />
+              <TextField label="Location" name="location" type="text" />
+              <TextField label="Number of Positions" name="numberOfPositions" type="number" />
+              <TextField label="Salary Range" name="salaryRange" type="text" />
+              <TextField label="Age" name="age" type="text" />
+              <TextField label="Qualification" name="qualification" type="text" />
+              <TextField label="Start date" name="startDate" type="date" />
+              <TextField label="End date" name="endDate" type="date" />
             </div>
+
+            {!props.jobInfo ? (
+              <Button
+                className={classes.submitBtn}
+                type="submit"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                Add Job
+              </Button>
+            ) : (
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <Button className={classes.submitBtn} type="submit">
+                  Edit Job
+                </Button>
+              </div>
+            )}
           </Form>
         )}
       </Formik>
