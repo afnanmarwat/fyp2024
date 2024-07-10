@@ -163,12 +163,12 @@ const Jobs = () => {
           <h1 className="font-bold text-[#0f1137] text-2xl  xl:text-3xl">
             Featured Jobs
           </h1>
-           {/* JobList */}
-           <div className="flex flex-col gap-4">
-              {jobs.map((jobItem) => (
-                <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
-              ))}
-            </div>
+          {/* JobList */}
+          <div className="flex flex-col gap-4">
+            {jobs.map((jobItem) => (
+              <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
+            ))}
+          </div>
         </div>
       </main>
       {modal && (
