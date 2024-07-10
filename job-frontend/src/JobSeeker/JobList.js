@@ -67,37 +67,7 @@ const Jobs = () => {
             Work remotely to companies in worldwide
           </p>
           {/* Search */}
-          <form className="flex flex-col  xs:gap-3 md:gap-4 lg:gap-5">
-            {/* Search Div */}
-            <div className="flex flex-row justify-around items-center bg-white w-full rounded-lg sm:px-2 md:px-2 lg:px-0 py-2 shadow-xl">
-              {/* search icon*/}
-              <IoSearch className="text-[#aeb4c1] xs:text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
-              {/* search input */}
-              <input
-                className="focus:outline-none focus:border-none xs:text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl tracking-wider"
-                type="search"
-                onChange={jobSearchHandler}
-                placeholder="Search for job title"
-              ></input>
-              {/* Search button */}
-              <button className="bg-[#1875e8] text-white xs:px-2 sm:px-2.5 md:px-3 lg:px-4 xl:px-6 xs:text-xs sm:text-sm md:text-lg lg:text-xl xs:py-1 md:py-2 lg:py-2.5  rounded">
-                Search
-              </button>
-            </div>
-            {/* Examples Div*/}
-            <div className="flex items-center xs:gap-1 md:gap-3 lg:gap-4 xs:text-xs md:text-md lg:text-lg xl:text-xl text-[#aeb4c1]">
-              <p className=" border-[#aeb4c1] rounded">Example:</p>
-              <p className="border-1 border-[#aeb4c1] text-nowrap rounded px-2 ">
-                Front-End
-              </p>
-              <p className="border-1 border-[#aeb4c1] text-nowrap rounded px-2 ">
-                Back-End
-              </p>
-              <p className="border-1 border-[#aeb4c1] text-nowrap rounded px-2 ">
-                Designer
-              </p>
-            </div>
-          </form>
+        
         </div>
         {/* image section */}
         <div className="sm:block md:w-[50%]  sm:mb-8 md:mb-10 lg:mb-[30px] xl:mb-[40px]">
@@ -160,10 +130,43 @@ const Jobs = () => {
         </div>
         {/* joblist section */}
         <div className="flex flex-col py-4  gap-5">
+        <form className="flex flex-col  xs:gap-3 md:gap-4 lg:gap-5 sm:w-86  mx-auto">
+            {/* Search Div */}
+            <div className="flex flex-row justify-between items-center bg-white w-full rounded-full sm:px-2 md:px-3 lg:px-2 py-2 shadow-xl border">
+              {/* search icon*/}
+              {/* search input */}
+              <input
+                className="focus:outline-none focus:border-none xs:text-xs sm:text-[16px] tracking-wider"
+                type="search"
+                onChange={jobSearchHandler}
+                placeholder="Search for job title"
+              ></input>
+             <IoSearch className="text-[#aeb4c1] xs:text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
+
+              {/* Search button */}
+              {/* <button className="bg-[#1875e8] text-white xs:px-2 sm:px-2.5 md:px-3 lg:px-4 xl:px-6 xs:text-xs sm:text-sm md:text-lg lg:text-xl xs:py-1 md:py-2 lg:py-2.5  rounded">
+                Search
+              </button> */}
+            </div>
+            {/* Examples Div*/}
+            <div className="flex items-center xs:gap-1 md:gap-3 lg:gap-4 xs:text-xs md:text-[16px] text-[#aeb4c1]">
+              <p className=" border-[#aeb4c1] rounded">Example:</p>
+              <p className="border-1 border-[#aeb4c1] text-nowrap rounded p-1 ">
+                Front-End
+              </p>
+              <p className="border-1 border-[#aeb4c1] text-nowrap rounded p-1">
+                Back-End
+              </p>
+              <p className="border-1 border-[#aeb4c1] text-nowrap rounded p-1 ">
+                Designer
+              </p>
+            </div>
+          </form>
           <h1 className="font-bold text-[#0f1137] text-2xl  xl:text-3xl">
             Featured Jobs
           </h1>
           {/* JobList */}
+          
           <div className="flex flex-col gap-4">
             {jobs.map((jobItem) => (
               <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
