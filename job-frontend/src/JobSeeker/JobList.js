@@ -109,46 +109,48 @@ const Jobs = () => {
         {/* Categories section*/}
         <div className="flex flex-col py-4 gap-5 justify-center xs:items-center md:items-start w-full h-full">
           {/* Categories heading */}
-          <h1 className="font-bold text-[#0f1137] text-2xl  xl:text-3xl">Categories</h1>
+          <h1 className="font-bold text-[#0f1137] text-2xl  xl:text-3xl">
+            Categories
+          </h1>
           {/* Categories divs */}
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 ">
             {/* 1 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Design
               </p>
             </div>
             {/* 2 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Development
               </p>
             </div>
             {/* 3 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Security
               </p>
             </div>
             {/* 4 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Research
               </p>
             </div>
             {/* 5 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Gaming
               </p>
             </div>
             {/* 6 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-y-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Design
@@ -158,12 +160,15 @@ const Jobs = () => {
         </div>
         {/* joblist section */}
         <div className="flex flex-col py-4  gap-5">
-          <h1 className="font-bold text-[#0f1137] text-2xl  xl:text-3xl">Featured Jobs</h1>
-          <div className="flex flex-col gap-3">
-            {jobs.map((jobItem) => (
-              <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
-            ))}
-          </div>
+          <h1 className="font-bold text-[#0f1137] text-2xl  xl:text-3xl">
+            Featured Jobs
+          </h1>
+           {/* JobList */}
+           <div className="flex flex-col gap-4">
+              {jobs.map((jobItem) => (
+                <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
+              ))}
+            </div>
         </div>
       </main>
       {modal && (
