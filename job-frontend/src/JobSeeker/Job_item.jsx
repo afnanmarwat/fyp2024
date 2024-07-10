@@ -4,7 +4,7 @@
 function Jobitem({ item, jobApply }) {
   const tag = item.title.split(" ")[0].toLowerCase();
   return (
-    <div className="border-2 w-[70%] h-full rounded-xl px-3 py-4 hover:border-none hover:drop-shadow-2xl hover:bg-white hover:scale-105 hover:cursor-pointer overflow-hidden transition-all ease-in-out duration-100">
+    <div className="border-2 w-[70%] h-full rounded-xl px-3 py-4 hover:border-none hover:drop-shadow hover:bg-white hover:scale-105 hover:cursor-pointer overflow-hidden transition-all ease-in-out duration-300">
       <div className="flex flex-col justify-center gap-3">
         {/* upper section of company div  */}
         <div className="flex flex-row items-center justify-between">
