@@ -51,7 +51,7 @@ const Jobs = () => {
   }, [action]);
 
   return (
-    <div className="font-sans">
+    <div className="w-full" style={{width:'100%'}}>
       <header className="container px-5 flex gap-5 justify-center items-center  bg-[#f5f6f8] h-[100vh]">
         {/* Heading and Search Section */}
         <div className="w-full sm:w-[50%] flex flex-col xs:gap-3 sm:gap-2 md:gap-3 xl:gap-4">
