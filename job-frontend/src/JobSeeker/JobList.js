@@ -164,7 +164,7 @@ const Jobs = () => {
             Featured Jobs
           </h1>
           {/* JobList */}
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 ">
             {jobs.map((jobItem) => (
               <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
             ))}
