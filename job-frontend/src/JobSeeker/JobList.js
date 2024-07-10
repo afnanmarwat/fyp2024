@@ -104,11 +104,12 @@ const Jobs = () => {
           <img src="./images/JobList/joblist.svg" alt="" />
         </div>
       </header>
-      <main className="container px-5 flex flex-col bg-white">
+
+      <main className="container px-5 flex flex-col gap-5 bg-white">
         {/* Categories section*/}
         <div className="flex flex-col py-4 gap-5 justify-center xs:items-center md:items-start w-full h-full">
           {/* Categories heading */}
-          <h1 className="font-bold text-2xl  xl:text-3xl">Categories</h1>
+          <h1 className="font-bold text-[#0f1137] text-2xl  xl:text-3xl">Categories</h1>
           {/* Categories divs */}
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 ">
             {/* 1 */}
@@ -155,12 +156,14 @@ const Jobs = () => {
             </div>
           </div>
         </div>
-
         {/* joblist section */}
-        <div className="flex flex-col">
-          {jobs.map((jobItem) => (
-            <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
-          ))}
+        <div className="flex flex-col py-4  gap-5">
+          <h1 className="font-bold text-[#0f1137] text-2xl  xl:text-3xl">Featured Jobs</h1>
+          <div className="flex flex-col gap-3">
+            {jobs.map((jobItem) => (
+              <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
+            ))}
+          </div>
         </div>
       </main>
       {modal && (
