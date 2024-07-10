@@ -4,7 +4,7 @@
 function Jobitem({ item, jobApply }) {
   const tag = item.title.split(" ")[0].toLowerCase();
   return (
-    <div className="border-2 w-[70%] h-full rounded-xl px-3 py-4 hover:border-none hover:drop-shadow hover:bg-white hover:scale-105 hover:cursor-pointer overflow-hidden transition-all ease-in-out duration-300">
+    <div className="border-2 w-[70%] h-full rounded-xl px-3 py-4 hover:border-none hover:drop-shadow-2xl hover:bg-white hover:scale-105 hover:cursor-pointer overflow-hidden transition-all ease-in-out duration-100">
       <div className="flex flex-col justify-center gap-3">
         {/* upper section of company div  */}
         <div className="flex flex-row items-center justify-between">
@@ -40,10 +40,10 @@ function Jobitem({ item, jobApply }) {
           {/* buttons section */}
           <div className="flex flex-row gap-3">
             {/* View Job button */}
-            <button className="text-lg text-[#0f1137] font-semibold border-2 border-gray-200 px-3 hover:border-gray-300 py-1 rounded-3xl transition-all duration-500 hover:shadow-md">View Job</button>
+            <button className="text-[#0f1137]  border-2 border-blue-500 px-3  py-2 rounded-3xl transition-all duration-500 hover:shadow-md">View Job</button>
             {/* Apply now button */}
             {!item.status && (
-              <button className="text-lg text-[#0f1137] font-semibold border-2 border-gray-200 px-3 hover:border-gray-300 py-1 rounded-3xl transition-all duration-500 hover:shadow-md" onClick={() => { jobApply(item); }}>
+              <button className=" text-[#ffff]  border-2 bg-blue-500 px-3 hover:border-gray-300 py-2 rounded-3xl transition-all duration-500 hover:shadow-md" onClick={() => { jobApply(item); }}>
                 Apply Now
               </button>
             )}
@@ -70,20 +70,20 @@ function Jobitem({ item, jobApply }) {
         </div>
         {/* Start Date and End Date  */}
         <div className="flex flex-row justify-between text-sm">
-          <h1 className="text-[#aeb4c1] flex flex-row items-center gap-1">
+          <h5 className="text-[#aeb4c1] flex flex-row items-center gap-1">
             Starting :
             <div className="border-1 py-0.5 px-1 rounded">
               <i className="bi bi-calendar2-check"></i> {" "}
               <span>{item.startDate}</span>
             </div>
-          </h1>
-          <h1 className="text-[#aeb4c1] flex flex-row items-center gap-1">
+          </h5>
+          <h5 className="text-[#aeb4c1] flex flex-row items-center gap-1">
             Ending :
             <div className="border-1 py-0.5 px-1 rounded">
               <i className="bi bi-calendar-x"></i> {" "}
               <span>{item.endDate}</span>
             </div>
-          </h1>
+          </h5>
         </div>
       </div>
 
