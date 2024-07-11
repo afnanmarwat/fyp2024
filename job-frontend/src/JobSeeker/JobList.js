@@ -67,7 +67,6 @@ const Jobs = () => {
             Work remotely to companies in worldwide
           </p>
           {/* Search */}
-        
         </div>
         {/* image section */}
         <div className="sm:block md:w-[50%]  sm:mb-8 md:mb-10 lg:mb-[30px] xl:mb-[40px]">
@@ -130,7 +129,7 @@ const Jobs = () => {
         </div>
         {/* joblist section */}
         <div className="flex flex-col py-4  gap-5">
-        <form className="flex flex-col  xs:gap-3 md:gap-4 lg:gap-5 sm:w-86  mx-auto">
+          <form className="flex flex-col  xs:gap-3 md:gap-4 lg:gap-5 sm:w-86  mx-auto">
             {/* Search Div */}
             <div className="flex flex-row justify-between items-center bg-white w-full rounded-full sm:px-2 md:px-3 lg:px-2 py-2 shadow-xl border">
               {/* search icon*/}
@@ -141,7 +140,7 @@ const Jobs = () => {
                 onChange={jobSearchHandler}
                 placeholder="Search for job title"
               ></input>
-             <IoSearch className="text-[#aeb4c1] xs:text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
+              <IoSearch className="text-[#aeb4c1] xs:text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
 
               {/* Search button */}
               {/* <button className="bg-[#1875e8] text-white xs:px-2 sm:px-2.5 md:px-3 lg:px-4 xl:px-6 xs:text-xs sm:text-sm md:text-lg lg:text-xl xs:py-1 md:py-2 lg:py-2.5  rounded">
@@ -165,11 +164,36 @@ const Jobs = () => {
           <h1 className="font-bold text-[#0f1137] text-2xl  xl:text-3xl">
             Featured Jobs
           </h1>
-          {/* JobList */}
-          <div className="flex flex-col gap-4">
-            {jobs.map((jobItem) => (
-              <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
-            ))}
+          {/* JobList and Job Type section */}
+          <div className="flex flex-row gap-4">
+            {/* JobList */}
+            <div className="flex flex-col w-[80%] gap-4">
+              {jobs.map((jobItem) => (
+                <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
+              ))}
+            </div>
+            {/* Job Type */}
+            <div className="flex flex-col gap-4 justify-center p-3 border rounded w-[20%] h-full">
+              <h5 className="text-xl font-bold">Job Type</h5>
+              <form className="flex flex-col gap-1">
+                <div className="flex gap-2">
+                  <input type="checkbox" id="full-time"/>
+                  <label htmlFor="full-time" className="text-[#aeb4c1] hover:cursor-pointer">Full-Time</label>
+                </div>
+                <div className="flex gap-2">
+                  <input type="checkbox" id="part-time"/>
+                  <label htmlFor="part-time" className="text-[#aeb4c1] hover:cursor-pointer">Part-Time</label>
+                </div>
+                <div className="flex gap-2">
+                  <input type="checkbox" id="remote"/>
+                  <label htmlFor="remote" className="text-[#aeb4c1] hover:cursor-pointer">Remote</label>
+                </div>
+                <div className="flex gap-2">
+                  <input type="checkbox" id="internship"/>
+                  <label htmlFor="internship" className="text-[#aeb4c1] hover:cursor-pointer">Internship</label>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </main>

@@ -5,7 +5,7 @@ function Jobitem({ item, jobApply }) {
   const tag = item.title.split(" ")[0].toLowerCase();
   console.log("items data",item);
   return (
-    <div className="border-2 w-[70%] h-full rounded-xl px-3 py-4 hover:border-none hover:drop-shadow-2xl hover:bg-white hover:scale-105 hover:cursor-pointer transition-all ease-in-out duration-100">
+    <div className="border-1 w-full h-full rounded-xl px-3 py-4 hover:border-[#1a75e8] hover:drop-shadow-2xl hover:bg-white  hover:cursor-pointer transition-all ease-in-out duration-100">
       <div className="flex flex-col justify-center gap-3">
         {/* upper section of company div  */}
         <div className="flex flex-row items-center justify-between">
@@ -26,18 +26,22 @@ function Jobitem({ item, jobApply }) {
                 <h5 className="text-lg text-[#0f1137] font-semibold">{item.title}</h5>
               </div>
               {/*  job type , Salary and location divs */}
-              <div className="flex gap-3">
+              <div className="flex flex-row gap-2 ">
                 {/* Type */}
-                <span className="bg-[#1a81ffb0] text-white px-2 py-0.5 border rounded">
+                <span className="bg-[#1a81ffb0] text-xs text-white px-2 py-0.5 border rounded flex justify-center items-center ">
                   Full Time
                 </span>
                 {/* Salary */}
-                <span className="text-[#aeb4c1] bg-[#f5f6f8] px-2 py-0.5 border rounded">
+                <span className="text-[#aeb4c1] text-xs bg-[#f5f6f8] px-2 py-0.5 border rounded flex justify-center items-center ">
                   {item.salaryRange}
                 </span>
                 {/* Location */}
-                <span className="text-[#aeb4c1] bg-[#f5f6f8] px-2 py-0.5 border rounded">
+                <span className="text-[#aeb4c1] text-xs bg-[#f5f6f8] px-2 py-0.5 border rounded flex justify-center items-center ">
                   {item.location}
+                </span>
+                {/* position */}
+                <span className="text-[#aeb4c1] text-xs bg-[#f5f6f8] px-2 py-0.5 border rounded flex justify-center items-center ">
+                  Position : {item.numberOfPositions}
                 </span>
               </div>
             </div>
