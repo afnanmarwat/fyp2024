@@ -167,13 +167,13 @@ const Jobs = () => {
           {/* JobList and Job Type section */}
           <div className="flex flex-row gap-4">
             {/* JobList */}
-            <div className="flex flex-col w-[80%] gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:flex flex-col w-[100%] xl:w-[80%] gap-4">
               {jobs.map((jobItem) => (
                 <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
               ))}
             </div>
             {/* Job Type */}
-            <div className="flex flex-col gap-4 justify-center p-3 border rounded w-[20%] h-full">
+            <div className="hidden xl:flex flex-col gap-4 justify-center border-1 hover:border-[#1a75e8] p-3 rounded w-[20%] h-full">
               <h5 className="text-xl font-bold">Job Type</h5>
               <form className="flex flex-col gap-1">
                 <div className="flex gap-2">
