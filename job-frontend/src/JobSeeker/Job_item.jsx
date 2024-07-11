@@ -5,7 +5,7 @@ function Jobitem({ item, jobApply }) {
   const tag = item.title.split(" ")[0].toLowerCase();
   console.log("items data",item);
   return (
-    <div className="border-2 w-[70%] h-full mx-auto rounded-xl px-3 py-4 hover:border-none hover:drop-shadow-2xl hover:bg-white hover:scale-105 hover:cursor-pointer transition-all ease-in-out duration-100">
+    <div className="border-2 w-[70%] h-full rounded-xl px-3 py-4 hover:border-none hover:drop-shadow-2xl hover:bg-white hover:scale-105 hover:cursor-pointer transition-all ease-in-out duration-100">
       <div className="flex flex-col justify-center gap-3">
         {/* upper section of company div  */}
         <div className="flex flex-row items-center justify-between">
@@ -19,21 +19,25 @@ function Jobitem({ item, jobApply }) {
             <div className="flex flex-col ">
               {/* Company name */}
               <div>
-                <h4 className="text-md">Codics</h4>
+                <h5 className="text-md">Codics</h5>
               </div>
               {/* Job Title */}
               <div>
-                <h4 className="text-lg text-[#0f1137] font-semibold">{item.title} Role</h4>
+                <h5 className="text-lg text-[#0f1137] font-semibold">{item.title}</h5>
               </div>
-              {/* Job Salary and Location divs */}
-              <div className="flex gap-4">
-                {/* Location */}
-                <span className="text-[#aeb4c1] bg-[#f5f6f8] px-2 py-0.5 border rounded">
+              {/*  job type , Salary and location divs */}
+              <div className="flex gap-3">
+                {/* Type */}
+                <span className="bg-[#1a81ffb0] text-white px-2 py-0.5 border rounded">
                   Full Time
                 </span>
                 {/* Salary */}
                 <span className="text-[#aeb4c1] bg-[#f5f6f8] px-2 py-0.5 border rounded">
-                  $1k - $7k
+                  {item.salaryRange}
+                </span>
+                {/* Location */}
+                <span className="text-[#aeb4c1] bg-[#f5f6f8] px-2 py-0.5 border rounded">
+                  {item.location}
                 </span>
               </div>
             </div>
@@ -41,10 +45,10 @@ function Jobitem({ item, jobApply }) {
           {/* buttons section */}
           <div className="flex flex-row gap-3">
             {/* View Job button */}
-            <button className="text-[#0f1137]  border-2 border-blue-500 px-3  py-2 rounded-3xl transition-all duration-500 hover:shadow-md">View Job</button>
+            <button className="text-[#0f1137]  border-2 border-[#1a75e8] hover:bg-[#1a75e8] hover:text-white px-3  py-2 rounded-3xl transition-all duration-500 hover:shadow-md">View Job</button>
             {/* Apply now button */}
             {!item.status && (
-              <button className=" text-[#ffff]  border-2 bg-blue-500 px-3 hover:border-gray-300 py-2 rounded-3xl transition-all duration-500 hover:shadow-md" onClick={() => { jobApply(item); }}>
+              <button className=" text-[#ffff]  border-2 bg-[#1a75e8] hover:border-[#1a75e8] hover:bg-white hover:text-black px-3 py-2 rounded-3xl transition-all duration-500 hover:shadow-md" onClick={() => { jobApply(item); }}>
                 Apply Now
               </button>
             )}
