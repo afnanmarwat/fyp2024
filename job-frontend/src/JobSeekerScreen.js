@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Changepassword from "./components/UI/ChangePassword";
 import Navigation from "./components/navigation/Navigation";
 import React from "react";
+import Footer from "./components/footer/Footer";
 
 export default function JobSeekerScreen() {
   return (
@@ -20,6 +21,7 @@ export default function JobSeekerScreen() {
           {/* </Route> */}
         </Routes>
       </div>
+      <Footer/>
     </React.Fragment>
   );
 }
