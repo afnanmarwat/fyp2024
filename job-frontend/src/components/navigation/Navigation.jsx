@@ -11,6 +11,7 @@ import jwtDecode from "jwt-decode";
 // import profilepic from '../../assets/profile.png'
 import profilepic2 from '../../assets/profile2.png'
 import logo from '../../assets/logo.png'
+
 const Navigation = () => {
   // const selectauthToken = (rootstate) => rootstate.authToken;
   // const authToken = useSelector(selectauthToken);
@@ -28,7 +29,7 @@ const Navigation = () => {
 
   return (
     // Navbar
-    <nav className="w-full fixed top-0 z-50 h-[50px] py-1 font-sans bg-white">
+    <nav className="container w-[85%] fixed top-0 right-0 z-50 h-[50px] py-1 font-sans bg-white">
       <div className="w-full flex flex-row justify-between items-center">
         {/* <Navbar.Brand href="/dashboard" className={classes.brand}>
           Job Hunt
@@ -78,27 +79,27 @@ const Navigation = () => {
             </div>
           )}
           {redAuthToken.role === "Job Provider" && (
-            <div className={`me-auto ${classes.pageLinks}`}>
+            <div className="w-full font-sans p-1 flex gap-4 justify-center items-center text-[#0f1137] text-md tracking-tighter">
               <NavLink
-                className={(navData) =>
-                  navData.isActive ? classes.active : ""
-                }
+                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                to="/dashboard"
+              >
+                Dashboard
+              </NavLink>
+              <NavLink
+                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
                 to="/manage-applicants"
               >
                 Applicant
               </NavLink>
               <NavLink
-                className={(navData) =>
-                  navData.isActive ? classes.active : ""
-                }
+                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
                 to="/manage-jobs"
               >
                 Jobs
               </NavLink>
               <NavLink
-                className={(navData) =>
-                  navData.isActive ? classes.active : ""
-                }
+                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
                 to="/provider-report"
                 
               >
