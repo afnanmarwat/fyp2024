@@ -5,7 +5,7 @@ import { TiSocialInstagram } from "react-icons/ti";
 
 const Footer = () => {
     return (
-        <footer className="container bg-black p-5">
+        <footer className="container bg-black p-3 sm:p-5">
             <div className="flex justify-between items-center">
                 {/* jobkor icon */}
                 <div className="flex items-center gap-1">
@@ -14,6 +14,7 @@ const Footer = () => {
                         {/* <i className="bi bi-search"></i> */}
                         <img
                             src={logo}
+                            alt=""
                             className="text-[#1A75E8] bg-white w-[20px] sm:w-[30px] h-full"
                         /> 
                     </span>
@@ -33,7 +34,7 @@ const Footer = () => {
             {/* lower footer section */}
             <div className="flex flex-col gap-2 md:flex-row justify-between text-white">
                 <div>Copyright @ 2024 JobKor </div>
-                <div className="flex flex-col sm:flex-row sm:gap-3">
+                <div className="flex flex-col sm:flex-row sm:gap-3 lg:gap-4">
                     <p className="hover:text-[#1A75E8] hover:cursor-pointer font-semibold">Privacy Policy</p>
                     <p className="hover:text-[#1A75E8] hover:cursor-pointer font-semibold">Terms of Service</p>
                     <p className="hover:text-[#1A75E8] hover:cursor-pointer font-semibold">Security & Privacy</p>
