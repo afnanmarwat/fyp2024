@@ -29,7 +29,7 @@ const Navigation = () => {
 
   return (
     // Navbar
-    <nav className="container w-[85%] fixed top-0 right-0 z-50 h-[50px] py-1 font-sans bg-white">
+    <nav className=" w-[100%] z-50 h-[50px] py-1 font-sans bg-white">
       <div className="w-full flex flex-row justify-between items-center">
         {/* <Navbar.Brand href="/dashboard" className={classes.brand}>
           Job Hunt
