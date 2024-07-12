@@ -52,7 +52,7 @@ const Jobs = () => {
 
   return (
     <div className="w-[100%]">
-      <header className="container px-5 flex gap-5 justify-center items-center  bg-[#f5f6f8] h-[100vh]">
+      <header className="container px-3 sm:px-5 flex gap-5 justify-center items-center  bg-[#f5f6f8] h-[100vh]">
         {/* Heading and Search Section */}
         <div className="w-full sm:w-[50%] flex flex-col xs:gap-3 sm:gap-2 md:gap-3 xl:gap-4">
           {/* heading */}
@@ -74,7 +74,7 @@ const Jobs = () => {
         </div>
       </header>
 
-      <main className="container px-5 flex flex-col gap-5 bg-white">
+      <main className="container p-3 sm:p-5 flex flex-col gap-5 bg-white">
         {/* Categories section*/}
         <div className="flex flex-col py-4 gap-5 justify-center xs:items-center md:items-start w-full h-full">
           {/* Categories heading */}
