@@ -5,7 +5,7 @@ import { TiSocialInstagram } from "react-icons/ti";
 
 const Footer = () => {
     return (
-        <footer className="container bg-black p-3 sm:p-5">
+        <footer className=" bg-black p-3 sm:p-5">
             <div className="flex justify-between items-center">
                 {/* jobkor icon */}
                 <div className="flex items-center gap-1">

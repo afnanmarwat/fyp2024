@@ -52,7 +52,7 @@ const Jobs = () => {
 
   return (
     <div className="w-[100%]">
-      <header className="container px-3 sm:px-5 flex gap-5 justify-center items-center  bg-[#f5f6f8] h-[100vh]">
+      <header className="px-3 sm:px-5 flex gap-5 justify-center items-center  bg-[#f5f6f8] h-[100vh]">
         {/* Heading and Search Section */}
         <div className="w-full sm:w-[50%] flex flex-col xs:gap-3 sm:gap-2 md:gap-3 xl:gap-4">
           {/* heading */}
@@ -66,7 +66,6 @@ const Jobs = () => {
           <p className=" xs:text-xs md:text-sm text-nowrap lg:text-xl xl:text-2xl font-thin tracking-widest">
             Work remotely to companies in worldwide
           </p>
-          {/* Search */}
         </div>
         {/* image section */}
         <div className="sm:block md:w-[50%]  sm:mb-8 md:mb-10 lg:mb-[30px] xl:mb-[40px]">
@@ -74,7 +73,7 @@ const Jobs = () => {
         </div>
       </header>
 
-      <main className="container p-3 sm:p-5 flex flex-col gap-5 bg-white">
+      <main className="p-3 sm:p-5 flex flex-col gap-5 bg-white">
         {/* Categories section*/}
         <div className="flex flex-col py-4 gap-5 justify-center xs:items-center md:items-start w-full h-full">
           {/* Categories heading */}
@@ -129,18 +128,19 @@ const Jobs = () => {
         </div>
         {/* joblist section */}
         <div className="flex flex-col py-4  gap-5">
-          <form className="flex flex-col  xs:gap-3 md:gap-4 lg:gap-5 sm:w-86  mx-auto">
+          {/* Search */}
+          <form className="flex flex-col xs:gap-3 md:gap-4 lg:gap-5 sm:w-86  mx-auto">
             {/* Search Div */}
-            <div className="flex flex-row justify-between items-center bg-white w-full rounded-full sm:px-2 md:px-3 lg:px-2 py-2 shadow-xl border">
-              {/* search icon*/}
+            <div className="flex flex-row justify-between items-center bg-white w-full rounded-xl sm:px-2 md:px-3 lg:px-2 py-2 shadow-xl border-1 border-[#1a75e8]">
               {/* search input */}
               <input
-                className="focus:outline-none focus:border-none xs:text-xs sm:text-[16px] tracking-wider"
+                className="w-full focus:outline-none focus:border-none xs:text-xs sm:text-[16px] tracking-wider"
                 type="search"
                 onChange={jobSearchHandler}
                 placeholder="Search for job title"
               ></input>
-              <IoSearch className="text-[#aeb4c1] xs:text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
+              {/* search icon*/}
+              <IoSearch className="text-[#1a75e8] xs:text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
 
               {/* Search button */}
               {/* <button className="bg-[#1875e8] text-white xs:px-2 sm:px-2.5 md:px-3 lg:px-4 xl:px-6 xs:text-xs sm:text-sm md:text-lg lg:text-xl xs:py-1 md:py-2 lg:py-2.5  rounded">
