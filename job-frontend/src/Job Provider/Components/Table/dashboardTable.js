@@ -12,7 +12,43 @@ const Table1 = (props) => {
   };
   return (
     <React.Fragment>
-      <Row className="">
+      <div className="pr-10">
+        {/* Heading and View Btn */}
+        <div className="flex justify-between items-center py-2">
+          <h4 className="text-xl font-bold text-[#686868]">
+            Applicant Details
+          </h4>
+          {/* view all btn */}
+          <button className="p-2 rounded-xl bg-gradient-to-r from-[#57b7fc] to-[#2085cf] hover:from-white hover:to-white  
+          hover:text-[#686868] font-medium shadow transition-all ease-in-out border-1 hover:border-[#2085cf]" onClick={recentJobsHandler}>
+            View All
+          </button>
+        </div>
+        {/* table */}
+        <div>
+          <Table className="rounded-2xl shadow-md overflow-hidden px-5">
+            <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
+              <tr className="text-white border-0 text-lg">
+                <th className="font-medium px-4 py-3">Title</th>
+                <th className="font-medium px-4 py-3 ">Category</th>
+                <th className="font-medium px-4 py-3 ">Location</th>
+                <th className="font-medium px-4 py-3 ">Positions</th>
+                <th className="font-medium px-4 py-3 ">First Created</th>
+                <th className="font-medium px-4 py-3 ">Last Modified</th>
+              </tr>
+            </thead>
+            <tbody>
+              {props.jobData.map((job) => (
+                <JobItem jobInfo={job} key={job._id} />
+              ))}
+            </tbody>
+          </Table>
+          {props.jobData.length === 0 && (
+            <p className="text-center fw-bold">No jobs data!</p>
+          )}
+        </div>
+      </div>
+      {/* <Row >
         <Col>
           <span className={`${classes.span} float-start`}>Recent Jobs</span>
         </Col>
@@ -44,7 +80,7 @@ const Table1 = (props) => {
         {props.jobData.length === 0 && (
           <p className="text-center fw-bold">No jobs data!</p>
         )}
-      </div>
+      </div> */}
     </React.Fragment>
   );
 };
