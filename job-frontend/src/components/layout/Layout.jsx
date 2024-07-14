@@ -6,10 +6,9 @@ import Navigation from "../navigation/Navigation";
 
 const Layout = (props) => {
   return (
-    <div className="flex flex-col">
-      <Navigation/>
+    <div>
       {/* <MyNavigation /> */}
-      <div className="lg:pl-4">{props.children}</div>
+      <div>{props.children}</div>
     </div>
   );
 };

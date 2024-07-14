@@ -5,17 +5,16 @@ import { Col, Row, Container } from "react-bootstrap";
 import classes from "../../../components/dashboard/Counters/AdminCard.module.css";
 const ProviderCards = ({ stats, ...props }) => {
   return (
-    <Container>
-      <Row className={classes.row}>
-        <Col>
+      <div className="flex gap-5">
+        <div>
           <ProviderCard
             logo={<i className="bi bi-briefcase-fill"></i>}
             heading={"Total Jobs"}
             statistics={stats.jobsCount}
             caption={""}
           />
-        </Col>
-        <Col>
+        </div>
+        <div>
           <ProviderCard
             color="#ff1a1a"
             logo={<i className="bi bi-file-earmark-person-fill"></i>}
@@ -23,9 +22,8 @@ const ProviderCards = ({ stats, ...props }) => {
             statistics={stats.applicantsCount}
             caption={""}
           />
-        </Col>
-      </Row>
-    </Container>
+        </div>
+      </div>
   );
 };
 
