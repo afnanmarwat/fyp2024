@@ -33,7 +33,7 @@ const ManageJobsPage = React.lazy(
 
 export default function ProviderScreen() {
   return (
-    <div className="flex">
+    <div className="flex bg-[#f9f9f9]">
       <div className="hidden lg:block z-50 w-[20%] xl:w-[15%]">
         <Sidebar />
       </div>
