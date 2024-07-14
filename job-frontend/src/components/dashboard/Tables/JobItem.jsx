@@ -6,12 +6,14 @@ const JobItem = (props) => {
   let formattedUpdatedAt = dateFormatter(props.jobInfo.updatedAt);
   console.log("Jobs", props.jobInfo)
   return (
-    <tr className={classes.row}>
+    <tr className="text-[#808080] hover:bg-[#0000001f] border-2">
       {/* <td>{props.jobInfo.jobId}</td> */}
-      <td>{props.jobInfo.title}</td>
-      <td>{props.jobInfo.category}</td>
-      <td>{formattedCreatedAt}</td>
-      <td>{formattedUpdatedAt}</td>
+      <td className="px-4 py-3">{props.jobInfo.title}</td>
+      <td className="px-4 py-3">{props.jobInfo.category}</td>
+      <td className="px-4 py-3">{props.jobInfo.location}</td>
+      <td className="px-4 py-3">{props.jobInfo.numberOfPositions}</td>
+      <td className="px-4 py-3">{formattedCreatedAt}</td>
+      <td className="px-4 py-3">{formattedUpdatedAt}</td>
     </tr>
   );
 };
