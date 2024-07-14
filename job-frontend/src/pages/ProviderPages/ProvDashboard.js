@@ -51,6 +51,7 @@ export default function ProvDashboard() {
   }, [token]);
   return (
     <div>
+      <h5>Provider Dashborad</h5>
       <ProviderCards stats={stats} />
       {/* <CountCard /> */}
       {showSpinner && <SpinnerComponent />}

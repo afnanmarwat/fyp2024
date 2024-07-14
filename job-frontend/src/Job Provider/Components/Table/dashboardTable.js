@@ -4,7 +4,6 @@ import JobItem from "../../../components/dashboard/Tables/JobItem";
 // import classes from "../ManageJobs/ManageTab.module.css";
 import { useNavigate } from "react-router-dom";
 import { Table, Row, Col, Button } from "react-bootstrap";
-import Sidebar from "./Sidebar";
 
 const Table1 = (props) => {
   const navigate = useNavigate();
@@ -13,8 +12,7 @@ const Table1 = (props) => {
   };
   return (
     <React.Fragment>
-      <Sidebar/>
-      <Row className="w-[85%]">
+      <Row className="">
         <Col>
           <span className={`${classes.span} float-start`}>Recent Jobs</span>
         </Col>
