@@ -1,9 +1,9 @@
-import classes from "./ProviderCard.module.css";
+// import classes from "./ProviderCard.module.css";
 
 const ProviderCard = ({ color, ...props }) => {
-  let logoBG = { backgroundColor: color };
+  // let logoBG = { backgroundColor: color };
   return (
-    <div className="flex flex-col text-[#eaf4fc]  p-4 bg-gradient-to-r from-[#57b7fc] to-[#2085cf] w-[220px] h-[130px] rounded-3xl drop-shadow-xl">
+    <div className="flex flex-col justify-center items-start text-[#eaf4fc]  p-4 bg-gradient-to-r from-[#57b7fc] to-[#2085cf] w-[220px] h-[130px] rounded-3xl drop-shadow-xl">
       <h6 className="font-medium">{props.heading}</h6>
       <div className="flex gap-2 items-center text-3xl font-bold">
         <span>{props.logo}</span>
