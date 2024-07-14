@@ -4,6 +4,7 @@ import dateFormatter from "../../../util/dateFormatter";
 const JobItem = (props) => {
   let formattedCreatedAt = dateFormatter(props.jobInfo.createdAt);
   let formattedUpdatedAt = dateFormatter(props.jobInfo.updatedAt);
+  console.log("Jobs", props.jobInfo)
   return (
     <tr className={classes.row}>
       {/* <td>{props.jobInfo.jobId}</td> */}
