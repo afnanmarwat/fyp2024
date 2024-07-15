@@ -1,8 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import SpinnerComponent from "./components/UI/SpinnerComponent";
 import Layout from "./components/layout/Layout";
 import Sidebar from "./Job Provider/Components/Table/Sidebar";
+import { FaBars } from "react-icons/fa6";
 // import ProvDashboard from "./pages/ProviderPages/ProvDashboard";
 // import ApplicantsPage from "./pages/ProviderPages/ApplicantPage";
 
@@ -32,13 +33,33 @@ const ManageJobsPage = React.lazy(
 );
 
 export default function ProviderScreen() {
+  const [sidebar, setSidebar] = useState(false);
+  const showSidebar = () => {
+    setSidebar(!sidebar);
+  };
+
   return (
-    <div className="flex bg-[#f9f9f9]">
-      <div className="hidden lg:block z-50 w-[20%] xl:w-[15%]">
-        <Sidebar />
-      </div>
-      <div className="w-full lg:w-[80%] xl:w-[85%]">
+    <div className="relative flex bg-[#f9f9f9]">
+      {/* sidebar Section */}
+        <div className="hidden lg:block  z-50 min-w-[18%]">
+          <Sidebar />
+        </div>
+        <div
+          className={` ${sidebar ? "translate-x-0" : "-translate-x-[100vw]"} absolute lg:hidden z-50 xs:min-w-[100%] sm:min-w-[40%] lg:min-w-[18%] transition-all ease-in-out duration-500`}>
+          <Sidebar  showSidebarProps={showSidebar}/>
+        </div>
+        <div onClick={showSidebar} className={`${sidebar ? "translate-x-0" : "-translate-x-[100vw]"} absolute xs:hidden sm:block lg:hidden w-[100vw] h-[200vh] bg-[#0000006b] z-40 transition-all ease-in-out duration-500`}></div>
+        {/* layout section */}
+      <div className=" absolute lg:relative w-full min-w-[80%] ">
         <Layout className="flex">
+          <div className="inline-block lg:hidden xs:p-3 lg:px-10">
+            <div
+              onClick={()=>{return setSidebar(true)}}
+              className="p-2 border-1 border-[#2085cf] rounded-md hover:bg-[#2085cf] hover:text-white hover:cursor-pointer"
+            >
+              <FaBars className="lg:hidden" />
+            </div>
+          </div>
           <Suspense fallback={<SpinnerComponent />}>
             <Routes>
               <Route
