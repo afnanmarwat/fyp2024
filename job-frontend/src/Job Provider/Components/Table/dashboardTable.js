@@ -12,7 +12,7 @@ const Table1 = (props) => {
   };
   return (
     <React.Fragment>
-      <div className="">
+      <div>
         {/* Heading and View Btn */}
         <div className="flex justify-between items-center py-2">
           <h4 className="text-xl font-bold text-[#686868]">
