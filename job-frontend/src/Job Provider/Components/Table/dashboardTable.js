@@ -26,7 +26,7 @@ const Table1 = (props) => {
         </div>
         {/* table */}
         <div className="rounded-3xl shadow-md overflow-auto">
-          <table>
+          <table className="w-[100%]">
             <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
               <tr className="text-white border-0 text-lg">
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Title</th>
