@@ -51,7 +51,7 @@ export default function ProvDashboard() {
   }, [token]);
   return (
     <div className="flex flex-col gap-4 xs:p-3 lg:px-10">
-      <h6 className="text-3xl sm:text-4xl text-[#545454] font-bold pt-4">Provider Dashborad</h6>
+      <h6 className="text-3xl sm:text-4xl text-[#545454] font-bold lg:pt-4">Provider Dashborad</h6>
       <ProviderCards stats={stats} />
       {/* <CountCard /> */}
       {showSpinner && <SpinnerComponent />}
