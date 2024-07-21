@@ -35,7 +35,7 @@ const Sidebar = ({ showSidebarProps }) => {
 
     return (
         <div>
-            <div className='h-[100vh] z-50 bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca]'>
+            <div className='h-[100vh] lg:fixed min-w-[18%] z-50 bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca]'>
                 {/* cancel btn */}
                 <div onClick={showSidebarProps} className='text-xl  absolute lg-hidden w-full flex justify-end p-2 text-white'>
                     <MdCancelPresentation className='hover:text-red-600' />
@@ -98,7 +98,7 @@ const Sidebar = ({ showSidebarProps }) => {
                         <div className='flex flex-col gap-3 w-[90%] justify-center text-white'>
                             <NavLink
                                 onClick={showSidebarProps}
-                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca] transition ease-in-out"
+                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  focus:bg-[#f9f9f9] focus:text-[#1d81ca] transition ease-in-out"
                                 to="/dashboard"
                             >
                                 <MdSpaceDashboard className='text-xl' />
@@ -106,7 +106,7 @@ const Sidebar = ({ showSidebarProps }) => {
                             </NavLink>
                             <NavLink
                                 onClick={showSidebarProps}
-                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca] transition ease-in-out"
+                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  focus:bg-[#f9f9f9] focus:text-[#1d81ca] transition ease-in-out"
                                 to="/manage-applicants"
                             >
                                 <MdSpaceDashboard className='text-xl' />
@@ -114,7 +114,7 @@ const Sidebar = ({ showSidebarProps }) => {
                             </NavLink>
                             <NavLink
                                 onClick={showSidebarProps}
-                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca] transition ease-in-out"
+                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  focus:bg-[#f9f9f9] focus:text-[#1d81ca] transition ease-in-out"
                                 to="/manage-jobs"
                             >
                                 <MdSpaceDashboard className='text-xl' />
@@ -122,7 +122,7 @@ const Sidebar = ({ showSidebarProps }) => {
                             </NavLink>
                             <NavLink
                                 onClick={showSidebarProps}
-                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca] transition ease-in-out"
+                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  focus:bg-[#f9f9f9] focus:text-[#1d81ca] transition ease-in-out"
                                 to="/provider-report"
 
                             >
