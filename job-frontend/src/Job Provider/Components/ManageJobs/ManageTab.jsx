@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Button, Table, Container } from "react-bootstrap";
+// import { Row, Col, Button, Table, Container } from "react-bootstrap";
 import axios from "axios";
 // import { BsSearch } from "react-icons/bs";
 import { IoSearch } from "react-icons/io5";
@@ -9,7 +9,7 @@ import TableFooter from "../Table/TableFooter";
 import useTable from "../Hooks/useTable";
 import Config from "../../../config/Config.json";
 
-import classes from "./ManageTab.module.css";
+// import classes from "./ManageTab.module.css";
 import JobItem from "./JobItem";
 
 const ManageTab = (props) => {
@@ -57,7 +57,7 @@ const ManageTab = (props) => {
   };
   return (
     <>
-      <div className=" xs:p-3 lg:px-10 lg:pt-10">
+      <div className="xs:p-3 lg:px-10 lg:pt-10">
         {/* Search section  */}
         <div className="flex justify-center">
           <div className="xs:w-full sm:w-[50%] flex flex-row justify-between items-center bg-white rounded-xl xs:px-2 md:px-3 lg:px-2 py-2 shadow-xl border-1 border-[#2085cf]">
