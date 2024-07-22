@@ -159,7 +159,96 @@ function Reports() {
 
   return (
     <>
-      <Container>
+      <div className="xs:p-3 lg:px-10 lg:pt-10 h-[100vh]">
+        {/* form div */}
+        <div>
+          <form className="flex xs:flex-col sm:flex-row gap-2 justify-center xs:items-start md:items-center">
+            {/* startDate */}
+            <div className="flex gap-2 items-center justify-start text-md w-[300px]">
+              <label htmlFor="reportstartdate" className="text-[#808080] w-[70px]">StartDate</label>
+              <input
+                className="p-2 border-1 border-[#2085cf] rounded"
+                onBlur={validateStart}
+                onChange={handleChange}
+                id="reportstartdate"
+                name="startdate"
+                type="date"
+              />
+              <div className="text-danger text-center">
+                {errors.startdate}
+              </div>
+            </div>
+            {/* EndDate */}
+            <div className="flex gap-2 items-center justify-start text-md w-[300px]">
+              <label htmlFor="reportsenddate" className="text-[#808080] w-[70px]">EndDate</label>
+              <input
+                className="p-2 border-1 border-[#2085cf] rounded"
+                onBlur={validateEnd}
+                onChange={handleChange}
+                id="reportsenddate"
+                name="enddate"
+                type="date"
+              />
+              <div className="text-danger text-center">
+                {errors.enddate}
+              </div>
+            </div>
+            {/* Submit button */}
+            <div className=" text-white">
+              <button onClick={handleSubmit} className="p-2 bg-[#2085cf] border-2 border-transparent hover:border-blue-700 hover:text-blue-800 hover:bg-blue-200 font-medium rounded-lg transition-all duration-200">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+        {/* Title and CSV btn Div */}
+        <div className="flex items-center justify-between pt-5 pb-3">
+          {/* Title */}
+          <div className="text-3xl text-[#545454] font-bold">
+            <h4 className="">Reports</h4>
+          </div>
+          {/* Export to CSV btn*/}
+          <div className="text-white font-medium">
+            <button className=" px-4 py-2 bg-orange-600 hover:bg-orange-200 border-transparent border-2 hover:border-orange-600 hover:text-orange-600 rounded-lg transition-all">
+              <CSVLink className="hover:text-orange-600"  {...csvLink}>
+                Export to CSV
+              </CSVLink>
+            </button>
+          </div>
+        </div>
+        {/* table div */}
+        <div className="rounded-3xl shadow-md overflow-auto">
+          <table className="w-[100%]">
+            <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
+              <tr className="text-white border-0 text-lg">
+                <th className="font-medium px-4 py-3 whitespace-nowrap">Title</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap">description</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap">Category</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap">StartDate</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap">EndDate</th>
+              </tr>
+            </thead>
+            <tbody>
+              {slice.map((contact) => (
+                <tr className="text-[#808080] hover:bg-[#0000001f] border-2" key={contact._id}>
+                  <td className="px-4 py-3 whitespace-nowrap">{contact.title}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{contact.description}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{contact.category}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{contact.startDate}</td>
+                  <td className="px-4 py-3 whitespace-nowrap">{contact.endDate}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <TableFooter
+          range={range}
+          slice={slice}
+          setPage={setPage}
+          page={page}
+        />
+      </div>
+      {/* <Container>
         <Row className={classes.rowStyle}>
           <Col className={`${classes.repo} col-md-3`}>
             <span className={classes.span11}>Reports</span>
@@ -238,8 +327,6 @@ function Reports() {
           <Table striped hover>
             <thead>
               <tr className={classes.tableHeader}>
-                {/* <th>JobId</th>
-                <th>providerId</th> */}
                 <th>Title</th>
                 <th>description</th>
                 <th>Category</th>
@@ -266,7 +353,7 @@ function Reports() {
           setPage={setPage}
           page={page}
         />
-      </Container>
+      </Container> */}
     </>
   );
 }
