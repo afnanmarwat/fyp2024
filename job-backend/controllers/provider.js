@@ -5,6 +5,8 @@ const path = require("path");
 const Job = require("../models/job");
 const Applicant = require("../models/applicant");
 const User = require("../models/user");
+// const Job = require("../models/job");
+const JobProvider = require("../models/jobprovider");
 
 const { clearResume } = require("../util/helper");
 
@@ -70,6 +72,48 @@ exports.getJobs = (req, res, next) => {
     });
 };
 
+// exports.addJob = (req, res, next) => {
+//   const errors = validationResult(req);
+
+//   if (!errors.isEmpty()) {
+//     const error = new Error("Validation failed");
+//     error.statusCode = 422;
+//     error.data = errors.array();
+//     throw error;
+//   }
+
+//   const newJob = new Job({
+//     title: req.body.title,
+//     description: req.body.description,
+//     location: req.body.location,
+//     salary: req.body.salary,
+//     type: req.body.type,
+//     ...req.body,
+//     providerId: req.userId,
+//   });
+//   let jobId;
+//   newJob
+//     .save()
+//     .then((job) => {
+//       jobId = job._id;
+//       return JobProvider.findById(req.userId);
+//     })
+//     .then((user) => {
+//       user.jobsPosted.push(jobId);
+//       return user.save();
+//     })
+//     .then((result) => {
+//       res.status(201).json({ message: "Job Added Successfully" });
+//     })
+//     .catch((err) => {
+//       if (!err.statusCode) {
+//         err.statusCode = 500;
+//       }
+//       next(err);
+//     });
+// };
+
+// addjob done 
 exports.addJob = (req, res, next) => {
   const errors = validationResult(req);
 
@@ -83,22 +127,35 @@ exports.addJob = (req, res, next) => {
   const newJob = new Job({
     title: req.body.title,
     description: req.body.description,
+    category: req.body.category,
+    startDate: req.body.startDate,
+    endDate: req.body.endDate,
     location: req.body.location,
-    salary: req.body.salary,
-    type: req.body.type,
-    ...req.body,
-    providerId: req.userId,
+    numberOfPositions: req.body.numberOfPositions,
+    salaryRange: req.body.salaryRange,
+    age: req.body.age,
+    qualification: req.body.qualification,
+    providerId: req.userId, // Assuming req.userId is set to the logged-in job provider's ID
   });
+
   let jobId;
   newJob
     .save()
     .then((job) => {
       jobId = job._id;
-      return User.findById(req.userId);
+      return JobProvider.findById(req.userId);
     })
-    .then((user) => {
-      user.jobsPosted.push(jobId);
-      return user.save();
+    .then((jobProvider) => {
+      if (!jobProvider) {
+        const error = new Error("Job provider not found");
+        error.statusCode = 404;
+        throw error;
+      }
+      if (!Array.isArray(jobProvider.jobsPosted)) {
+        jobProvider.jobsPosted = [];
+      }
+      jobProvider.jobsPosted.push(jobId);
+      return jobProvider.save();
     })
     .then((result) => {
       res.status(201).json({ message: "Job Added Successfully" });
@@ -110,7 +167,7 @@ exports.addJob = (req, res, next) => {
       next(err);
     });
 };
-
+// done 
 exports.getJob = (req, res, next) => {
   const jobId = req.params.jobId;
 
@@ -133,7 +190,8 @@ exports.getJob = (req, res, next) => {
       next(err);
     });
 };
-
+ 
+// done 
 exports.editJob = (req, res, next) => {
   const jobId = req.params.jobId;
   const errors = validationResult(req);
@@ -163,6 +221,7 @@ exports.editJob = (req, res, next) => {
     });
 };
 
+// done 
 exports.deleteJob = (req, res, next) => {
   const jobId = req.params.jobId;
   let resumes = [];
@@ -205,6 +264,7 @@ exports.deleteJob = (req, res, next) => {
     });
 };
 
+// done
 exports.getApplicantsForJob = (req, res, next) => {
   const jobId = req.params.jobId;
   const providerId = req.userId;
@@ -235,6 +295,7 @@ exports.getApplicantsForJob = (req, res, next) => {
       next(err);
     });
 };
+
 exports.getShortlistsForJob = (req, res, next) => {
   const jobId = req.params.jobId;
   const providerId = req.userId;
@@ -265,7 +326,7 @@ exports.getShortlistsForJob = (req, res, next) => {
       next(err);
     });
 };
-
+// done
 exports.getApplicantResume = (req, res, next) => {
   const applicantId = req.params.applicantItemId;
   Applicant.findOne({ _id: applicantId, providerId: req.userId })
@@ -291,7 +352,7 @@ exports.getApplicantResume = (req, res, next) => {
       next(err);
     });
 };
-
+//done
 exports.shortlistApplicant = (req, res, next) => {
   const applicantItemId = req.params.applicantItemId;
   Applicant.findById({ _id: applicantItemId })
@@ -318,7 +379,7 @@ exports.shortlistApplicant = (req, res, next) => {
       next(err);
     });
 };
-
+// done 
 exports.rejectApplicant = (req, res, next) => {
   const applicantItemId = req.params.applicantItemId;
 

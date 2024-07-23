@@ -9,7 +9,7 @@ const { isAuthorized, isProvider } = require("../middleware/is-authorized");
 const router = express.Router();
 
 // job routes
-
+// done 
 router.get(
   "/dashboard-stats",
   isAuthenticated,
@@ -17,7 +17,7 @@ router.get(
   isProvider,
   providerController.getStats
 );
-
+// done 
 router.get(
   "/dashboard-recents",
   isAuthenticated,
@@ -25,7 +25,7 @@ router.get(
   isProvider,
   providerController.getRecents
 );
-
+// done 
 router.get(
   "/jobs",
   isAuthenticated,
@@ -34,21 +34,22 @@ router.get(
   providerController.getJobs
 );
 
+// done 
 router.post(
   "/add-job",
   isAuthenticated,
   isAuthorized,
   isProvider,
-  [
-    body("title").trim().not().isEmpty(),
-    body("description").trim().not().isEmpty(),
-    body("startDate").trim().not().isEmpty(),
-    body("endDate").trim().not().isEmpty(),
-    body("category").trim().not().isEmpty(),
-  ],
+  // [
+  //   body("title").trim().not().isEmpty(),
+  //   body("description").trim().not().isEmpty(),
+  //   body("startDate").trim().not().isEmpty(),
+  //   body("endDate").trim().not().isEmpty(),
+  //   body("category").trim().not().isEmpty(),
+  // ],
   providerController.addJob
 );
-
+// done 
 router.get(
   "/jobs/:jobId",
   isAuthenticated,
@@ -56,7 +57,7 @@ router.get(
   isProvider,
   providerController.getJob
 );
-
+// done 
 router.put(
   "/edit-job/:jobId",
   isAuthenticated,
@@ -71,7 +72,7 @@ router.put(
   ],
   providerController.editJob
 );
-
+// done 
 router.delete(
   "/jobs/:jobId",
   isAuthenticated,
@@ -79,7 +80,7 @@ router.delete(
   isProvider,
   providerController.deleteJob
 );
-
+// done
 router.get(
   "/view-applicants/:jobId",
   isAuthenticated,
@@ -87,7 +88,7 @@ router.get(
   isProvider,
   providerController.getApplicantsForJob
 );
-
+//done
 router.get(
   "/view-shortlists/:jobId",
   isAuthenticated,
@@ -95,7 +96,7 @@ router.get(
   isProvider,
   providerController.getShortlistsForJob
 );
-
+//done
 router.get(
   "/applicants/view-resume/:applicantItemId",
   isAuthenticated,

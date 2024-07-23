@@ -68,7 +68,7 @@ exports.applyJob = (req, res, next) => {
   const providerId = req.body.providerId;
   const resume = req.file.path.replace("\\", "/");
   let status;
-
+console.log(userId,providerId);
   Applicant.findOne({ jobId: jobId, userId: userId })
     .then((applicant) => {
       if (applicant) {

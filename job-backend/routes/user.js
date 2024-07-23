@@ -18,6 +18,7 @@ router.get(
   isUser,
   userController.getAvailableJobs
 );
+// done 
 router.get(
   "/jobsApplied",
   isAuthenticated,

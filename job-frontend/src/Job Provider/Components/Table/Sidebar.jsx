@@ -94,7 +94,7 @@ const Sidebar = ({ showSidebarProps }) => {
                 {/* Navlinks Divs and logout btn*/}
                 <div className='flex flex-col gap-3 w-full justify-center items-end'>
                     {/* Navlink of pages */}
-                    {redAuthToken.role === "Job Provider" && (
+                    {redAuthToken.role === "JobProvider" && (
                         <div className='flex flex-col gap-3 w-[90%] justify-center text-white'>
                             <NavLink
                                 onClick={showSidebarProps}

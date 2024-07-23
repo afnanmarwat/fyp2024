@@ -10,7 +10,7 @@ const applicantSchema = new Schema({
   },
   userId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "JobSeeker",
     required: true,
   },
   resume: {
@@ -23,7 +23,7 @@ const applicantSchema = new Schema({
   },
   providerId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "JobProvider",
     required: true,
   },
 });

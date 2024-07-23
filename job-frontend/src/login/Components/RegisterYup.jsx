@@ -44,8 +44,18 @@ const Register = (props) => {
     experience: "",
   };
 
+  const initialProviderData={
+    
+    email: "",
+    password: "",
+    company: "",
+    bio: "",
+    role: "",
+  }
   const [formData, setFormData] = useState(initialFormData);
-  console.log(formData);
+  const [providerForm,setProviderForm] = useState(initialProviderData);
+
+  console.log(providerForm);
   const handleFormChange = (e) => {
     const { name, value, type, checked } = e.target;
     const newValue = type === "checkbox" ? checked : value;
@@ -55,11 +65,19 @@ const Register = (props) => {
       [name]: newValue,
     }));
   };
+  const handleFormChangeProvider = (e) => {
+    const { name, value, type, checked } = e.target;
+    setProviderForm((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
   const formSubmitHandler = (event) => {
     event.preventDefault();
     setShowSpinner(true);
+    const data = rolcheck ==='JobSeeker' ? formData:providerForm;
     axios
-      .post(`http://localhost:8080/auth/register`, formData)
+      .post(`http://localhost:8080/auth/register`, data)
       .then((res) => {
         setShowSpinner(false);
         toast.success(res.data.message, {
@@ -87,6 +105,12 @@ const Register = (props) => {
         console.log(err);
       });
   };
+  const [rolcheck,setRoleCheck]=useState('JobSeeker');
+  const handleRoleChange = (event) => {
+    setRoleCheck(event.target.value);
+    // event.preventDefault();
+  };
+
   // const history = useHistory();
   return (
     <React.Fragment>
@@ -106,20 +130,44 @@ const Register = (props) => {
             </h1>
             <div>
               {/* form */}
+              <div className="w-full flex justify-between mb-3">
+        <div className="flex gap-3">
+          <div className="flex gap-1 items-center">
+            <input
+              type="radio"
+              value="JobSeeker"
+              name="role"
+              id="JobSeeker"
+              checked={rolcheck==='JobSeeker'}
+              onChange={handleRoleChange}
+            />
+            <label htmlFor="JobSeeker">JobSeeker</label>
+          </div>
+          <div className="flex gap-1 items-center">
+            <input
+              type="radio"
+              value="JobProvider"
+              name="role"
+              id="JobProvider"
+              checked={rolcheck==='JobProvider'}
+              onChange={handleRoleChange}
+            />
+            <label htmlFor="JobProvider">JobProvider</label>
+          </div>
+        </div>
+      </div>
+             {rolcheck ==='JobSeeker' ?
               <Form className="flex flex-col gap-3">
                 {/* Role */}
                 <div className="flex flex-col gap-1">
                   <label htmlFor="role">Role</label>
-                  <FormSelect
-                    name="role"
+                  <Form.Control
                     id="role"
-                    label="Role"
+                    name="role"
+                    placeholder="role"
                     value={formData.role}
                     onChange={handleFormChange}
-                  >
-                    <option value="User">User</option>
-                    <option value="Job Provider">Job Provider</option>
-                  </FormSelect>
+                  />
                 </div>
                 {/* name */}
                 <div className="flex flex-col justify-center">
@@ -259,7 +307,85 @@ const Register = (props) => {
                     </Button>
                   </Link>
                 </div>
-              </Form>
+              </Form> :  <Form className="flex flex-col gap-3">
+                {/* Role */}
+                <div className="flex flex-col gap-1">
+                  <label htmlFor="role">Role</label>
+                  <Form.Control
+                    id="role"
+                    name="role"
+                    placeholder="role"
+                    value={providerForm.role}
+                    onChange={handleFormChangeProvider}
+                  />
+                </div>
+                {/* name */}
+                <div className="flex flex-col justify-center">
+                  <Form.Control
+                    id="company"
+                    name="company"
+                    placeholder="Full Name"
+                    value={providerForm.company}
+                    onChange={handleFormChangeProvider}
+                  />
+                </div>
+                {/* email */}
+                <div className="flex flex-col">
+                  <Form.Control
+                    id="email"
+                    name="email"
+                    placeholder="Enter Email"
+                    value={providerForm.email}
+                    onChange={handleFormChangeProvider}
+                  />
+                </div>
+                {/* password */}
+                <div>
+                  <Form.Control
+                    id="password"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={providerForm.password}
+                    onChange={handleFormChangeProvider}
+                  />
+                </div>
+                {/* mobile number */}
+                {/* <div>
+                  <Form.Control
+                    id="mobile"
+                    name="mobile"
+                    placeholder="Mobile No"
+                    value={formData.mobile}
+                    onChange={handleFormChange}
+                  />
+                </div> */}
+              <div>
+                  <Form.Control
+                    id="bio"
+                    name="bio"
+                    placeholder="bio"
+                    value={providerForm.bio}
+                    onChange={handleFormChangeProvider}
+                  />
+                </div>
+                {/* sign-up and login button */}
+                <div className="flex flex-col gap-3 justify-between mt-3">
+                  <Button
+                    variant="outline-success"
+                    type="submit"
+                    className="w-full"
+                    onClick={formSubmitHandler}
+                  >
+                    Register
+                  </Button>
+                  <Link to="/Login" className="flex justify-end">
+                    <Button variant="outline-primary" type="submit">
+                      Back to Login
+                    </Button>
+                  </Link>
+                </div>
+              </Form> } 
             </div>
           </div>
         </div>

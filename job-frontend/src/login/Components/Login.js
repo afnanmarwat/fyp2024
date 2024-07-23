@@ -13,7 +13,7 @@ import Config from "../../config/Config.json";
 // };
 
 const Login = () => {
-  const [inputs, setInputs] = useState({ email: "", password: "" });
+  const [inputs, setInputs] = useState({ email: "", password: "" ,role:""});
   const [errors, setErrors] = useState({});
   const [backendErrors, setBackendErrors] = useState({
     show: false,
@@ -39,7 +39,9 @@ const Login = () => {
       axios
         .post("http://localhost:8080/auth/login", inputs)
         .then((res) => {
+          console.log(res);
           const token = res.data.token;
+          console.log(token);
           dispatch({
             type: "SETAUTHTOKEN",
             data: token,
@@ -87,12 +89,12 @@ const Login = () => {
       error["password"] = "Please enter your password.";
     }
 
-    if (typeof inputs["password"] !== "undefined") {
-      if (inputs["password"].length < 6) {
-        isValid = false;
-        error["password"] = "Please add at least 6 character.";
-      }
-    }
+    // if (typeof inputs["password"] !== "undefined") {
+    //   if (inputs["password"].length < 6) {
+    //     isValid = false;
+    //     error["password"] = "Please add at least 6 character.";
+    //   }
+    // }
 
     setErrors(error);
 
@@ -152,6 +154,18 @@ const Login = () => {
                     />
                     <p style={{ color: "red" }}> {errors.password} </p>
                   </div>
+                  <div className="" controlId="formBasicEmail">
+                    <Form.Control
+                      type="role"
+                      name="role"
+                      placeholder="role"
+                      value={inputs.role}
+                      onChange={handleChange}
+                    />
+
+                    {/* <p style={{ color: "red" }}> {errors.email} </p> */}
+                  </div>
+                  
                 </div>
                 {/* <Link to="/Dashboard"> */}
                 {/* Login button Link for forget password */}

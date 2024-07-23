@@ -78,7 +78,7 @@ const Navigation = () => {
               </NavLink>
             </div>
           )}
-          {redAuthToken.role === "Job Provider" && (
+          {redAuthToken.role === "JobProvider" && (
             <div className="w-full font-sans p-1 flex gap-4 justify-center items-center text-[#0f1137] text-md tracking-tighter">
               <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
@@ -107,7 +107,7 @@ const Navigation = () => {
               </NavLink>
             </div>
           )}
-          {redAuthToken.role === "User" && (
+          {redAuthToken.role === "JobSeeker" && (
             <div className="w-full font-sans p-1 flex gap-4 justify-center items-center text-[#0f1137] text-md tracking-tighter">
               <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"

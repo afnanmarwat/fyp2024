@@ -6,7 +6,7 @@ const provApplicantSchema = new Schema(
   {
     providerId: {
       type: Schema.Types.ObjectId,
-      ref: "User",
+      ref: "JobProvider",
       required: true,
     },
 

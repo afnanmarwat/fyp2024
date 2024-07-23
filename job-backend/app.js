@@ -43,9 +43,9 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect('mongodb://localhost:27017/jobKor')
+  .connect('mongodb://localhost:27017/aup')
   .then((result) => {
-    console.log("Connected to Database");
+    console.log("Connected to Database and connected to port 9000");
     app.listen(8080);
   })
   .catch((err) => {

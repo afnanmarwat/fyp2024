@@ -24,14 +24,14 @@ function Mdashboard() {
 
   if (authToken) {
     const redAuthToken = jwtDecode(authToken);
-    // console.log("lol", decoded);
+    console.log("lol", redAuthToken);
     if (redAuthToken.role === "Admin") {
       return <AdminScreen />;
     }
-    if (redAuthToken.role === "Job Provider") {
+    if (redAuthToken.role === "JobProvider") {
       return <ProviderScreen />;
     }
-    if (redAuthToken.role === "User") {
+    if (redAuthToken.role === "JobSeeker") {
       return <JobSeekerScreen />;
     }
   }
