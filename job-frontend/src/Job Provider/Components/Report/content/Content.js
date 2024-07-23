@@ -1,14 +1,14 @@
 import React from "react";
-import {
-  FormGroup,
-  FormControl,
-  Col,
-  Row,
-  Table,
-  Container,
-  FormLabel,
-} from "react-bootstrap";
-import classes from "./Content.module.css";
+// import {
+//   FormGroup,
+//   FormControl,
+//   Col,
+//   Row,
+//   Table,
+//   Container,
+//   FormLabel,
+// } from "react-bootstrap";
+// import classes from "./Content.module.css";
 import { useState, useEffect } from "react";
 import useTable from "../../../../hooks/useTable";
 import TableFooter from "../../../../components/dashboard/Tables/TableFooter";
