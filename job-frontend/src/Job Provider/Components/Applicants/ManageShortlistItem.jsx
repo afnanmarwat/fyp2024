@@ -9,10 +9,9 @@ const ShortlistItem = ({ setAction, ...props }) => {
   const viewResumeHandler = () => {
     axios
       .get(
-        `${
-          Config.SERVER_URL +
-          "provider/applicants/view-resume/" +
-          applicantItemId
+        `${Config.SERVER_URL +
+        "provider/applicants/view-resume/" +
+        applicantItemId
         }`,
         {
           headers: {
@@ -32,11 +31,13 @@ const ShortlistItem = ({ setAction, ...props }) => {
   };
 
   return (
-    <tr className={classes.row}>
-      <td>{props.applicantItem.userId.name}</td>
-      <td>{props.applicantItem.userId.email}</td>
-      <td>
-        <button className={classes.button} onClick={viewResumeHandler}>
+    <tr className="text-[#808080] hover:bg-[#0000001f] border-2">
+      <td className="px-4 py-3 whitespace-nowrap">{props.applicantItem.userId.name}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.applicantItem.userId.email}</td>
+      <td className="px-4 py-3 whitespace-nowrap">
+        {/* Resume btn */}
+        <button className="p-2 rounded-lg bg-[#57b7fc] hover:bg-white  
+      text-black font-medium transition-all ease-in-out border-1 hover:border-[#2085cf]"  onClick={viewResumeHandler}>
           View Resume
         </button>
       </td>

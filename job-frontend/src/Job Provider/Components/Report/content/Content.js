@@ -217,36 +217,35 @@ function Reports() {
           </div>
         </div>
         {/* table div */}
-        <div className="rounded-3xl shadow-md overflow-auto">
-          <table className="w-[100%]">
-            <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
-              <tr className="text-white border-0 text-lg">
-                <th className="font-medium px-4 py-3 whitespace-nowrap">Title</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap">description</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap">Category</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap">StartDate</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap">EndDate</th>
-              </tr>
-            </thead>
-            <tbody>
-              {slice.map((contact) => (
-                <tr className="text-[#808080] hover:bg-[#0000001f] border-2" key={contact._id}>
-                  <td className="px-4 py-3 whitespace-nowrap">{contact.title}</td>
-                  <td className="px-4 py-3 whitespace-nowrap">{contact.description}</td>
-                  <td className="px-4 py-3 whitespace-nowrap">{contact.category}</td>
-                  <td className="px-4 py-3 whitespace-nowrap">{contact.startDate}</td>
-                  <td className="px-4 py-3 whitespace-nowrap">{contact.endDate}</td>
+        {reportsData.length > 0 && (
+          <div className="rounded-3xl shadow-md overflow-auto">
+            <table className="w-[100%]">
+              <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
+                <tr className="text-white border-0 text-lg">
+                  <th className="font-medium px-4 py-3 whitespace-nowrap">Title</th>
+                  <th className="font-medium px-4 py-3 whitespace-nowrap">description</th>
+                  <th className="font-medium px-4 py-3 whitespace-nowrap">Category</th>
+                  <th className="font-medium px-4 py-3 whitespace-nowrap">StartDate</th>
+                  <th className="font-medium px-4 py-3 whitespace-nowrap">EndDate</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <TableFooter
-          range={range}
-          slice={slice}
-          setPage={setPage}
-          page={page}
-        />
+              </thead>
+              <tbody>
+                {slice.map((contact) => (
+                  <tr className="text-[#808080] hover:bg-[#0000001f] border-2" key={contact._id}>
+                    <td className="px-4 py-3 whitespace-nowrap">{contact.title}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">{contact.description}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">{contact.category}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">{contact.startDate}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">{contact.endDate}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+
+        {reportsData.length === 0 && <h3>No Reports Data!</h3>}
+
       </div>
       {/* <Container>
         <Row className={classes.rowStyle}>

@@ -72,8 +72,8 @@ const ApplicantItem = ({ setAction, ...props }) => {
     <tr className="text-[#808080] hover:bg-[#0000001f] border-2">
       <td className="px-4 py-3 whitespace-nowrap">{props.applicantItem.userId.name}</td>
       <td className="px-4 py-3 whitespace-nowrap">
-        <button className="p-2 rounded-lg bg-gradient-to-r from-[#57b7fc] to-[#2085cf] hover:from-white hover:to-white  
-      text-black font-medium shadow transition-all ease-in-out border-1 hover:border-[#2085cf]" onClick={viewResumeHandler}>
+        <button className="p-2 rounded-lg bg-[#57b7fc] hover:bg-white  
+      text-black font-medium transition-all ease-in-out border-1 hover:border-[#2085cf]" onClick={viewResumeHandler}>
           View Resume
         </button>
       </td>
