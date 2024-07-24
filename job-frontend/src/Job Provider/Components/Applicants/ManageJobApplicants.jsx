@@ -72,7 +72,7 @@ const ManageJobApplicants = () => {
         </div>
         {/* Title and Add job btn */}
         <div>
-          <h5 className="text-2xl text-[#545454] py-4 font-bold whitespace-nowrap">Applicants</h5>
+          <h5 className="text-2xl text-[#545454] py-4 font-bold whitespace-nowrap">View Applicants</h5>
         </div>
         {/* Table section*/}
         {applicantsData.length > 0 && (
