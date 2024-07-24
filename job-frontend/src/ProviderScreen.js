@@ -58,7 +58,7 @@ export default function ProviderScreen() {
         top-0 left-0 xs:hidden sm:block lg:hidden w-[100vw] h-[100vh] bg-[#0000006b] z-40 transition-all ease-in-out duration-500`}
       ></div>
       {/* layout section */}
-      <div className=" absolute lg:relative w-full min-w-[80%] ">
+      <div className=" absolute lg:relative w-full min-w-[80%] min-h-[100vh]">
         <Layout className="flex">
           {/* Sidebar icon in small devices */}
           <div className="inline-block lg:hidden xs:p-3 lg:px-10">
