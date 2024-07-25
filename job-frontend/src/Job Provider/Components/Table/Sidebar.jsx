@@ -8,7 +8,6 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
-import { MdCancelPresentation } from "react-icons/md";
 import profilepic2 from '../../../assets/profile2.png'
 import jwtDecode from 'jwt-decode';
 import { useDispatch } from "react-redux";
