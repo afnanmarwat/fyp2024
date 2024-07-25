@@ -63,7 +63,7 @@ export default function ProviderScreen() {
       <div className=" absolute lg:relative w-full min-w-[80%] min-h-[100vh] xs:p-3 lg:px-10">
         <Layout className="flex">
           {/* Sidebar icon in small devices */}
-          <div className="inline-block lg:hidden xs:p-3 lg:px-10">
+          <div className="inline-block lg:hidden xs:py-1">
             <div
               onClick={() => {
                 return setSidebar(true);
