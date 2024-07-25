@@ -6,10 +6,18 @@ exports.isAuthorized = (req, res, next) => {
   JobProvider.findById(req.userId)
     .then((user) => {
       if (user) {
-        req.role = 'JobProvider';
-        next();
-        // Return null to end the promise chain for JobSeeker check
-        return null;
+        if(user.role === "Admin"){
+          req.role="Admin"
+          next();
+          return null;
+        }else{
+          req.role = 'JobProvider';
+          req.role="Admin"
+          next();
+          // Return null to end the promise chain for JobSeeker check
+          return null;
+        }
+       
       } else {
         // If user is not found in JobProvider, check in JobSeeker schema
         return JobSeeker.findById(req.userId);

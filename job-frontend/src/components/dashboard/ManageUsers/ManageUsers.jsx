@@ -30,6 +30,7 @@ const ManageUsers = (props) => {
       })
       .then((response) => {
         const data = response.data.users;
+        console.log(data.jobSeekers)
         setShowSpinner(false);
         // console.log(data);
         userdata = [...data];
