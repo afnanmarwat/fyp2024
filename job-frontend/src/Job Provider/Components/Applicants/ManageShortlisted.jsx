@@ -55,7 +55,7 @@ const ManageShortlisted = () => {
   };
   return (
     <>
-      <div className="xs:p-3 lg:px-10 lg:pt-10">
+      <div className="lg:pt-10">
         {/* Search section  */}
         <div className="flex justify-center">
           <div className="xs:w-full sm:w-[50%] flex flex-row justify-between items-center bg-white rounded-xl xs:px-2 md:px-3 lg:px-2 py-2 shadow-xl border-1 border-[#2085cf]">
