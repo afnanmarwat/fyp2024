@@ -5,6 +5,7 @@ import Changepassword from "./components/UI/ChangePassword";
 import Navigation from "./components/navigation/Navigation";
 import React from "react";
 import Footer from "./components/footer/Footer";
+import Profile from "./components/profile/Profile";
 
 export default function JobSeekerScreen() {
   return (
@@ -16,6 +17,7 @@ export default function JobSeekerScreen() {
 
           <Route path="/dashboard" element={<JobSeekerPage />} />
           <Route path="/appliedJobs" element={<AppliedJobsPage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/change-password" element={<Changepassword />} />
 
           {/* </Route> */}

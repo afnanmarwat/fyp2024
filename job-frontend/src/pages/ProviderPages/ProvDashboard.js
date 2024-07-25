@@ -50,7 +50,7 @@ export default function ProvDashboard() {
     document.title = Config.TITLE.DASHBOARD;
   }, [token]);
   return (
-    <div className="flex flex-col gap-4 xs:p-3 lg:px-10">
+    <div className="flex flex-col gap-4">
       <h6 className="text-3xl sm:text-4xl text-[#545454] font-bold lg:pt-4">Provider Dashborad</h6>
       <ProviderCards stats={stats} />
       {/* <CountCard /> */}

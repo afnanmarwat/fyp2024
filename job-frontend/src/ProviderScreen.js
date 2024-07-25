@@ -25,6 +25,8 @@ const ViewShortlistedPage = React.lazy(
   () => import("./pages/ProviderPages/ViewShortlistedPage")
 );
 const ReportPage = React.lazy(() => import("./pages/ProviderPages/ReportPage"));
+
+const ProfilePage = React.lazy(() => import("./components/profile/Profile"));
 const Changepassword = React.lazy(
   () => import("./components/UI/ChangePassword")
 );
@@ -58,10 +60,10 @@ export default function ProviderScreen() {
         top-0 left-0 xs:hidden sm:block lg:hidden w-[100vw] h-[100vh] bg-[#0000006b] z-40 transition-all ease-in-out duration-500`}
       ></div>
       {/* layout section */}
-      <div className=" absolute lg:relative w-full min-w-[80%] min-h-[100vh]">
+      <div className=" absolute lg:relative w-full min-w-[80%] min-h-[100vh] xs:p-3 lg:px-10">
         <Layout className="flex">
           {/* Sidebar icon in small devices */}
-          <div className="inline-block lg:hidden xs:p-3 lg:px-10">
+          <div className="inline-block lg:hidden xs:py-1">
             <div
               onClick={() => {
                 return setSidebar(true);
@@ -98,6 +100,8 @@ export default function ProviderScreen() {
               />
 
               <Route exact path="provider-report" element={<ReportPage />} />
+
+              <Route exact path="/profile" element={<ProfilePage />} />
 
               <Route path="/change-password" element={<Changepassword />} />
 

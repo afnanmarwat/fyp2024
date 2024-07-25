@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Table, Container } from "react-bootstrap";
+// import { Row, Col, Table, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import TableFooter from "../Table/TableFooter";
 import useTable from "../Hooks/useTable";
 
 import SpinnerComponent from "../../../components/UI/SpinnerComponent";
-import classes from "./ApplicantTab.module.css";
+// import classes from "./ApplicantTab.module.css";
 import ManageApplicantItem from "./ManageApplicantItem";
 import { IoSearch } from "react-icons/io5";
 let applicantsdata = [];
@@ -54,7 +54,7 @@ const ManageJobApplicants = () => {
   };
   return (
     <>
-      <div className="xs:p-3 lg:px-10 lg:pt-10">
+      <div className="lg:pt-10">
         {/* Search section  */}
         <div className="flex justify-center">
           <div className="xs:w-full sm:w-[50%] flex flex-row justify-between items-center bg-white rounded-xl xs:px-2 md:px-3 lg:px-2 py-2 shadow-xl border-1 border-[#2085cf]">

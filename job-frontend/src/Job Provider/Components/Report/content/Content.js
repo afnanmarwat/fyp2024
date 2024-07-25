@@ -159,7 +159,7 @@ function Reports() {
 
   return (
     <>
-      <div className="xs:p-3 lg:px-10 lg:pt-10 h-[100vh]">
+      <div className="lg:pt-10">
         {/* form div */}
         <div>
           <form className="flex xs:flex-col sm:flex-row gap-2 justify-center xs:items-start md:items-center">
