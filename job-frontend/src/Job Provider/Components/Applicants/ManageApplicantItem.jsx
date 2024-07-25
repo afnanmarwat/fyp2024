@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import classes from "./ApplicantItem.module.css";
+// import classes from "./ApplicantItem.module.css";
 import Config from "../../../config/Config.json";
 
 const ApplicantItem = ({ setAction, ...props }) => {
@@ -9,8 +9,7 @@ const ApplicantItem = ({ setAction, ...props }) => {
   const shortlistCandidateHandler = () => {
     axios
       .patch(
-        `${
-          Config.SERVER_URL + "provider/applicants/shortlist/" + applicantItemId
+        `${Config.SERVER_URL + "provider/applicants/shortlist/" + applicantItemId
         }`,
         {},
         {
@@ -29,8 +28,7 @@ const ApplicantItem = ({ setAction, ...props }) => {
   const rejectCandidateHandler = () => {
     axios
       .patch(
-        `${
-          Config.SERVER_URL + "provider/applicants/reject/" + applicantItemId
+        `${Config.SERVER_URL + "provider/applicants/reject/" + applicantItemId
         }`,
         {},
         {
@@ -49,10 +47,9 @@ const ApplicantItem = ({ setAction, ...props }) => {
   const viewResumeHandler = () => {
     axios
       .get(
-        `${
-          Config.SERVER_URL +
-          "provider/applicants/view-resume/" +
-          applicantItemId
+        `${Config.SERVER_URL +
+        "provider/applicants/view-resume/" +
+        applicantItemId
         }`,
         {
           headers: {
@@ -72,17 +69,19 @@ const ApplicantItem = ({ setAction, ...props }) => {
   };
 
   return (
-    <tr className={classes.row}>
-      <td>{props.applicantItem.userId.name}</td>
-      <td>
-        <button className={classes.button} onClick={viewResumeHandler}>
+    <tr className="text-[#808080] hover:bg-[#0000001f] border-2">
+      <td className="px-4 py-3 whitespace-nowrap">{props.applicantItem.userId.name}</td>
+      <td className="px-4 py-3 whitespace-nowrap">
+        <button className="p-2 rounded-lg bg-[#57b7fc] hover:bg-white  
+      text-black font-medium transition-all ease-in-out border-1 hover:border-[#2085cf]" onClick={viewResumeHandler}>
           View Resume
         </button>
       </td>
 
-      <td className={classes.actions}>
+      <td className="flex gap-3 px-4 py-3 ">
+        {/* Shorlisted btn */}
         <button
-          className={`${classes.shortlistCandidate} ${classes.button}`}
+          className="w-[120px] flex gap-2 items-center border-1 border-green-700 hover:bg-[#18f97d39] text-green-700  p-2 rounded-lg transition-all ease-in-out text-lg"
           onClick={shortlistCandidateHandler}
           disabled={props.applicantItem.status === "Shortlisted" ? true : false}
         >
@@ -91,9 +90,9 @@ const ApplicantItem = ({ setAction, ...props }) => {
           </span>
           <span>Shortlist</span>
         </button>
-
+        {/* Reject btn */}
         <button
-          className={`${classes.rejectCandidate} ${classes.button}`}
+          className="w-[120px] flex gap-2 items-center border-1 border-red-700 hover:bg-[#f9181839] text-red-700  p-2 rounded-lg transition-all ease-in-out text-lg"
           onClick={rejectCandidateHandler}
         >
           <span>

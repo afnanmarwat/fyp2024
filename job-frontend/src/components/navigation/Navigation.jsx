@@ -43,7 +43,7 @@ const Navigation = () => {
           {/* icon */}
           <span>
             {/* <i className="bi bi-search"></i> */}
-            <img src={logo} alt="" className="text-[#1A75E8]" width='30px' height='28px'/>
+            <img src={logo} alt="" className="text-[#1A75E8]" width='30px' height='28px' />
           </span>
           <span>JOB</span>
           <span className="text-[#1A75E8]">KOR</span>
@@ -101,7 +101,7 @@ const Navigation = () => {
               <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
                 to="/provider-report"
-                
+
               >
                 Reports
               </NavLink>
@@ -179,18 +179,20 @@ const Navigation = () => {
           <Dropdown>
             <Dropdown.Toggle className="bg-gray-200 text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
               <span>
-                <img src={profilepic2} alt="" width='25px' height='25px'/>
+                <img src={profilepic2} alt="" width='25px' height='25px' />
               </span>
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="transition-all duration-300 ease-in-out">
-            <Dropdown.Item className="flex gap-2 items-center">
+              <Dropdown.Item className="flex gap-2 items-center">
                 <CgProfile className="text-[#1A75E8] text-lg" />
                 <span>{redAuthToken.userName}</span>
               </Dropdown.Item>
-              <Dropdown.Item className="flex gap-2 items-center">
-                <CgProfile className="text-[#1A75E8] text-lg" />
-                <span>Profile</span>
+              <Dropdown.Item >
+                <NavLink to="/profile" className="flex gap-2 items-center">
+                  <CgProfile className="text-[#1A75E8] text-lg" />
+                  <p>Profile</p>
+                </NavLink>
               </Dropdown.Item>
               <Dropdown.Item>
                 <Link className="flex gap-2 items-center" to="/change-password">

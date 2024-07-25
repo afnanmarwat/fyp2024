@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import logo from '../../../assets/logo.png'
-import { MdSpaceDashboard } from "react-icons/md";
+import { MdOutlineCancel, MdSpaceDashboard } from "react-icons/md";
+import { TbReportSearch } from "react-icons/tb";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
-import { MdCancelPresentation } from "react-icons/md";
 import profilepic2 from '../../../assets/profile2.png'
 import jwtDecode from 'jwt-decode';
 import { useDispatch } from "react-redux";
@@ -37,8 +37,8 @@ const Sidebar = ({ showSidebarProps }) => {
         <div>
             <div className='h-[100vh] lg:fixed min-w-[18%] z-50 bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca]'>
                 {/* cancel btn */}
-                <div onClick={showSidebarProps} className='text-xl hover:cursor-pointer absolute lg-hidden w-full flex justify-end p-2 text-white'>
-                    <MdCancelPresentation className='hover:text-red-600' />
+                <div onClick={showSidebarProps} className='text-xl hover:cursor-pointer absolute lg:hidden w-full flex justify-end p-2 text-white'>
+                    <MdOutlineCancel className='hover:text-red-600' />
                 </div>
                 {/* sidebar home title and icon */}
                 <div className='py-4 px-4'>
@@ -80,10 +80,10 @@ const Sidebar = ({ showSidebarProps }) => {
                     {/* Dropdown Menu */}
                     <div className={` ${dropdown ? "inline-block" : "hidden"} h-full text-white w-[97%] rounded-xl p-1 bg-gradient-to-r from-[#96d3ff] to-[#0094fd] transition-all duration-500 ease-in-out`}>
                         {/* profile */}
-                        <div className="flex gap-2 items-center pl-2 pr-1 py-1 hover:bg-black">
+                        <NavLink to="/profile" onClick={showSidebarProps} className="flex gap-2 items-center pl-2 pr-1 py-1 hover:bg-black" >
                             <CgProfile className="text-[#1A75E8] text-lg" />
                             <p>Profile</p>
-                        </div>
+                        </NavLink>
                         {/* Change password */}
                         <NavLink className="flex gap-2 items-center pl-2 pr-1 py-1 hover:text-white hover:bg-black" to="/change-password">
                             <RiLockPasswordLine className="text-green-600 text-lg" />
@@ -109,16 +109,16 @@ const Sidebar = ({ showSidebarProps }) => {
                                 className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
                                 to="/manage-applicants"
                             >
-                                <MdSpaceDashboard className='text-xl' />
-                                <p>Applicant</p>
+                                <i className='bi bi-file-earmark-person-fill text-xl'></i>
+                                <p className='font-medium'>Applicant</p>
                             </NavLink>
                             <NavLink
                                 onClick={showSidebarProps}
                                 className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
                                 to="/manage-jobs"
                             >
-                                <MdSpaceDashboard className='text-xl' />
-                                <p>Jobs</p>
+                                <i className='bi bi-briefcase-fill text-xl'></i>
+                                <p className='font-medium'>Jobs</p>
                             </NavLink>
                             <NavLink
                                 onClick={showSidebarProps}
@@ -126,8 +126,8 @@ const Sidebar = ({ showSidebarProps }) => {
                                 to="/provider-report"
 
                             >
-                                <MdSpaceDashboard className='text-xl' />
-                                <p>Reports</p>
+                                <TbReportSearch className='text-xl' />
+                                <p className='font-medium'>Reports</p>
                             </NavLink>
                         </div>
                     )}
@@ -139,7 +139,7 @@ const Sidebar = ({ showSidebarProps }) => {
                                 onClick={logoutHandler}
                             >
                                 <IoIosLogOut className='text-xl' />
-                                <p>Logout</p>
+                                <p className='font-medium'>Logout</p>
                             </button>
                         </div>
                     </div>
