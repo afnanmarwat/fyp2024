@@ -37,7 +37,7 @@ const Sidebar = ({ showSidebarProps }) => {
         <div>
             <div className='h-[100vh] lg:fixed min-w-[18%] z-50 bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca]'>
                 {/* cancel btn */}
-                <div onClick={showSidebarProps} className='text-xl hover:cursor-pointer absolute lg-hidden w-full flex justify-end p-2 text-white'>
+                <div onClick={showSidebarProps} className='text-xl hover:cursor-pointer absolute lg:hidden w-full flex justify-end p-2 text-white'>
                     <MdOutlineCancel className='hover:text-red-600' />
                 </div>
                 {/* sidebar home title and icon */}
@@ -80,10 +80,10 @@ const Sidebar = ({ showSidebarProps }) => {
                     {/* Dropdown Menu */}
                     <div className={` ${dropdown ? "inline-block" : "hidden"} h-full text-white w-[97%] rounded-xl p-1 bg-gradient-to-r from-[#96d3ff] to-[#0094fd] transition-all duration-500 ease-in-out`}>
                         {/* profile */}
-                        <div className="flex gap-2 items-center pl-2 pr-1 py-1 hover:bg-black">
+                        <NavLink to="/profile" className="flex gap-2 items-center pl-2 pr-1 py-1 hover:bg-black">
                             <CgProfile className="text-[#1A75E8] text-lg" />
                             <p>Profile</p>
-                        </div>
+                        </NavLink>
                         {/* Change password */}
                         <NavLink className="flex gap-2 items-center pl-2 pr-1 py-1 hover:text-white hover:bg-black" to="/change-password">
                             <RiLockPasswordLine className="text-green-600 text-lg" />
