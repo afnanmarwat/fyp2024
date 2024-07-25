@@ -80,7 +80,7 @@ const Sidebar = ({ showSidebarProps }) => {
                     {/* Dropdown Menu */}
                     <div className={` ${dropdown ? "inline-block" : "hidden"} h-full text-white w-[97%] rounded-xl p-1 bg-gradient-to-r from-[#96d3ff] to-[#0094fd] transition-all duration-500 ease-in-out`}>
                         {/* profile */}
-                        <NavLink to="/profile" className="flex gap-2 items-center pl-2 pr-1 py-1 hover:bg-black">
+                        <NavLink to="/profile" onClick={showSidebarProps} className="flex gap-2 items-center pl-2 pr-1 py-1 hover:bg-black" >
                             <CgProfile className="text-[#1A75E8] text-lg" />
                             <p>Profile</p>
                         </NavLink>
