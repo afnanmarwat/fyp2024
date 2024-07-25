@@ -1,39 +1,45 @@
 const { validationResult } = require("express-validator");
 const bcryptjs = require("bcryptjs");
+const JobSeeker = require('../models/jobseeker'); // Adjust the path to your JobSeeker model
+const JobProvider = require('../models/jobprovider'); // Adjust the path to your JobProvider model
 
 const User = require("../models/user");
 const Job = require("../models/job");
 const Applicant = require("../models/applicant");
+
 const { clearResume } = require("../util/helper");
+
 
 exports.getStats = (req, res, next) => {
   let providerCount;
+  let seekerCount;
   let jobCount;
   let applicantCount;
-  let seekerCount;
-  User.find({ _id: { $ne: req.userId }, role: "Job Provider" })
-    .countDocuments()
-    .then((count) => {
-      providerCount = count;
-      return User.find({
-        _id: { $ne: req.userId },
-        role: "User",
-      }).countDocuments();
-    })
-    .then((count) => {
-      seekerCount = count;
-      return Job.find().countDocuments();
-    })
-    .then((count) => {
-      jobCount = count;
-      return Applicant.find().countDocuments();
-    })
-    .then((count) => {
-      applicantCount = count;
+
+  // Define queries for each count
+  const jobProviderCountQuery = JobProvider.countDocuments({ _id: { $ne: req.userId } });
+  const jobSeekerCountQuery = JobSeeker.countDocuments({ _id: { $ne: req.userId } });
+  const jobCountQuery = Job.countDocuments();
+  const applicantCountQuery = Applicant.countDocuments();
+
+  // Execute all queries in parallel
+  Promise.all([jobProviderCountQuery, jobSeekerCountQuery, jobCountQuery, applicantCountQuery])
+    .then(([providerCountResult, seekerCountResult, jobCountResult, applicantCountResult]) => {
+      providerCount = providerCountResult;
+      seekerCount = seekerCountResult;
+      jobCount = jobCountResult;
+      applicantCount = applicantCountResult;
+
       res.status(200).json({
         message: "Successfully fetched stats",
         stats: { jobCount, providerCount, applicantCount, seekerCount },
       });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
     });
 };
 
@@ -59,9 +65,23 @@ exports.getRecent = (req, res, next) => {
 };
 
 exports.getUsers = (req, res, next) => {
-  User.find({ _id: { $ne: req.userId } })
-    .lean()
-    .then((users) => {
+  // Queries to fetch users from both JobSeeker and JobProvider schemas, excluding the current user
+  const jobSeekerQuery = JobSeeker.find({ _id: { $ne: req.userId } }).lean();
+  const jobProviderQuery = JobProvider.find({ _id: { $ne: req.userId } }).lean();
+
+  // Execute both queries in parallel
+  Promise.all([jobSeekerQuery, jobProviderQuery])
+    .then(([jobSeekers, jobProviders]) => {
+      // Log the results to debug
+      console.log('Job Seekers:', jobSeekers);
+      console.log('Job Providers:', jobProviders);
+
+      // Combine both results
+      const users = {
+        jobSeekers,
+        jobProviders,
+      };
+
       res.status(200).json({
         message: "Fetched the list of users",
         users: users,
