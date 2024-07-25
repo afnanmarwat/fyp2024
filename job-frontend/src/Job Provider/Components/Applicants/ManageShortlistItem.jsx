@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import classes from "./ApplicantItem.module.css";
+// import classes from "./ApplicantItem.module.css";
 import Config from "../../../config/Config.json";
 
 const ShortlistItem = ({ setAction, ...props }) => {
