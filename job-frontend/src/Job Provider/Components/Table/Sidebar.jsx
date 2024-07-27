@@ -11,6 +11,7 @@ import { IoIosLogOut } from "react-icons/io";
 import profilepic2 from '../../../assets/profile2.png'
 import jwtDecode from 'jwt-decode';
 import { useDispatch } from "react-redux";
+import { FaUsers } from 'react-icons/fa6';
 
 
 
@@ -94,6 +95,42 @@ const Sidebar = ({ showSidebarProps }) => {
                 {/* Navlinks Divs and logout btn*/}
                 <div className='flex flex-col gap-3 w-full justify-center items-end'>
                     {/* Navlink of pages */}
+                    {redAuthToken.role === "Admin" && (
+                        <div className='flex flex-col gap-3 w-[90%] justify-center text-white'>
+                            <NavLink
+                                onClick={showSidebarProps}
+                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
+                                to="/dashboard"
+                            >
+                                <MdSpaceDashboard className='text-xl' />
+                                <p className='font-medium'>Dashboard</p>
+                            </NavLink>
+                            <NavLink
+                                onClick={showSidebarProps}
+                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
+                                to="/manage-users"
+                            >
+                                <FaUsers  className='text-xl' />
+                                <p className='font-medium'>Users</p>
+                            </NavLink>
+                            <NavLink
+                                onClick={showSidebarProps}
+                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
+                                to="/manage-jobs"
+                            >
+                                <i className='bi bi-briefcase-fill text-xl'></i>
+                                <p className='font-medium'>Jobs</p>
+                            </NavLink>
+                            <NavLink
+                                onClick={showSidebarProps}
+                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
+                                to="/reports"
+                            >
+                                <TbReportSearch className='text-xl' />
+                                <p className='font-medium'>Reports</p>
+                            </NavLink>
+                        </div>
+                    )}
                     {redAuthToken.role === "JobProvider" && (
                         <div className='flex flex-col gap-3 w-[90%] justify-center text-white'>
                             <NavLink
