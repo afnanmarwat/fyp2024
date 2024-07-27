@@ -20,27 +20,27 @@ const JobItem = (props) => {
     props.onDelete(props.jobInfo._id);
   };
   return (
-    <tr className={classes.row}>
-      <td>{props.jobInfo.title}</td>
-      <td>{props.jobInfo.description}</td>
-      <td>{props.jobInfo.startDate}</td>
-      <td>{props.jobInfo.endDate}</td>
-      <td className={classes.actions}>
+    <tr className="text-[#808080] hover:bg-[#0000001f] border-2">
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.title}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.description}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.startDate}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.endDate}</td>
+      <td className="flex gap-3 px-4 py-3 ">
         <button
-          className={`${classes.edit} ${classes.button}`}
+          className="w-[100px] flex gap-2 items-center border-2 hover:border-green-700 hover:bg-[#18f97d39] hover:text-green-700  p-2 rounded-lg transition-all ease-in-out text-lg"
           onClick={editButtonHandler}
         >
           <span>
-            <i className="bi bi-pencil-fill"></i>
+            <i className="bi bi-pencil-fill text-md"></i>
           </span>
           <span>Edit</span>
         </button>
         <button
-          className={`${classes.delete} ${classes.button}`}
+          className="w-[100px] flex gap-2 items-center border-2 hover:border-red-700 hover:bg-[#f918182d] hover:text-red-700  p-2 rounded-lg transition-all ease-in-out text-lg"
           onClick={deleteButtonHandler}
         >
           <span>
-            <i className="bi bi-trash3-fill"></i>
+            <i className="bi bi-trash"></i>
           </span>
           <span>Delete</span>
         </button>
