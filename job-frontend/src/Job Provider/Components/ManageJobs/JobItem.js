@@ -26,7 +26,7 @@ const JobItem = (props) => {
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.title}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.description}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.category}</td>
-      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.startDate}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.startDate}</td> 
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.endDate}</td>
       <td className="flex gap-3 px-4 py-3 ">
         <button

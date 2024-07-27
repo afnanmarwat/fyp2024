@@ -19,8 +19,7 @@ const Table1 = (props) => {
             Applicant Details
           </h4>
           {/* view all btn */}
-          <button className="p-2 rounded-xl bg-gradient-to-r from-[#57b7fc] to-[#2085cf] hover:from-white hover:to-white  
-          hover:text-[#686868] font-medium shadow transition-all ease-in-out border-1 hover:border-[#2085cf]" onClick={recentJobsHandler}>
+          <button className="p-2 rounded-xl bg-[#2085cf] hover:bg-white hover:text-[#686868] font-medium shadow transition-all ease-in-out border-1 hover:border-[#2085cf]" onClick={recentJobsHandler}>
             View All
           </button>
         </div>
