@@ -48,14 +48,17 @@ const AdminDashboardPage = () => {
   }, [token]);
   return (
     <React.Fragment>
-      <AdminCards stats={stats} />
-      {showSpinner && <SpinnerComponent />}
-      {!showSpinner && (
-        <>
-          <UserTable usersData={userData} />
-          <JobsTable jobData={jobData} />
-        </>
-      )}
+      <div className="flex flex-col gap-4">
+        <h6 className="text-3xl sm:text-4xl text-[#545454] font-bold lg:pt-4">Admin Dashborad</h6>
+        <AdminCards stats={stats} />
+        {showSpinner && <SpinnerComponent />}
+        {!showSpinner && (
+          <>
+            <UserTable usersData={userData} />
+            <JobsTable jobData={jobData} />
+          </>
+        )}
+      </div>
     </React.Fragment>
   );
 };
