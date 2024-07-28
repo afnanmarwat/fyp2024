@@ -12,7 +12,6 @@ exports.isAuthorized = (req, res, next) => {
           return null;
         }else{
           req.role = 'JobProvider';
-          req.role="Admin"
           next();
           // Return null to end the promise chain for JobSeeker check
           return null;
