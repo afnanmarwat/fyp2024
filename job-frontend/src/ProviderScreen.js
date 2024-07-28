@@ -68,7 +68,7 @@ export default function ProviderScreen() {
               onClick={() => {
                 return setSidebar(true);
               }}
-              className="p-2 border-1 border-[#2085cf] rounded-md hover:bg-[#2085cf] hover:text-white hover:cursor-pointer"
+              className="p-2 border-1 border-[#2085cf] rounded-md hover:bg-[#2085cf] hover:text-white hover:cursor-pointer transition-all"
             >
               <FaBars className="lg:hidden" />
             </div>
