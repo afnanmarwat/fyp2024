@@ -11,8 +11,9 @@ import jwtDecode from "jwt-decode";
 // import profilepic from '../../assets/profile.png'
 import profilepic2 from '../../assets/profile2.png'
 import logo from '../../assets/logo.png'
+import { FaBars } from "react-icons/fa";
 
-const Navigation = () => {
+const Navigation = ({showSideBarProps}) => {
   // const selectauthToken = (rootstate) => rootstate.authToken;
   // const authToken = useSelector(selectauthToken);
   // console.log(authToken);
@@ -35,21 +36,29 @@ const Navigation = () => {
           Job Hunt
         </Navbar.Brand> */}
 
-        <NavLink
+        <div
           // activeClassName={classes.active}
-          className="flex gap-1 justify-center items-center text-[#0f1137] text-2xl font-medium "
-          to="/dashboard"
+          className="flex gap-2 justify-center items-center text-[#0f1137] text-2xl font-medium "
+          
         >
-          {/* icon */}
-          <span>
+          {/* icon bars */}
+          <div onClick={showSideBarProps} className="inline-block md:hidden xs:py-1">
+            <div
+              className="p-1 border-1 rounded-md hover:bg-[#2085cf] hover:text-white hover:cursor-pointer transition-all "
+            >
+              <FaBars/>
+            </div>
+          </div>
+          {/* icon home */}
+          <div className="flex items-center">
             {/* <i className="bi bi-search"></i> */}
             <img src={logo} alt="" className="text-[#1A75E8]" width='30px' height='28px' />
-          </span>
-          <span>JOB</span>
-          <span className="text-[#1A75E8]">KOR</span>
-        </NavLink>
+            <span>JOB</span>
+            <span className="text-[#1A75E8]">KOR</span>
+          </div>
+        </div>
         {/* <div aria-controls="navbar-dark-example" /> */}
-        <div id="navbar-dark-example">
+        <div className="hidden md:inline-block" id="navbar-dark-example">
           {redAuthToken.role === "Admin" && (
             <div className={`me-auto ${classes.pageLinks}`}>
               <NavLink
