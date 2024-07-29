@@ -60,7 +60,7 @@ const AppliedJobs = () => {
   }, []);
 
   return (
-    <div className="p-5 h-[100vh]">
+    <div className="p-5 min-h-[100vh]">
       <div className=" flex items-center justify-center">
         <div className="flex w-full  items-center justify-between gap-2">
           {/* search Section */}
