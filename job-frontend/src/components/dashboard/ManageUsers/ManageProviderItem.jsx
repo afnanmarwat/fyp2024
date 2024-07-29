@@ -3,7 +3,7 @@ import classes from "./ManageUserItem.module.css";
 import dateFormatter from "../../../util/dateFormatter";
 import Config from "../../../config/Config.json";
 
-const ManageUserItem = (props) => {
+const ManageProviderItem = (props) => {
   const token = localStorage.getItem("token");
   const editButtonHandler = () => {
     axios
@@ -24,13 +24,10 @@ const ManageUserItem = (props) => {
   };
   return (
     <tr className={classes.row}>
-      <td>{props.userInfo.name}</td>
+      <td>{props.userInfo.company}</td>
       <td>{props.userInfo.email}</td>
-      <td>{props.userInfo.mobile}</td>
       <td>{props.userInfo.role}</td>
-      <td>{props.userInfo.gender}</td>
-      <td>{props.userInfo.qualification}</td>
-      <td>{props.userInfo.experience}</td>
+      <td>{props.userInfo.bio}</td>
       <td className={classes.actions}>
         <button
           className={`${classes.edit} ${classes.button}`}
@@ -55,4 +52,4 @@ const ManageUserItem = (props) => {
   );
 };
 
-export default ManageUserItem;
+export default ManageProviderItem;

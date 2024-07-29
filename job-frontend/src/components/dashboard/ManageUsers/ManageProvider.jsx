@@ -8,10 +8,10 @@ import Config from "../../../config/Config.json";
 // import data from "../../../store/userData.json";
 
 import classes from "./ManageUsers.module.css";
-import ManageUserItem from "./ManageUserItem";
+import ManageProviderItem from "./ManageProviderItem";
 
 let userdata = [];
-const ManageUsers = (props) => {
+export const ManageProvider = (props) => {
   const [page, setPage] = useState(1);
   const [showSpinner, setShowSpinner] = useState(true);
 const [jobSeekerList,setJobSeekerList]=useState([]);
@@ -41,33 +41,27 @@ console.log(jobSeekerList,jobProviderList)
       });
   }, [props.changes, token]);
 
-  const { slice, range } = useTable(jobSeekerList, page, 5);
+  const { slice, range } = useTable(jobProviderList, page, 5);
 
   const roleChangeHandler = (event) => {
     if (event.target.value === "All") {
-      setUserData(userdata);
+      setUserData(jobProviderList);
     } else {
-      setUserData(userdata.filter((user) => user.role === event.target.value));
+      setUserData(jobProviderList.filter((user) => user.role === event.target.value));
     }
   };
   const searchUserHandler = (event) => {
     const role = roleInputRef.current.value;
-    if (role !== "All") {
+
       setUserData(
-        jobSeekerList.filter(
+        jobProviderList.filter(
           (user) =>
             user.name
               .toLowerCase()
               .includes(event.target.value.toLowerCase()) && user.role === role
         )
       );
-    } else {
-      setUserData(
-        jobSeekerList.filter((user) =>
-          user.name.toLowerCase().includes(event.target.value.toLowerCase())
-        )
-      );
-    }
+   
   };
   const addModalHandler = () => {
     props.onShowAddUser(true);
@@ -80,7 +74,7 @@ console.log(jobSeekerList,jobProviderList)
     <React.Fragment>
       <Row className={classes.rowStyle}>
         <Col className={`${classes.manageUsers} col-md-3`}>
-          <span className={classes.span}>Manage Users</span>
+          <span className={classes.span}>Manage Provider</span>
         </Col>
         <Col className={`${classes.col} col-md-6  `}>
           <Col
@@ -127,18 +121,15 @@ console.log(jobSeekerList,jobProviderList)
               <tr className={classes.tableHeader}>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Mobile</th>
                 <th>role</th>
-                <th>gender</th>
-                <th>qualification</th>
-                <th>experience</th>
+                <th>Bio</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody className={classes.tableBody}>
               {slice.map((user) => {
                 return (
-                  <ManageUserItem
+                  <ManageProviderItem
                     key={user._id}
                     role={user.role}
                     userInfo={user}
@@ -152,11 +143,13 @@ console.log(jobSeekerList,jobProviderList)
         </div>
       )}
       <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
-      {jobSeekerList.length === 0 && (
+      {jobProviderList.length === 0 && (
         <h3 className="text-center fw-bold">No user Data!</h3>
       )}
     </React.Fragment>
   );
 };
 
-export default ManageUsers;
+// export default ManageUsers;
+
+// export default ManageProvider;

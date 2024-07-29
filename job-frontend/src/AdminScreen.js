@@ -9,7 +9,7 @@ import { FaBars } from "react-icons/fa6";
 // import AdminDashboardPage from "./pages/AdminPages/AdminDashboardPage";
 // import PageNotFound from "./pages/AdminPages/PageNotFound";
 // import ManageUsersPage from "./pages/AdminPages/ManageUsersPage";
-// import ManageJobsPage from "./pages/AdminPages/ManageJobsPage";
+import ManageProviderPage from "./pages/AdminPages/ManageProviderPage";
 // import ReportsPage from "./pages/AdminPages/ReportsPage";
 // import ChangePassword from "./components/UI/ChangePassword";
 
@@ -22,6 +22,9 @@ const PageNotFound = React.lazy(() =>
 const ManageUsersPage = React.lazy(() =>
   import("./pages/AdminPages/ManageUsersPage")
 );
+// const ManageProviderPage = React.lazy(() =>
+//   import("./pages/AdminPages/ManageProviderPage")
+// );
 const ManageJobsPage = React.lazy(() =>
   import("./pages/AdminPages/ManageJobsPage")
 );
@@ -75,6 +78,7 @@ function AdminScreen() {
               <Route path="/dashboard" element={<AdminDashboardPage />} />
 
               <Route path="/manage-users" element={<ManageUsersPage />} />
+              <Route path="/provider" element={<ManageProviderPage />} />
 
               <Route path="/manage-jobs" element={<ManageJobsPage />} />
 
