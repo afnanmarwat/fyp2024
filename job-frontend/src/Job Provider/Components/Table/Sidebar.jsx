@@ -116,6 +116,14 @@ const Sidebar = ({ showSidebarProps }) => {
                             <NavLink
                                 onClick={showSidebarProps}
                                 className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
+                                to="/provider"
+                            >
+                                <FaUsers  className='text-xl' />
+                                <p className='font-medium'>Provider</p>
+                            </NavLink>
+                            <NavLink
+                                onClick={showSidebarProps}
+                                className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
                                 to="/manage-jobs"
                             >
                                 <i className='bi bi-briefcase-fill text-xl'></i>
