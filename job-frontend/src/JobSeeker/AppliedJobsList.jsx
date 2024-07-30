@@ -60,7 +60,7 @@ const AppliedJobs = () => {
   }, []);
 
   return (
-    <div className="p-5 min-h-[100vh]">
+    <div className="py-4 xs:px-3 md:px-5 min-h-[100vh]">
       <div className=" flex items-center justify-center">
         <div className="flex w-full  items-center justify-between gap-2">
           {/* search Section */}
@@ -93,7 +93,7 @@ const AppliedJobs = () => {
       {/* applied jobs */}
       <div className="pt-5">
         <h5 className="pb-4 font-bold text-[#0f1137] text-2xl xl:text-3xl">Applied Jobs</h5>
-        <div className="flex flex-col gap-3 w-[80%]">
+        <div className="flex flex-col gap-3 w-full xl:w-[80%]">
           {jobs.map((jobItem) => (
             <Jobitem key={jobItem._id} item={jobItem} />
           ))}

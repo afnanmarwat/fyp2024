@@ -167,7 +167,7 @@ const Jobs = () => {
           {/* JobList and Job Type section */}
           <div className="flex flex-row gap-4">
             {/* JobList */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:flex flex-col w-[100%] xl:w-[80%] gap-4">
+            <div className="flex flex-col w-[100%] xl:w-[80%] gap-4">
               {jobs.map((jobItem) => (
                 <Jobitem key={jobItem._id} item={jobItem} jobApply={jobApply} />
               ))}
