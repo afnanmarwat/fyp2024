@@ -22,13 +22,13 @@ function Jobitem({ item, jobApply }) {
             <div className="flex flex-row gap-4 items-center">
               {/* company image */}
               <div className="w-[60px] h-[60px] border-1 border-gray-600 rounded-xl overflow-hidden shadow">
-                <img src="./images/Jobitems/company1.jpeg" alt="" />
+                <img src={item.providerImage} alt="" />
               </div>
               {/* company div */}
               <div className="flex flex-col">
                 {/* Company name */}
                 <div>
-                  <h5 className="text-md">Codics</h5>
+                  <h5 className="text-md">{item.providerCompany}</h5>
                 </div>
                 {/* Job Title */}
                 <div>

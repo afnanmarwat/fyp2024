@@ -15,7 +15,7 @@ const Jobs = () => {
   const [action, setAction] = useState(false);
   const [jobSet, setjobSet] = useState("");
   const [jobs, setJobs] = useState([]);
-
+console.log("jobs", jobs);
   const closeModalHandler = () => {
     setModal(false);
   };
