@@ -1,11 +1,32 @@
 import jwtDecode from 'jwt-decode';
-import React from 'react'
+// import { useState, useEffect } from "react";
 import { FaFacebook, FaLinkedin } from 'react-icons/fa6'
+// import Config from "../../config/Config.json";
+// import axios from "axios";
 
+// let Data = [];
 const Profile = () => {
-
+    
+    // const [ profile , setProfile ] = useState([])
     const authToken = localStorage.getItem("token");
     const redAuthToken = jwtDecode(authToken);
+
+    // useEffect(() => {
+    //     axios
+    //     .get(`${Config.SERVER_URL + "user/profile"}`, {
+    //         headers: {
+    //           Authorization: "Bearer " + localStorage.getItem("token"),
+    //         },
+    //       })
+    //       .then((response) => {
+    //         Data = response.data.profile;
+    //         setProfile(response.data.profile);
+    //         console.log(response.data.profile);
+    //       })
+    //       .catch((err) => {
+    //         console.log(err);
+    //       });
+    //   }, []);
 
     return (
         <>

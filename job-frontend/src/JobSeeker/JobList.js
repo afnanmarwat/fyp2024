@@ -44,6 +44,7 @@ const Jobs = () => {
       .then((response) => {
         jobsData = response.data.jobs;
         setJobs(response.data.jobs);
+        console.log("JobData :", response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -58,8 +59,8 @@ const Jobs = () => {
           {/* heading */}
           <div className="w-full ">
             <h1 className="text-xl md:text-2xl lg:text-4xl 2xl:text-5xl font-extrabold text-[#0f1137] tracking-wide">
-              Your <span className="text-[#1875e8]">Ultimate Job</span> <br />
-              Search with <span className="text-[#1875e8]">Companion</span>
+              Your <span className="text-[#1d81ca]">Ultimate Job</span> <br />
+              Search with <span className="text-[#1d81ca]">Companion</span>
             </h1>
           </div>
           {/* text */}
@@ -83,42 +84,42 @@ const Jobs = () => {
           {/* Categories divs */}
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 ">
             {/* 1 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Design
               </p>
             </div>
             {/* 2 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Development
               </p>
             </div>
             {/* 3 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Security
               </p>
             </div>
             {/* 4 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Research
               </p>
             </div>
             {/* 5 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Gaming
               </p>
             </div>
             {/* 6 */}
-            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Design
@@ -131,7 +132,7 @@ const Jobs = () => {
           {/* Search */}
           <form className="flex flex-col xs:gap-3 md:gap-4 lg:gap-5 sm:w-86  mx-auto">
             {/* Search Div */}
-            <div className="flex flex-row justify-between items-center bg-white w-full rounded-xl sm:px-2 md:px-3 lg:px-2 py-2 shadow-xl border-1 border-[#1a75e8]">
+            <div className="flex flex-row justify-between items-center bg-white w-full rounded-xl sm:px-2 md:px-3 lg:px-2 py-2 shadow-xl border-1 border-[#1d81ca]">
               {/* search input */}
               <input
                 className="w-full focus:outline-none focus:border-none xs:text-xs sm:text-[16px] tracking-wider"
@@ -140,7 +141,7 @@ const Jobs = () => {
                 placeholder="Search for job title"
               ></input>
               {/* search icon*/}
-              <IoSearch className="text-[#1a75e8] xs:text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
+              <IoSearch className="text-[#1d81ca] xs:text-xs sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl" />
 
               {/* Search button */}
               {/* <button className="bg-[#1875e8] text-white xs:px-2 sm:px-2.5 md:px-3 lg:px-4 xl:px-6 xs:text-xs sm:text-sm md:text-lg lg:text-xl xs:py-1 md:py-2 lg:py-2.5  rounded">

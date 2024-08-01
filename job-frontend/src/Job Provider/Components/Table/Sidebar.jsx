@@ -8,6 +8,7 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
+import { PiUsersThreeBold } from "react-icons/pi";
 import profilepic2 from '../../../assets/profile2.png'
 import jwtDecode from 'jwt-decode';
 import { useDispatch } from "react-redux";
@@ -110,7 +111,7 @@ const Sidebar = ({ showSidebarProps }) => {
                                 className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
                                 to="/manage-users"
                             >
-                                <FaUsers  className='text-xl' />
+                                <FaUsers className='text-xl' />
                                 <p className='font-medium'>Users</p>
                             </NavLink>
                             <NavLink
@@ -118,8 +119,8 @@ const Sidebar = ({ showSidebarProps }) => {
                                 className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
                                 to="/provider"
                             >
-                                <FaUsers  className='text-xl' />
-                                <p className='font-medium'>Provider</p>
+                                <PiUsersThreeBold  className='text-xl' />
+                                <p className='font-medium'>Providers</p>
                             </NavLink>
                             <NavLink
                                 onClick={showSidebarProps}

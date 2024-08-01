@@ -44,7 +44,7 @@ const Navigation = ({showSideBarProps}) => {
           {/* icon bars */}
           <div onClick={showSideBarProps} className="inline-block md:hidden xs:py-1">
             <div
-              className="p-1 border-1 rounded-md hover:bg-[#2085cf] hover:text-white hover:cursor-pointer transition-all "
+              className="p-1 border-1 rounded-md hover:bg-[#1d81ca] hover:text-white hover:cursor-pointer transition-all "
             >
               <FaBars/>
             </div>
@@ -52,9 +52,9 @@ const Navigation = ({showSideBarProps}) => {
           {/* icon home */}
           <div className="flex items-center">
             {/* <i className="bi bi-search"></i> */}
-            <img src={logo} alt="" className="text-[#1A75E8]" width='30px' height='28px' />
+            <img src={logo} alt="" className="text-[#1d81ca]" width='30px' height='28px' />
             <span>JOB</span>
-            <span className="text-[#1A75E8]">KOR</span>
+            <span className="text-[#1d81ca]">KOR</span>
           </div>
         </div>
         {/* <div aria-controls="navbar-dark-example" /> */}
@@ -90,25 +90,25 @@ const Navigation = ({showSideBarProps}) => {
           {redAuthToken.role === "JobProvider" && (
             <div className="w-full font-sans p-1 flex gap-4 justify-center items-center text-[#0f1137] text-md tracking-tighter">
               <NavLink
-                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/dashboard"
               >
                 Dashboard
               </NavLink>
               <NavLink
-                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/manage-applicants"
               >
                 Applicant
               </NavLink>
               <NavLink
-                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/manage-jobs"
               >
                 Jobs
               </NavLink>
               <NavLink
-                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/provider-report"
 
               >
@@ -119,25 +119,25 @@ const Navigation = ({showSideBarProps}) => {
           {redAuthToken.role === "JobSeeker" && (
             <div className="w-full font-sans p-1 flex gap-4 justify-center items-center text-[#0f1137] text-md tracking-tighter">
               <NavLink
-                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/dashboard"
               >
                 Home
               </NavLink>
               {/* <NavLink
-                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/dashboard"
               >
                 Apply
               </NavLink> */}
               <NavLink
-                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/appliedJobs"
               >
                 Applied Jobs
               </NavLink>
               <NavLink
-                className=" border-b-2 border-b-transparent hover:border-b-[#1A75E8] hover:text-[#1A75E8] focus:text-[#1a75e8] focus:border-b-[#1A75E8] transition-all duration-300 ease-in-out"
+                className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/"
               >
                 Companies
@@ -186,7 +186,7 @@ const Navigation = ({showSideBarProps}) => {
               </NavDropdown>
             </Nav> */}
           <Dropdown>
-            <Dropdown.Toggle className="bg-gray-200 text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
+            <Dropdown.Toggle className="bg-gray-200 hover:bg-[#1d81ca] text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
               <span>
                 <img src={profilepic2} alt="" width='25px' height='25px' />
               </span>
@@ -194,12 +194,12 @@ const Navigation = ({showSideBarProps}) => {
 
             <Dropdown.Menu className="transition-all duration-300 ease-in-out">
               <Dropdown.Item className="flex gap-2 items-center">
-                <CgProfile className="text-[#1A75E8] text-lg" />
+                <CgProfile className="text-[#1d81ca] text-lg" />
                 <span>{redAuthToken.userName}</span>
               </Dropdown.Item>
               <Dropdown.Item >
                 <NavLink to="/profile" className="flex gap-2 items-center">
-                  <CgProfile className="text-[#1A75E8] text-lg" />
+                  <CgProfile className="text-[#1d81ca] text-lg" />
                   <p>Profile</p>
                 </NavLink>
               </Dropdown.Item>
