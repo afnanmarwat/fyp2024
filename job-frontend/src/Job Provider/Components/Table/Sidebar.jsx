@@ -37,7 +37,7 @@ const Sidebar = ({ showSidebarProps }) => {
 
     return (
         <div>
-            <div className='h-[100vh] lg:fixed min-w-[18%] z-50 bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca]'>
+            <div className='min-h-[100vh] lg:fixed min-w-[18%] z-50 bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca]'>
                 {/* cancel btn */}
                 <div onClick={showSidebarProps} className='text-xl hover:cursor-pointer absolute lg:hidden w-full flex justify-end p-2 text-white'>
                     <MdOutlineCancel className='hover:text-red-600' />
