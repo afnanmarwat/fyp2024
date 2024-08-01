@@ -23,14 +23,14 @@ const ManageProviderItem = (props) => {
     props.onDelete(props.userInfo._id);
   };
   return (
-    <tr className={classes.row}>
-      <td>{props.userInfo.company}</td>
-      <td>{props.userInfo.email}</td>
-      <td>{props.userInfo.role}</td>
-      <td>{props.userInfo.bio}</td>
-      <td className={classes.actions}>
+    <tr className="text-[#808080] hover:bg-[#0000001f] border-2">
+      <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.company}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.email}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.role}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.bio}</td>
+      <td className="flex gap-3 px-4 py-3 ">
         <button
-          className={`${classes.edit} ${classes.button}`}
+          className="w-[100px] flex gap-2 items-center border-2 hover:border-green-700 hover:bg-[#18f97d39] hover:text-green-700  p-2 rounded-lg transition-all ease-in-out text-lg"
           onClick={editButtonHandler}
         >
           <span>
@@ -39,7 +39,7 @@ const ManageProviderItem = (props) => {
           <span>Edit</span>
         </button>
         <button
-          className={`${classes.delete} ${classes.button}`}
+          className="w-[100px] flex gap-2 items-center border-2 hover:border-red-700 hover:bg-[#f918182d] hover:text-red-700  p-2 rounded-lg transition-all ease-in-out text-lg"
           onClick={deleteButtonHandler}
         >
           <span>
