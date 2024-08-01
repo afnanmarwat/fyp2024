@@ -41,12 +41,18 @@ const userSchema = new Schema(
       default: "User",
       required: false,
     },
+  
     jobsPosted: [
       {
         type: Schema.Types.ObjectId,
         ref: "Job",
       },
     ],
+    profilePic: {
+      type: String, // URL of the profile picture
+      required: false,
+      default: "/default_profile.jpg",
+    },
   },
   { timestamps: true }
 );

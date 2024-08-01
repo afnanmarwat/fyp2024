@@ -9,6 +9,15 @@ const { isAuthorized, isUser } = require("../middleware/is-authorized");
 
 const router = express.Router();
 
+// profile 
+
+router.get(
+  "/profile",
+  isAuthenticated,
+  isAuthorized,
+  isUser,
+  userController.getProfile
+);
 // job routes
 
 router.get(

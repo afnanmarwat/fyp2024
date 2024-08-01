@@ -9,7 +9,7 @@ const Applicant = require("../models/applicant");
 
 const { clearResume } = require("../util/helper");
 
-
+// done 
 exports.getStats = (req, res, next) => {
   let providerCount;
   let seekerCount;
@@ -42,7 +42,7 @@ exports.getStats = (req, res, next) => {
       next(err);
     });
 };
-
+// done 
 exports.getRecent = (req, res, next) => {
   let recentUsers = [];
   let recentJobs = [];
@@ -63,7 +63,7 @@ exports.getRecent = (req, res, next) => {
       });
     });
 };
-
+// done 
 exports.getUsers = (req, res, next) => {
   // Queries to fetch users from both JobSeeker and JobProvider schemas, excluding the current user
   const jobSeekerQuery = JobSeeker.find({ _id: { $ne: req.userId } }).lean();
@@ -81,7 +81,7 @@ exports.getUsers = (req, res, next) => {
         jobSeekers,
         jobProviders,
       };
-
+console.log()
       res.status(200).json({
         message: "Fetched the list of users",
         users: users,
@@ -95,6 +95,7 @@ exports.getUsers = (req, res, next) => {
     });
 };
 
+// done
 exports.postUser = (req, res, next) => {
   const errors = validationResult(req);
 
@@ -106,11 +107,21 @@ exports.postUser = (req, res, next) => {
   }
 
   const password = req.body.password;
-
+  const role = req.body.role; // Expecting 'JobSeeker' or 'JobProvider'
+console.log('admin role ', role);
   bcryptjs
     .hash(password, 12)
     .then((hashedPw) => {
-      const newUser = new User({ ...req.body, password: hashedPw });
+      let newUser;
+      if (role === "JobSeeker") {
+        newUser = new JobSeeker({ ...req.body, password: hashedPw });
+      } else if (role === "JobProvider") {
+        newUser = new JobProvider({ ...req.body, password: hashedPw });
+      } else {
+        const error = new Error("Invalid role");
+        error.statusCode = 422;
+        throw error;
+      }
       return newUser.save();
     })
     .then((user) => {
@@ -126,18 +137,35 @@ exports.postUser = (req, res, next) => {
 
 exports.getUser = (req, res, next) => {
   const userId = req.params.userId;
+console.log(`getUser`, userId);
+  let user; // Variable to store user details
 
-  User.findById(userId)
+  // First, try to find the user as a JobSeeker
+  JobSeeker.findById(userId)
     .lean()
-    .then((user) => {
-      if (!user) {
-        const error = new Error("User not found");
-        error.statusCode = 404;
-        throw error;
+    .then((foundUser) => {
+      if (foundUser) {
+        user = foundUser;
+        user.role = 'JobSeeker'; // Add role information
+        return Promise.resolve(); // Continue to the next then block
       }
-      res
-        .status(200)
-        .json({ message: "Fetched the user Successfully", user: user });
+      // If not found as JobSeeker, try JobProvider
+      return JobProvider.findById(userId).lean();
+    })
+    .then((foundUser) => {
+      if (foundUser) {
+        user = foundUser;
+        user.role = 'JobProvider'; // Add role information
+        return Promise.resolve(); // Continue to the next then block
+      }
+      // If user is not found in both collections
+      const error = new Error('User not found');
+      error.statusCode = 404;
+      throw error;
+    })
+    .then(() => {
+      // Respond with the user details
+      res.status(200).json({ message: 'Fetched the user successfully', user: user });
     })
     .catch((err) => {
       if (!err.statusCode) {
@@ -146,10 +174,9 @@ exports.getUser = (req, res, next) => {
       next(err);
     });
 };
-
 exports.editUser = (req, res, next) => {
   const userId = req.params.userId;
-
+console.log(`Edit user ${userId}`);
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -165,90 +192,113 @@ exports.editUser = (req, res, next) => {
     throw error;
   }
 
-  User.findByIdAndUpdate(userId, req.body, { useFindAndModify: false })
-    .then((data) => {
-      if (!data) {
-        res.status(404).json({
-          message: `Cannot update user with id=${id}. Maybe user was not found!`,
-        });
-      } else
-        res.status(200).json({ message: "User was updated successfully." });
-    })
-    .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-      next(err);
-    });
-};
+  const updateUser = (Model) => {
+    return Model.findByIdAndUpdate(userId, req.body, { new: true, useFindAndModify: false })
+      .then((data) => {
+        if (!data) {
+          res.status(404).json({
+            message: `Cannot update user with id=${userId}. Maybe user was not found!`,
+          });
+        } else {
+          res.status(200).json({ message: "User was updated successfully.", user: data });
+        }
+      })
+      .catch((err) => {
+        if (!err.statusCode) {
+          err.statusCode = 500;
+        }
+        next(err);
+      });
+  };
 
+  // Determine the user's role and update accordingly
+  JobSeeker.findById(userId).then((user) => {
+    if (user) {
+      updateUser(JobSeeker);
+    } else {
+      JobProvider.findById(userId).then((user) => {
+        if (user) {
+          updateUser(JobProvider);
+        } else {
+          res.status(404).json({ message: `User with id=${userId} not found.` });
+        }
+      });
+    }
+  }).catch((err) => {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  });
+};
 exports.deleteUser = (req, res, next) => {
   const userId = req.params.userId;
 
   if (userId === req.userId) {
     const error = new Error("Cannot delete the current User");
     error.statusCode = 401;
-    throw error;
+    return next(error);
   }
 
-  let jobs;
+  let jobs = [];
   let role;
   let resumes = [];
   let applicants = [];
 
+  // Find the user and determine their role
   User.findById(userId)
-    .then((user) => {
+    .then(user => {
       if (!user) {
-        const error = new Error("Cannot delete user. User not found!");
+        const error = new Error("User not found!");
         error.statusCode = 404;
-        throw err;
+        throw error;
       }
       role = user.role;
-      if (role === "Job Provider") {
-        jobs = user.jobsPosted;
-      }
+
+      // Delete the user
       return User.findByIdAndDelete(userId);
     })
-    .then((result) => {
-      if (role === "Job Provider") {
+    .then(() => {
+      if (role === "JobProvider") {
+        // Get the jobs posted by the Job Provider
+        return JobProvider.findById(userId).populate('jobsPosted');
+      } else if (role === "JobSeeker") {
+        // Handle specific logic for JobSeeker
+        return JobSeeker.findById(userId);
+      }
+    })
+    .then(user => {
+      if (role === "JobProvider" && user.jobsPosted.length > 0) {
+        jobs = user.jobsPosted;
+        // Delete the jobs associated with the Job Provider
         return Job.deleteMany({ _id: { $in: jobs } });
+      } else if (role === "JobSeeker") {
+        // Handle specific logic for JobSeeker if needed
+        return Applicant.find({ userId: userId });
       }
+      // If no associated jobs or no additional cleanup needed
+      return [];
     })
-    .then((result) => {
-      if (role === "Job Provider") {
-        return Applicant.find({ providerId: userId }).then((docs) => {
-          docs.forEach((doc) => {
-            resumes.push(doc.resume);
-            applicants.push(doc._id);
-          });
-        });
-      }
-      if (role === "User") {
-        return Applicant.find({ userId: userId }).then((docs) => {
-          docs.forEach((doc) => {
-            resumes.push(doc.resume);
-            applicants.push(doc._id);
-          });
-        });
-      }
-    })
-    .then((result) => {
+    .then(docs => {
+      docs.forEach(doc => {
+        resumes.push(doc.resume);
+        applicants.push(doc._id);
+      });
+      // Delete applicants
       return Applicant.deleteMany({ _id: { $in: applicants } });
     })
-    .then((result) => {
-      resumes.forEach((resume) => clearResume(resume));
-      res.json({
-        message: "User record was deleted successfully!",
-      });
+    .then(() => {
+      // Clear resumes
+      resumes.forEach(resume => clearResume(resume));
+      res.json({ message: "User record was deleted successfully!" });
     })
-    .catch((err) => {
+    .catch(err => {
       if (!err.statusCode) {
         err.statusCode = 500;
       }
       next(err);
     });
 };
-
 exports.getJobs = (req, res, next) => {
   Job.find()
     .lean()

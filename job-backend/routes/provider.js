@@ -105,6 +105,23 @@ router.get(
   providerController.getApplicantResume
 );
 
+// profile detailes
+router.get(
+  "/profile",
+  isAuthenticated,
+  isAuthorized,
+  isProvider,
+  providerController.getProfile
+);
+// update profile
+// router.put(
+//   "/profile",
+//   isAuthenticated,
+//   isAuthorized,
+//   isProvider,
+//   providerController.editProfile
+// );
+
 router.patch(
   "/applicants/shortlist/:applicantItemId",
   isAuthenticated,

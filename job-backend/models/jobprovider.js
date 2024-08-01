@@ -27,6 +27,10 @@ const jobProviderSchema = new Schema(
         ref: "Job",
       },
     ],
+    profilePic: {
+      type: String, // URL of the profile picture
+      required: false, // Optional
+    },
     role:{
         type: String,
         default: "JobProvider",

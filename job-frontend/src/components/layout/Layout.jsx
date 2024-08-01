@@ -7,7 +7,7 @@ import React from "react";
 const Layout = (props) => {
   return (
     <div>
-      {/* <Navigation /> */}
+      {/* <MyNavigation /> */}
       <div>{props.children}</div>
     </div>
   );

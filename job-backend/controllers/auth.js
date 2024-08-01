@@ -5,6 +5,46 @@ const jwt = require("jsonwebtoken");
 const JobSeeker = require("../models/jobseeker");
 const JobProvider = require("../models/jobprovider");
 
+// exports.signup = (req, res) => {
+//   const errors = validationResult(req);
+
+//   if (!errors.isEmpty()) {
+//     const error = new Error("Validation failed");
+//     error.statusCode = 422;
+//     error.data = errors.array();
+//     throw error;
+//   }
+
+//   const password = req.body.password;
+//   const role = req.body.role; // Expecting 'JobSeeker' or 'JobProvider'
+
+//   bcryptjs
+//     .hash(password, 12)
+//     .then((hashedPw) => {
+//       let newUser;
+//       if (role === "JobSeeker") {
+//         newUser = new JobSeeker({ ...req.body, password: hashedPw });
+//       } else if (role === "JobProvider") {
+//         newUser = new JobProvider({ ...req.body, password: hashedPw });
+//       } else {
+//         const error = new Error("Invalid role");
+//         error.statusCode = 422;
+//         throw error;
+//       }
+//       return newUser.save();
+//     })
+//     .then((user) => {
+//       res.status(201).json({ message: "Registered Successfully!" });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       if (!err.statusCode) {
+//         err.statusCode = 500;
+//       }
+//       res.status(err.statusCode).json({ message: err.message });
+//     });
+// };
+
 exports.signup = (req, res) => {
   const errors = validationResult(req);
 
@@ -17,15 +57,16 @@ exports.signup = (req, res) => {
 
   const password = req.body.password;
   const role = req.body.role; // Expecting 'JobSeeker' or 'JobProvider'
-
+  const profilePic = req.file ? req.file.path : null; // Get the path of the uploaded file
+console.log(profilePic, role);
   bcryptjs
     .hash(password, 12)
     .then((hashedPw) => {
       let newUser;
       if (role === "JobSeeker") {
-        newUser = new JobSeeker({ ...req.body, password: hashedPw });
+        newUser = new JobSeeker({ ...req.body, password: hashedPw, profilePic });
       } else if (role === "JobProvider") {
-        newUser = new JobProvider({ ...req.body, password: hashedPw });
+        newUser = new JobProvider({ ...req.body, password: hashedPw, profilePic });
       } else {
         const error = new Error("Invalid role");
         error.statusCode = 422;
@@ -44,7 +85,6 @@ exports.signup = (req, res) => {
       res.status(err.statusCode).json({ message: err.message });
     });
 };
-
 
 exports.login = (req, res, next) => {
   // const errors = validationResult(req);

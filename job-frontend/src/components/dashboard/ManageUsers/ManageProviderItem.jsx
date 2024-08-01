@@ -14,7 +14,7 @@ const ManageProviderItem = (props) => {
       })
 
       .then((res) => {
-        console.log(res);
+        console.log(res.data.user);
         props.onEdit(res.data.user);
       })
       .catch((err) => console.log(err));

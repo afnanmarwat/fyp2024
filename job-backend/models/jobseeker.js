@@ -39,7 +39,12 @@ const jobSeekerSchema = new Schema(
     role:{
         type: String,
         default: "JobSeeker",
-    }
+    },
+    profilePic: {
+      type: String, // URL of the profile picture
+      required: false,
+      // default: "/default_profile.jpg",
+    },
   },
   { timestamps: true }
 );

@@ -10,6 +10,75 @@ const JobProvider = require("../models/jobprovider");
 
 const { clearResume } = require("../util/helper");
 
+
+// In your controller file (e.g., controllers/jobprovider.js)
+
+exports.getProfile = (req, res, next) => {
+  JobProvider.findById(req.userId)
+    .select('-password') // Exclude password from the result
+    .lean()
+    .then((jobProvider) => {
+      if (!jobProvider) {
+        const error = new Error('Job provider not found');
+        error.statusCode = 404;
+        throw error;
+      }
+      res.status(200).json({
+        message: 'Job provider profile fetched successfully',
+        profile: jobProvider,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+// edite profile 
+exports.editProfile = (req, res, next) => {
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    const error = new Error('Validation failed');
+    error.statusCode = 422;
+    error.data = errors.array();
+    throw error;
+  }
+
+  const updatedData = {
+    company: req.body.company,
+    email: req.body.email,
+    phone: req.body.profilePic,
+    bio: req.body.bio,
+
+    // Add other fields as necessary
+  };
+
+  JobProvider.findByIdAndUpdate(req.userId, updatedData, { new: true })
+    .select('-password') // Exclude password from the result
+    .lean()
+    .then((updatedJobProvider) => {
+      if (!updatedJobProvider) {
+        const error = new Error('Job provider not found');
+        error.statusCode = 404;
+        throw error;
+      }
+      res.status(200).json({
+        message: 'Job provider profile updated successfully',
+        profile: updatedJobProvider,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+
 exports.getStats = (req, res, next) => {
   let jobsCount = 0;
   let applicantsCount = 0;

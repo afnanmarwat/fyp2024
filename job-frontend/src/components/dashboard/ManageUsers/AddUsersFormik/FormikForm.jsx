@@ -33,6 +33,7 @@ const FormikForm = (props) => {
   }
 
   const formSubmitHandler = (values, { setSubmitting }) => {
+    console.log('hitting edite')
     // Check if it's an edit or add operation
     if (props.userInfo) {
       props.onEdit(values);
@@ -45,31 +46,31 @@ const FormikForm = (props) => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={Yup.object({
-        name: Yup.string()
-          .min(4, "Name should be more than 4 characters")
-          .max(25, "Name should be less than 25 characters")
-          .required("Name is a required field"),
-        email: Yup.string()
-          .email("Invalid email address")
-          .required("Email is a required field"),
-        password: Yup.string()
-          .min(6, "Password must be minimum 6 characters")
-          .required("Password is a required field"),
-        mobile: Yup.string()
-          .required("Phone number is required")
-          .matches(/^[0-9]+$/, "Must be only digits")
-          .min(10, "Must be exactly 10 digits")
-          .max(10, "Must be exactly 10 digits"),
-        gender: Yup.string().required("Gender Required"),
-        age: Yup.number()
-          .max(60, "Age should be less than or equal to 60")
-          .min(18, "Age should be greater than or equal to 18")
-          .required("Age Required"),
-        qualification: Yup.string().required("Qualification Required"),
-        experience: Yup.string(),
-        role: Yup.string().required("Role required"),
-      })}
+      // validationSchema={Yup.object({
+      //   name: Yup.string()
+      //     .min(4, "Name should be more than 4 characters")
+      //     .max(25, "Name should be less than 25 characters")
+      //     .required("Name is a required field"),
+      //   email: Yup.string()
+      //     .email("Invalid email address")
+      //     .required("Email is a required field"),
+      //   password: Yup.string()
+      //     .min(6, "Password must be minimum 6 characters")
+      //     .required("Password is a required field"),
+      //   mobile: Yup.string()
+      //     .required("Phone number is required")
+      //     .matches(/^[0-9]+$/, "Must be only digits")
+      //     .min(10, "Must be exactly 10 digits")
+      //     .max(10, "Must be exactly 10 digits"),
+      //   gender: Yup.string().required("Gender Required"),
+      //   age: Yup.number()
+      //     .max(60, "Age should be less than or equal to 60")
+      //     .min(18, "Age should be greater than or equal to 18")
+      //     .required("Age Required"),
+      //   qualification: Yup.string().required("Qualification Required"),
+      //   experience: Yup.string(),
+      //   role: Yup.string().required("Role required"),
+      // })}
       onSubmit={formSubmitHandler}
     >
       {(formik) => (
