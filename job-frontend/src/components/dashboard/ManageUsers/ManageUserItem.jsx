@@ -5,7 +5,9 @@ import Config from "../../../config/Config.json";
 
 const ManageUserItem = (props) => {
   const token = localStorage.getItem("token");
+  console.log(`ManageUserItem proos`, props);
   const editButtonHandler = () => {
+    
     axios
       .get(`${Config.SERVER_URL + "admin/users/" + props.userInfo._id}`, {
         headers: {

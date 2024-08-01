@@ -2,6 +2,7 @@ const User = require("../models/user");
 const JobSeeker = require("../models/jobseeker");
 const JobProvider = require("../models/jobprovider");
 exports.isAuthorized = (req, res, next) => {
+
   // First, check if the user exists in the JobProvider schema
   JobProvider.findById(req.userId)
     .then((user) => {
@@ -45,7 +46,7 @@ exports.isAuthorized = (req, res, next) => {
 
 
 exports.isAdmin = (req, res, next) => {
-  // console.log(req.role);
+  console.log(req.role);
   if (req.role !== "Admin") {
     const err = new Error("Not Authorized");
     err.statusCode = 401;

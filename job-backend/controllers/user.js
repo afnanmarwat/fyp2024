@@ -2,10 +2,73 @@
 
 const Job = require("../models/job");
 const Applicant = require("../models/applicant");
+const JobSeeker = require("../models/jobseeker");
 
 const { clearResume } = require("../util/helper");
 const { dateFormatter } = require("../util/helper");
 
+
+
+// profile 
+exports.getProfile = (req, res, next) => {
+  JobSeeker.findById(req.userId)
+    .select('-password') // Exclude password from the result
+    .lean()
+    .then((jobSeeker) => {
+      if (!jobSeeker) {
+        const error = new Error('JobSeeker not found');
+        error.statusCode = 404;
+        throw error;
+      }
+      res.status(200).json({
+        message: 'JobSeeker profile fetched successfully',
+        profile: jobSeeker,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+// exports.editProfile = (req, res, next) => {
+//   const errors = validationResult(req);
+//   if (!errors.isEmpty()) {
+//     const error = new Error('Validation failed');
+//     error.statusCode = 422;
+//     error.data = errors.array();
+//     throw error;
+//   }
+
+//   const updatedProfile = {
+//     name: req.body.name,
+//     email: req.body.email,
+//     // Add more fields as needed
+//   };
+
+//   JobSeeker.findByIdAndUpdate(req.userId, updatedProfile, { new: true })
+//     .select('-password')
+//     .lean()
+//     .then((jobSeeker) => {
+//       if (!jobSeeker) {
+//         const error = new Error('JobSeeker not found');
+//         error.statusCode = 404;
+//         throw error;
+//       }
+//       res.status(200).json({
+//         message: 'JobSeeker profile updated successfully',
+//         profile: jobSeeker,
+//       });
+//     })
+//     .catch((err) => {
+//       if (!err.statusCode) {
+//         err.statusCode = 500;
+//       }
+//       next(err);
+//     });
+// };
 exports.getAvailableJobs = (req, res, next) => {
   let appliedJobs = [];
   Applicant.find({ userId: req.userId })
@@ -77,7 +140,7 @@ console.log(userId,providerId);
           .status(409)
           .json({ message: "You have already applied for the job!" });
       }
-      status = "Applied on " + dateFormatter();
+      status = "Applied";
 
       const newApplicant = new Applicant({
         jobId: jobId,
