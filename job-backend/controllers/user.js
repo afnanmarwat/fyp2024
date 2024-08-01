@@ -69,27 +69,58 @@ exports.getProfile = (req, res, next) => {
 //       next(err);
 //     });
 // };
-exports.getAvailableJobs = (req, res, next) => {
-  let appliedJobs = [];
-  Applicant.find({ userId: req.userId })
-    .lean()
-    .then((applicants) => {
-      applicants.forEach((applicant) => appliedJobs.push(applicant.jobId));
-      return Job.find({ _id: { $not: { $in: appliedJobs } } }).lean();
-    })
-    .then((jobs) => {
-      res.status(200).json({
-        message: "Fetched the list of jobs",
-        jobs: jobs,
+// exports.getAvailableJobs = (req, res, next) => {
+//   let appliedJobs = [];
+//   Applicant.find({ userId: req.userId })
+//     .lean()
+//     .then((applicants) => {
+//       applicants.forEach((applicant) => appliedJobs.push(applicant.jobId));
+//       return Job.find({ _id: { $not: { $in: appliedJobs } } }).lean();
+//     })
+//     .then((jobs) => {
+//       res.status(200).json({
+//         message: "Fetched the list of jobs",
+//         jobs: jobs,
+//       });
+//     })
+//     .catch((err) => {
+//       if (!err.statusCode) {
+//         err.statusCode = 500;
+//       }
+//       next(err);
+//     });
+// };
+exports.getAvailableJobs = async (req, res, next) => {
+  try {
+    const appliedJobs = await Applicant.find({ userId: req.userId }).lean().select('jobId');
+    const appliedJobIds = appliedJobs.map(applicant => applicant.jobId);
+
+    const jobs = await Job.find({ _id: { $nin: appliedJobIds } })
+      .lean()
+      .populate({
+        path: 'providerId',
+        select: 'profilePic company'
       });
-    })
-    .catch((err) => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
-      }
-      next(err);
+
+    const jobsWithProviderDetails = jobs.map(job => ({
+      ...job,
+      providerImage: job.providerId ? job.providerId.profilePic : null,
+      providerCompany: job.providerId ? job.providerId.company : null
+    }));
+
+    res.status(200).json({
+      message: "Fetched the list of jobs",
+      jobs: jobsWithProviderDetails
     });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
 };
+
+
 exports.getAppliedJobs = (req, res, next) => {
   let appliedJobs = [];
   const statusMap = new Map();
