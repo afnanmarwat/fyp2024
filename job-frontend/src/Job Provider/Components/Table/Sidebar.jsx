@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import logo from '../../../assets/logo.png'
 import { MdOutlineCancel, MdSpaceDashboard } from "react-icons/md";
@@ -13,15 +13,19 @@ import profilepic2 from '../../../assets/profile2.png'
 import jwtDecode from 'jwt-decode';
 import { useDispatch } from "react-redux";
 import { FaUsers } from 'react-icons/fa6';
+import Config from "../../../config/Config.json";
+import axios from 'axios';
 
 
 
+let Data = [];
 
 const Sidebar = ({ showSidebarProps }) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [dropdown, setDropdown] = useState(false);
+    const [proProfile, setProProfile] = useState([]);
 
     const authToken = localStorage.getItem("token");
     const redAuthToken = jwtDecode(authToken);
@@ -30,6 +34,25 @@ const Sidebar = ({ showSidebarProps }) => {
         dispatch({ type: "CLEARAUTHTOKEN" });
         navigate("/", { replace: true });
     };
+
+    //   provider Profile
+    useEffect(() => {
+        axios
+            .get(`${Config.SERVER_URL + "provider/profile"}`, {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                Data = response.data.profile;
+                setProProfile(response.data.profile);
+                console.log("ProProfile : ", response.data.profile);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+
 
     const showProfile = () => {
         setDropdown(!dropdown);
@@ -60,39 +83,42 @@ const Sidebar = ({ showSidebarProps }) => {
                     </NavLink>
                 </div>
                 {/* DropDown user Profile */}
-                <div className='flex flex-col w-full justify-center items-end pb-4 px-3 hover:cursor-pointer'>
-                    <div onClick={showProfile} className='w-[97%] bg-[#00000037] p-2 rounded-xl'>
-                        {/* profile div */}
-                        <div className='flex flex-row justify-between items-center'>
-                            {/* profile image name and icon */}
-                            <div className='flex gap-1 items-center'>
-                                {/* profile image */}
-                                <span>
-                                    <img src={profilepic2} alt="" width='30px' height='30px' />
+                {redAuthToken.role === "JobProvider" && (
+                    <div className='flex flex-col w-full justify-center items-end pb-4 px-3 hover:cursor-pointer'>
+                        <div onClick={showProfile} className='w-[97%] bg-[#00000037] p-2 rounded-xl'>
+                            {/* profile div */}
+                            <div className='flex flex-row justify-between items-center'>
+                                {/* profile image name and icon */}
+                                <div className='flex gap-2 items-center'>
+                                    {/* profile image */}
+                                    <span className='border-1 border-[#2085cf] overflow-hidden rounded-full'>
+                                        <img src={`http://localhost:8080/${proProfile?.profilePic}`} alt="" width='30px' height='30px' />
+                                    </span>
+                                    {/* name */}
+                                    <p className='text-[#8abadc]'>{proProfile.company}</p>
+                                </div>
+                                {/* dropdown arrow */}
+                                <span className='text-[#0000005a]'>
+                                    {(dropdown ? <IoMdArrowDropup /> : <IoMdArrowDropdown />)}
                                 </span>
-                                {/* name */}
-                                <p className='text-[#8abadc]'>{redAuthToken.userName}</p>
                             </div>
-                            {/* dropdown arrow */}
-                            <span className='text-[#0000005a]'>
-                                {(dropdown ? <IoMdArrowDropup /> : <IoMdArrowDropdown />)}
-                            </span>
+                        </div>
+                        {/* Dropdown Menu */}
+                        <div className={` ${dropdown ? "inline-block" : "hidden"} h-full text-white w-[97%] rounded-xl p-1 bg-gradient-to-r from-[#96d3ff] to-[#0094fd] transition-all duration-500 ease-in-out`}>
+                            {/* profile */}
+                            <NavLink to="/profile" onClick={showSidebarProps} className="flex gap-2 items-center pl-2 pr-1 py-1 hover:bg-black" >
+                                <CgProfile className="text-[#1A75E8] text-lg" />
+                                <p>Profile</p>
+                            </NavLink>
+                            {/* Change password */}
+                            <NavLink className="flex gap-2 items-center pl-2 pr-1 py-1 hover:text-white hover:bg-black" to="/change-password">
+                                <RiLockPasswordLine className="text-green-600 text-lg" />
+                                <p>Change Password</p>
+                            </NavLink>
                         </div>
                     </div>
-                    {/* Dropdown Menu */}
-                    <div className={` ${dropdown ? "inline-block" : "hidden"} h-full text-white w-[97%] rounded-xl p-1 bg-gradient-to-r from-[#96d3ff] to-[#0094fd] transition-all duration-500 ease-in-out`}>
-                        {/* profile */}
-                        <NavLink to="/profile" onClick={showSidebarProps} className="flex gap-2 items-center pl-2 pr-1 py-1 hover:bg-black" >
-                            <CgProfile className="text-[#1A75E8] text-lg" />
-                            <p>Profile</p>
-                        </NavLink>
-                        {/* Change password */}
-                        <NavLink className="flex gap-2 items-center pl-2 pr-1 py-1 hover:text-white hover:bg-black" to="/change-password">
-                            <RiLockPasswordLine className="text-green-600 text-lg" />
-                            <p>Change Password</p>
-                        </NavLink>
-                    </div>
-                </div>
+                )}
+
                 {/* Navlinks Divs and logout btn*/}
                 <div className='flex flex-col gap-3 w-full justify-center items-end'>
                     {/* Navlink of pages */}
@@ -119,7 +145,7 @@ const Sidebar = ({ showSidebarProps }) => {
                                 className="flex items-center gap-3 px-2.5 py-2.5 rounded-l-md hover:bg-[#f9f9f9] hover:text-[#1d81ca]  transition ease-in-out"
                                 to="/provider"
                             >
-                                <PiUsersThreeBold  className='text-xl' />
+                                <PiUsersThreeBold className='text-xl' />
                                 <p className='font-medium'>Providers</p>
                             </NavLink>
                             <NavLink
