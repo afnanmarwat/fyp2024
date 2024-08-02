@@ -9,7 +9,8 @@ const providerRoutes = require("./routes/provider");
 const userRoutes = require("./routes/user");
 
 const app = express();
-
+app.use(express.static(__dirname + '/public'));
+app.use('/uploads', express.static('uploads'));
 // const userName = "praveenterax";
 // const password = "NblCRcF6hjo1BC3s";
 

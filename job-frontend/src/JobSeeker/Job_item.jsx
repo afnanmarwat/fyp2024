@@ -22,7 +22,8 @@ function Jobitem({ item, jobApply }) {
             <div className="flex flex-row gap-4 items-center">
               {/* company image */}
               <div className="w-[60px] h-[60px] border-1 border-gray-600 rounded-xl overflow-hidden shadow">
-                <img src={item.providerImage} alt="" />
+              <img  src={`http://localhost:8080/${item?.providerImage}`} alt="Company Logo" />
+
               </div>
               {/* company div */}
               <div className="flex flex-col">

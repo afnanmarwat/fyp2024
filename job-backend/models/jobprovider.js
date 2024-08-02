@@ -34,7 +34,11 @@ const jobProviderSchema = new Schema(
     role:{
         type: String,
         default: "JobProvider",
-    }
+    },
+     location:{
+      type: String,
+     
+  }
     
   },
   { timestamps: true }

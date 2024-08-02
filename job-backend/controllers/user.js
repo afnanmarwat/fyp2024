@@ -92,9 +92,11 @@ exports.getProfile = (req, res, next) => {
 // };
 exports.getAvailableJobs = async (req, res, next) => {
   try {
+    // Fetch applied job IDs
     const appliedJobs = await Applicant.find({ userId: req.userId }).lean().select('jobId');
     const appliedJobIds = appliedJobs.map(applicant => applicant.jobId);
 
+    // Fetch jobs excluding applied ones and populate provider details
     const jobs = await Job.find({ _id: { $nin: appliedJobIds } })
       .lean()
       .populate({
@@ -102,10 +104,18 @@ exports.getAvailableJobs = async (req, res, next) => {
         select: 'profilePic company'
       });
 
+    // Log jobs with and without valid providerId for debugging
+    jobs.forEach(job => {
+      if (!job.providerId) {
+        console.log('Job with null providerId:', job);
+      }
+    });
+
+    // Handle cases where providerId might be null
     const jobsWithProviderDetails = jobs.map(job => ({
       ...job,
       providerImage: job.providerId ? job.providerId.profilePic : null,
-      providerCompany: job.providerId ? job.providerId.company : null
+      providerCompany: job.providerId ? job.providerId.company : 'Unknown'
     }));
 
     res.status(200).json({
