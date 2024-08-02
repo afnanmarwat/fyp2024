@@ -42,7 +42,7 @@ function AdminScreen() {
     <div className="relative flex bg-[#f9f9f9]">
       {/* sidebar Section */}
       {/* sidebar for large devices */}
-      <div className="hidden lg:block z-50 min-w-[23%]">
+      <div className="hidden lg:block z-50 min-w-[23%] xl:min-w-[18%]">
         <Sidebar />
       </div>
       {/* sidebar for small devices */}
@@ -58,7 +58,7 @@ function AdminScreen() {
       top-0 left-0 xs:hidden sm:block lg:hidden w-[100vw] h-[100vh] bg-[#0000006b] z-40 transition-all ease-in-out duration-500`}
       ></div>
       {/* layout section */}
-      <div className=" absolute lg:relative w-full min-w-[77%] min-h-[100vh] xs:p-3 lg:px-10">
+      <div className=" absolute lg:relative w-full min-w-[77%] xl:min-w-[80%] min-h-[100vh] xs:p-3 lg:px-10">
         <Layout className="flex">
           {/* Sidebar icon in small devices */}
           <div className="inline-block lg:hidden xs:py-1">

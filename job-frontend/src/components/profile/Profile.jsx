@@ -6,9 +6,9 @@ import axios from "axios";
 
 let Data = [];
 const Profile = () => {
-    
-    const [ userProfile , setUserProfile ] = useState([]);
-    const [ proProfile , setProProfile ] = useState([]);
+
+    const [userProfile, setUserProfile] = useState([]);
+    const [proProfile, setProProfile] = useState([]);
 
     const authToken = localStorage.getItem("token");
     const redAuthToken = jwtDecode(authToken);
@@ -16,39 +16,39 @@ const Profile = () => {
     // user Profile
     useEffect(() => {
         axios
-        .get(`${Config.SERVER_URL + "user/profile"}`, {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          })
-          .then((response) => {
-            Data = response.data.profile;
-            setUserProfile(response.data.profile);
-            console.log("userProfile : ",response.data.profile);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }, []);
+            .get(`${Config.SERVER_URL + "user/profile"}`, {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                Data = response.data.profile;
+                setUserProfile(response.data.profile);
+                console.log("userProfile : ", response.data.profile);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
 
     //   provider Profile
     useEffect(() => {
         axios
-        .get(`${Config.SERVER_URL + "provider/profile"}`, {
-            headers: {
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          })
-          .then((response) => {
-            Data = response.data.profile;
-            setProProfile(response.data.profile);
-            console.log("ProProfile : ",response.data.profile);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }, []);
-    
+            .get(`${Config.SERVER_URL + "provider/profile"}`, {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            })
+            .then((response) => {
+                Data = response.data.profile;
+                setProProfile(response.data.profile);
+                console.log("ProProfile : ", response.data.profile);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+
     return (
         <>
             {redAuthToken.role === "JobProvider" && (
@@ -103,13 +103,13 @@ const Profile = () => {
 
             {redAuthToken.role === "JobSeeker" && (
                 <div className='pt-3 px-10'>
-                    {/* image name and Bio div */}
-                    <div className='w-full flex xs:flex-col md:flex-row xs:gap-1 md:gap-3 justify-between items-center p-3 rounded-lg bg-white shadow-md'>
+                    {/* image name div and btn dev*/}
+                    <div className='flex justify-center p-3 '>
                         {/* image and name part*/}
-                        <div className='md:max-w-[30%] flex flex-col gap-2 p-1 justify-center items-center'>
+                        <div className='flex flex-col gap-2 p-1 justify-center items-center'>
                             {/* img */}
                             <div className='w-[150px] h-[150px] border-3 border-[#2085cf] overflow-hidden rounded-full'>
-                                <img src="./images/profile/my_pic.png" alt="" />
+                                <img src={`http://localhost:8080/${userProfile?.profilePic}`} alt="" className='w-[150px] h-[150px]' />
                             </div>
                             {/* name */}
                             <div>
@@ -121,18 +121,28 @@ const Profile = () => {
                                 <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] hover:bg-[#2085cf] text-[#2085cf] hover:text-[#f9f9f9]  rounded-sm transition-all duration-300'>Message</button>
                             </div>
                         </div>
-                        {/* Bio part */}
-                        <div className='md:min-w-[70%] py-4 px-2'>
-                            <p className='text-gray-400 font-semibold py-2'>About Us</p>
-                            <p className='text-sm text-[#545454]'>A company with a Lot of Facilities. Work on the Websites and Mobile Application and also work on Graphic Designing. With Skills having Html, CSS, JavaScript, JS Libraries Like Reactjs Angularjs on a web development site. And a React Native and Flutter is used for Mobile Application. For Graphic Designing we used Photshop and illustrator. </p>
-                        </div>
                     </div>
-                    {/* Location Emails and Social Media Links div */}
-                    <div className='p-3 mt-3 rounded'>
-                        {/* Location part */}
+                    {/* gender, age, qua, exp, emails, contact and Social Media Links div */}
+                    <div className='p-3 my-3 rounded-lg bg-white shadow-md'>
+                        {/* gender */}
                         <div className='pb-3 border-b-2 mb-4'>
-                            <p className='text-gray-400 text-md font-semibold py-1'>Location</p>
-                            <p className='text-lg'>Islamabad, Model Town, Street 509</p>
+                            <p className='text-gray-400 text-md font-semibold py-1'>Gender</p>
+                            <p className='text-lg'>{userProfile.gender}</p>
+                        </div>
+                        {/* Age part */}
+                        <div className='pb-3 border-b-2 mb-4'>
+                            <p className='text-gray-400 text-md font-semibold py-1'>Age</p>
+                            <p className='text-lg'>{userProfile.age}</p>
+                        </div>
+                        {/* Qualification part */}
+                        <div className='pb-3 border-b-2 mb-4'>
+                            <p className='text-gray-400 text-md font-semibold py-1'>Qualification</p>
+                            <p className='text-lg'>{userProfile.qualification}</p>
+                        </div>
+                        {/* Experience part */}
+                        <div className='pb-3 border-b-2 mb-4'>
+                            <p className='text-gray-400 text-md font-semibold py-1'>Experience</p>
+                            <p className='text-lg'>{userProfile.experience}</p>
                         </div>
                         {/* Email part */}
                         <div className='pb-3 border-b-2 mb-4'>
