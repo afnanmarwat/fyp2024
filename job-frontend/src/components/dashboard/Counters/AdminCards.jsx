@@ -14,6 +14,7 @@ const AdminCards = ({ stats, ...props }) => {
           logo={<i className="bi bi-briefcase-fill"></i>}
           heading={"Total Jobs"}
           statistics={stats.jobCount}
+          animate={"animate-[rtl_0.3s]"}
         />
       </div>
       <div>
@@ -22,6 +23,7 @@ const AdminCards = ({ stats, ...props }) => {
           logo={<i className="bi bi-file-earmark-person-fill"></i>}
           heading={"Total Applicants"}
           statistics={stats.applicantCount}
+          animate={"animate-[rtl_0.6s]"}
         />
       </div>
       <div>
@@ -30,6 +32,7 @@ const AdminCards = ({ stats, ...props }) => {
           logo={<i className="bi bi-person-check-fill"></i>}
           heading={"Total Job Providers"}
           statistics={stats.providerCount}
+          animate={"animate-[rtl_1s]"}
         />
       </div>
       <div>
@@ -38,6 +41,7 @@ const AdminCards = ({ stats, ...props }) => {
           logo={<i className="bi bi-person-circle"></i>}
           heading={"Total Users"}
           statistics={stats.seekerCount}
+          animate={"animate-[rtl_1.3s]"}
         />
       </div>
     </div>

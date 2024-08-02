@@ -11,6 +11,7 @@ const ProviderCards = ({ stats, ...props }) => {
             logo={<i className="bi bi-briefcase-fill"></i>}
             heading={"Total Jobs"}
             statistics={stats.jobsCount}
+            animate={"animate-[rtl_0.3s]"}
           />
         </div>
         <div>
@@ -19,6 +20,7 @@ const ProviderCards = ({ stats, ...props }) => {
             logo={<i className="bi bi-file-earmark-person-fill"></i>}
             heading={"Total Applicants"}
             statistics={stats.applicantsCount}
+            animate={"animate-[rtl_0.6s]"}
           />
         </div>
       </div>

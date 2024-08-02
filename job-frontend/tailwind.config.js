@@ -24,7 +24,24 @@ module.exports = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
-    extend: {},
+    extend: {
+      keyframes: {
+        downtoup: {
+          '0%': { transform: 'translateY(300px)',
+            
+           },
+          '100%': { transform: 'translateY(0px)' },
+        },
+        rtl: {
+          '0%': { 
+            transform: 'translatex(100vw)'        
+           },
+          '100%': { 
+            transform: 'translatex(0px)',
+          },
+        },
+      },
+    },
   },
   plugins: [],
 }

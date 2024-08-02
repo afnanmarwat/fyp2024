@@ -55,7 +55,7 @@ const Jobs = () => {
     <div className="w-[100%]">
       <header className="px-3 sm:px-5 flex gap-5 justify-center items-center  bg-[#f5f6f8] h-[100vh]">
         {/* Heading and Search Section */}
-        <div className="w-full sm:w-[50%] flex flex-col xs:gap-3 sm:gap-2 md:gap-3 xl:gap-4">
+        <div className="w-full sm:w-[50%] flex flex-col xs:gap-3 sm:gap-2 md:gap-3 xl:gap-4 animate-[downtoup_1s]">
           {/* heading */}
           <div className="w-full ">
             <h1 className="text-xl md:text-2xl lg:text-4xl 2xl:text-5xl font-extrabold text-[#0f1137] tracking-wide">
