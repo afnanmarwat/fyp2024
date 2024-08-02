@@ -1,8 +1,12 @@
 import React from 'react'
 import { RiArrowDropLeftLine } from 'react-icons/ri';
 import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const View_job_details = () => {
+    const location = useLocation();
+    const { job } = location.state || {};
+    console.log('vvvvvvvvvvvvvvvvvvv',job);
     return (
         <>
             <div className="md:m-10 p-3 flex flex-col gap-4">
