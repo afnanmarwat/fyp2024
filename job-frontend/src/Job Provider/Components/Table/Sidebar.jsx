@@ -85,7 +85,7 @@ const Sidebar = ({ showSidebarProps }) => {
                 {/* DropDown user Profile */}
                 {redAuthToken.role === "JobProvider" && (
                     <div className='flex flex-col w-full justify-center items-end pb-4 px-3 hover:cursor-pointer'>
-                        <div onClick={showProfile} className='w-[97%] bg-[#00000037] p-2 rounded-xl'>
+                        <div onClick={showProfile} className={` ${dropdown ? "rounded-t-xl" : "rounded-xl"} w-[97%] bg-[#00000037] hover:bg-[#00000066] p-2 transition-all duration-200`}>
                             {/* profile div */}
                             <div className='flex flex-row justify-between items-center'>
                                 {/* profile image name and icon */}
@@ -98,22 +98,26 @@ const Sidebar = ({ showSidebarProps }) => {
                                     <p className='text-[#8abadc]'>{proProfile.company}</p>
                                 </div>
                                 {/* dropdown arrow */}
-                                <span className='text-[#0000005a]'>
-                                    {(dropdown ? <IoMdArrowDropup /> : <IoMdArrowDropdown />)}
+                                <span className='text-white'>
+                                    {(dropdown ? <IoMdArrowDropup /> : <IoMdArrowDropdown className='' />)}
                                 </span>
                             </div>
                         </div>
                         {/* Dropdown Menu */}
-                        <div className={` ${dropdown ? "inline-block" : "hidden"} h-full text-white w-[97%] rounded-xl p-1 bg-gradient-to-r from-[#96d3ff] to-[#0094fd] transition-all duration-500 ease-in-out`}>
+                        <div className={` ${dropdown ? "inline-block" : "hidden"} h-full text-white w-[97%] rounded-b-xl px-1 py-2 bg-[#00000037] transition-all duration-500 ease-in-out`}>
                             {/* profile */}
-                            <NavLink to="/profile" onClick={showSidebarProps} className="flex gap-2 items-center pl-2 pr-1 py-1 hover:bg-black" >
-                                <CgProfile className="text-[#1A75E8] text-lg" />
-                                <p>Profile</p>
+                            <NavLink to="/profile" onClick={showSidebarProps}>
+                                <div className="flex gap-2 items-center p-2 hover:bg-[#f9f9f9] hover:text-[#1d81ca] rounded transition-all duration-300 ease-in-out">
+                                    <CgProfile className="text-lg" />
+                                    <p className='font-semibold'>Profile</p>
+                                </div>
                             </NavLink>
                             {/* Change password */}
-                            <NavLink className="flex gap-2 items-center pl-2 pr-1 py-1 hover:text-white hover:bg-black" to="/change-password">
-                                <RiLockPasswordLine className="text-green-600 text-lg" />
-                                <p>Change Password</p>
+                            <NavLink to="/change-password" onClick={showSidebarProps}>
+                                <div className="flex gap-2 items-center p-2 hover:text-[#1d81ca] hover:bg-[#f9f9f9] rounded transition-all duration-300 ease-in-out" >
+                                <RiLockPasswordLine className=" text-lg" />
+                                <p className='font-semibold'>Change Password</p>
+                                </div>
                             </NavLink>
                         </div>
                     </div>
