@@ -59,7 +59,7 @@ const Profile = () => {
                         <div className='md:max-w-[30%] flex flex-col gap-2 p-1 justify-center items-center'>
                             {/* img */}
                             <div className='w-[150px] h-[150px] border-3 border-[#2085cf] overflow-hidden rounded-full'>
-                                {proProfile.profilePic}
+                                <img src={`http://localhost:8080/${proProfile?.profilePic}`} alt="" className='w-[150px] h-[150px]' />
                             </div>
                             {/* name */}
                             <div>
@@ -82,7 +82,7 @@ const Profile = () => {
                         {/* Location part */}
                         <div className='pb-3 border-b-2 mb-4'>
                             <p className='text-gray-400 text-md font-semibold py-1'>Location</p>
-                            <p className='text-lg'>Islamabad, Model Town, Street 509</p>
+                            <p className='text-lg'>{proProfile.location}</p>
                         </div>
                         {/* Location part */}
                         <div className='pb-3 border-b-2 mb-4'>
