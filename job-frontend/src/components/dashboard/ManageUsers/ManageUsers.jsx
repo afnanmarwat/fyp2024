@@ -5,22 +5,29 @@ import useTable from "../../../hooks/useTable";
 import TableFooter from "../Tables/TableFooter";
 import SpinnerComponent from "../../UI/SpinnerComponent";
 import Config from "../../../config/Config.json";
-// import data from "../../../store/userData.json";
 
 import classes from "./ManageUsers.module.css";
 import ManageUserItem from "./ManageUserItem";
 import { IoSearch } from "react-icons/io5";
-
-let userdata = [];
+import Modal from 'react-bootstrap/Modal';
+import AddUserForm from "./AddUserForm";
+import EditeUser from "./EditeUser";
 const ManageUsers = (props) => {
   const [page, setPage] = useState(1);
   const [showSpinner, setShowSpinner] = useState(true);
   const [jobSeekerList, setJobSeekerList] = useState([]);
+  const [filteredJobSeekerList, setFilteredJobSeekerList] = useState([]);
   const [jobProviderList, setJobProviderList] = useState([]);
-  const [userData, setUserData] = useState([]);
-  const roleInputRef = useRef();
-  console.log(jobSeekerList, jobProviderList)
   const token = localStorage.getItem("token");
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // edite 
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  console.log('current user',currentUser)
 
   useEffect(() => {
     setShowSpinner(true);
@@ -32,47 +39,28 @@ const ManageUsers = (props) => {
       })
       .then((response) => {
         const data = response.data.users;
-
-        setJobSeekerList(data.jobSeekers)
-        setJobProviderList(data.jobProviders)
+        setJobSeekerList(data.jobSeekers);
+        setFilteredJobSeekerList(data.jobSeekers);
+        setJobProviderList(data.jobProviders);
         setShowSpinner(false);
-        // console.log(data);
-        userdata = [...data];
-        setUserData(data);
       });
   }, [props.changes, token]);
 
-  const { slice, range } = useTable(jobSeekerList, page, 5);
+  const { slice, range } = useTable(filteredJobSeekerList, page, 5);
 
-  const roleChangeHandler = (event) => {
-    if (event.target.value === "All") {
-      setUserData(userdata);
-    } else {
-      setUserData(userdata.filter((user) => user.role === event.target.value));
-    }
-  };
   const searchUserHandler = (event) => {
-    const role = roleInputRef.current.value;
-    if (role !== "All") {
-      setUserData(
-        jobSeekerList.filter(
-          (user) =>
-            user.name
-              .toLowerCase()
-              .includes(event.target.value.toLowerCase()) && user.role === role
+    const query = event.target.value.toLowerCase();
+    if (query) {
+      setFilteredJobSeekerList(
+        jobSeekerList.filter((user) =>
+          user.name.toLowerCase().includes(query)
         )
       );
     } else {
-      setUserData(
-        jobSeekerList.filter((user) =>
-          user.name.toLowerCase().includes(event.target.value.toLowerCase())
-        )
-      );
+      setFilteredJobSeekerList(jobSeekerList);
     }
   };
-  const addModalHandler = () => {
-    props.onShowAddUser(true);
-  };
+
   const editModalHandler = (userData) => {
     props.onEditUser(userData);
   };
@@ -100,7 +88,7 @@ const ManageUsers = (props) => {
           <h6 className="text-2xl text-[#545454] py-4 font-bold whitespace-nowrap">Manage Users</h6>
           <button
             id="add-new-user"
-            onClick={addModalHandler}
+            onClick={handleShow}
             className="p-2 rounded-xl bg-gradient-to-r from-[#57b7fc] to-[#2085cf] hover:from-white hover:to-white  
           hover:text-[#686868] font-medium shadow transition-all ease-in-out border-1 hover:border-[#2085cf]"
           >
@@ -110,12 +98,14 @@ const ManageUsers = (props) => {
       </div>
       {/* table Section */}
       {showSpinner && <SpinnerComponent />}
-      {jobProviderList.length > 0 && (
+      {filteredJobSeekerList.length > 0 && (
         <div className="rounded-3xl shadow-md overflow-auto">
-          <table className="w-[100%]">
+          <table className="w-[100%] table-bordered">
             <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
               <tr className="text-white border-0 text-lg">
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Name</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap">profile pic</th>
+
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Email</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Mobile</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap">role</th>
@@ -132,8 +122,11 @@ const ManageUsers = (props) => {
                     key={user._id}
                     role={user.role}
                     userInfo={user}
-                    onEdit={editModalHandler}
+                    // onEdit={editModalHandler}
                     onDelete={props.onShowDelete}
+                    showEditModal={showEditModal}
+                    setShowEditModal={setShowEditModal}
+                    setCurrentUser={setCurrentUser}
                   />
                 );
               })}
@@ -142,86 +135,28 @@ const ManageUsers = (props) => {
         </div>
       )}
       <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
-      {jobSeekerList.length === 0 && (
+      {filteredJobSeekerList.length === 0 && (
         <h3 className="text-center fw-bold">No user Data!</h3>
       )}
 
-      {/* <Row className={classes.rowStyle}>
-        <Col className={`${classes.manageUsers} col-md-3`}>
-          <span className={classes.span}>Manage Users</span>
-        </Col>
-        <Col className={`${classes.col} col-md-6  `}>
-          <Col
-            className={`${classes.search}d-flex justify-content-center align-items-center`}
-          >
-            <input
-              type="text"
-              id="search"
-              placeholder="Search Users"
-              className={classes.searchBar}
-              onChange={searchUserHandler}
-            />
-          </Col>
-          <Col className={classes.input}>
-            <label htmlFor="type">Role</label>
-            <select
-              name="type"
-              id="type"
-              ref={roleInputRef}
-              onChange={roleChangeHandler}
-            >
-              <option value="All">All</option>
-              <option value="User">User</option>
-              <option value="Job Provider">Job Provider</option>
-            </select>
-          </Col>
-        </Col>
-        <Col className={`${classes.addUser} col-md-3`}>
-          <Button
-            id="add-new-user"
-            className={classes.button}
-            onClick={addModalHandler}
-          >
-            Add New User
-          </Button>
-        </Col>
-      </Row>
-      {showSpinner && <SpinnerComponent />}
-      {jobProviderList.length > 0 && (
-        <div className={classes.tableBox}>
-          <Table striped hover>
-            <thead>
-              <tr className={classes.tableHeader}>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
-                <th>role</th>
-                <th>gender</th>
-                <th>qualification</th>
-                <th>experience</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody className={classes.tableBody}>
-              {slice.map((user) => {
-                return (
-                  <ManageUserItem
-                    key={user._id}
-                    role={user.role}
-                    userInfo={user}
-                    onEdit={editModalHandler}
-                    onDelete={props.onShowDelete}
-                  />
-                );
-              })}
-            </tbody>
-          </Table>
-        </div>
-      )}
-      <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
-      {jobSeekerList.length === 0 && (
-        <h3 className="text-center fw-bold">No user Data!</h3>
-      )} */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add JobSeeker</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AddUserForm />
+        </Modal.Body>
+      </Modal>
+      <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit User</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          
+            <EditeUser user={currentUser} />
+        
+        </Modal.Body>
+      </Modal>
     </React.Fragment>
   );
 };

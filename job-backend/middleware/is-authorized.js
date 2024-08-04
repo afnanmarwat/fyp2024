@@ -31,7 +31,7 @@ exports.isAuthorized = (req, res, next) => {
         // If user is null, it means the previous check passed and no need to do anything
         return;
       } else {
-        const error = new Error("User not found");
+        const error = new Error("User not found nowwww");
         error.statusCode = 404;
         throw error;
       }

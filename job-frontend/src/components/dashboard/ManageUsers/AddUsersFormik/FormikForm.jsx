@@ -33,7 +33,7 @@ const FormikForm = (props) => {
   }
 
   const formSubmitHandler = (values, { setSubmitting }) => {
-    console.log('hitting edite')
+    console.log('hitting edite',props.userInfo)
     // Check if it's an edit or add operation
     if (props.userInfo) {
       props.onEdit(values);

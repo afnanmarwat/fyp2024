@@ -129,7 +129,41 @@ exports.getAvailableJobs = async (req, res, next) => {
     next(err);
   }
 };
+// job by id 
+exports.getJobById = async (req, res, next) => {
+  const jobId = req.params.jobId;
 
+  try {
+    // Fetch the job by ID and populate provider details
+    const job = await Job.findById(jobId)
+      .lean()
+      .populate({
+        path: 'providerId',
+        select: 'profilePic company'
+      });
+
+    if (!job) {
+      return res.status(404).json({ message: 'Job not found' });
+    }
+
+    // Handle cases where providerId might be null
+    const jobWithProviderDetails = {
+      ...job,
+      providerImage: job.providerId ? job.providerId.profilePic : null,
+      providerCompany: job.providerId ? job.providerId.company : 'Unknown'
+    };
+
+    res.status(200).json({
+      message: "Fetched the job details",
+      job: jobWithProviderDetails
+    });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
+};
 
 exports.getAppliedJobs = (req, res, next) => {
   let appliedJobs = [];

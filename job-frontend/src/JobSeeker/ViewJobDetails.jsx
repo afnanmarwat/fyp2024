@@ -1,12 +1,35 @@
 import React from 'react'
 import { RiArrowDropLeftLine } from 'react-icons/ri';
-import { NavLink } from 'react-router-dom';
+import { NavLink ,useParams} from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import Config from "../config/Config.json";
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 
 const View_job_details = () => {
-    const location = useLocation();
-    const { job } = location.state || {};
-    console.log('vvvvvvvvvvvvvvvvvvv',job);
+    const { jobId } = useParams();
+    const [job, setJob] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    console.log('veiwjob',job)
+    useEffect(() => {
+        const fetchJobDetails = async () => {
+          try {
+            const response = await axios.get(`http://localhost:8080/user/job/${jobId}`, {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+              }
+            });
+            setJob(response.data.job);
+            setLoading(false);
+          } catch (err) {
+            setError(err.response ? err.response.data.message : err.message);
+            setLoading(false);
+          }
+        };
+    
+        fetchJobDetails();
+      }, [jobId]);
     return (
         <>
             <div className="md:m-10 p-3 flex flex-col gap-4">

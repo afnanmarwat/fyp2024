@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { Form} from "react-bootstrap";
+import { Form, Button, FormCheck, FormSelect } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import Header from "./Header";
 // import classes from "./Register.module.css";
@@ -154,17 +154,19 @@ const Login = () => {
                     />
                     <p style={{ color: "red" }}> {errors.password} </p>
                   </div>
-                  <div className="" controlId="formBasicEmail">
-                    <Form.Control
-                      type="role"
-                      name="role"
-                      placeholder="role"
-                      value={inputs.role}
-                      onChange={handleChange}
-                    />
-
-                    {/* <p style={{ color: "red" }}> {errors.email} </p> */}
-                  </div>
+                  <div className="flex flex-col gap-1">
+                  <label htmlFor="role">Role</label>
+                  <FormSelect
+                    id="role"
+                    name="role"
+                    value={inputs.role}
+                    onChange={handleChange}
+                  >
+                    <option value="">Select Role</option>
+                    <option value="JobSeeker">Job Seeker</option>
+                    <option value="JobProvider">Job Provider</option>
+                  </FormSelect>
+                </div>
                   
                 </div>
                 {/* <Link to="/Dashboard"> */}

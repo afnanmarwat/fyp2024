@@ -10,17 +10,24 @@ import Config from "../../../config/Config.json";
 import classes from "./ManageUsers.module.css";
 import ManageProviderItem from "./ManageProviderItem";
 import { IoSearch } from "react-icons/io5";
-
-let userdata = [];
+import Modal from 'react-bootstrap/Modal';
+import AddProvider from "./AddProvider";
+import EditeProvider from "./EditeProvider"
 export const ManageProvider = (props) => {
   const [page, setPage] = useState(1);
   const [showSpinner, setShowSpinner] = useState(true);
-  const [jobSeekerList, setJobSeekerList] = useState([]);
   const [jobProviderList, setJobProviderList] = useState([]);
-  const [userData, setUserData] = useState([]);
-  const roleInputRef = useRef();
-  console.log(jobSeekerList, jobProviderList)
+  const [filteredJobProviderList, setFilteredJobProviderList] = useState([]);
   const token = localStorage.getItem("token");
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  console.log('current user',currentUser)
 
   useEffect(() => {
     setShowSpinner(true);
@@ -31,42 +38,28 @@ export const ManageProvider = (props) => {
         },
       })
       .then((response) => {
-        const data = response.data.users;
-
-        setJobSeekerList(data.jobSeekers)
-        setJobProviderList(data.jobProviders)
+        const data = response.data.users.jobProviders;
+        setJobProviderList(data);
+        setFilteredJobProviderList(data);
         setShowSpinner(false);
-        // console.log(data);
-        userdata = [...data];
-        setUserData(data);
       });
   }, [props.changes, token]);
 
-  const { slice, range } = useTable(jobProviderList, page, 5);
+  const { slice, range } = useTable(filteredJobProviderList, page, 5);
 
-  const roleChangeHandler = (event) => {
-    if (event.target.value === "All") {
-      setUserData(jobProviderList);
+  const searchUserHandler = (event) => {
+    const query = event.target.value.toLowerCase();
+    if (query) {
+      setFilteredJobProviderList(
+        jobProviderList.filter((user) =>
+          user.company.toLowerCase().includes(query)
+        )
+      );
     } else {
-      setUserData(jobProviderList.filter((user) => user.role === event.target.value));
+      setFilteredJobProviderList(jobProviderList);
     }
   };
-  const searchUserHandler = (event) => {
-    const role = roleInputRef.current.value;
 
-    setUserData(
-      jobProviderList.filter(
-        (user) =>
-          user.name
-            .toLowerCase()
-            .includes(event.target.value.toLowerCase()) && user.role === role
-      )
-    );
-
-  };
-  const addModalHandler = () => {
-    props.onShowAddUser(true);
-  };
   const editModalHandler = (userData) => {
     props.onEditUser(userData);
   };
@@ -94,7 +87,7 @@ export const ManageProvider = (props) => {
           <h6 className="xs:text:sm md:text-2xl text-[#545454] py-4 font-bold whitespace-nowrap">Manage Provider</h6>
           <button
             id="add-new-user"
-            onClick={addModalHandler}
+            onClick={handleShow}
             className="p-2 rounded-xl bg-gradient-to-r from-[#57b7fc] to-[#2085cf] hover:from-white hover:to-white  
           hover:text-[#686868] font-medium shadow transition-all ease-in-out border-1 hover:border-[#2085cf]"
           >
@@ -104,12 +97,14 @@ export const ManageProvider = (props) => {
       </div>
       {/* table Section */}
       {showSpinner && <SpinnerComponent />}
-      {jobProviderList.length > 0 && (
+      {filteredJobProviderList.length > 0 && (
         <div className="rounded-3xl shadow-md overflow-auto">
           <table className="w-[100%]">
             <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
               <tr className="text-white border-0 text-lg">
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Name</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap">profile pic</th>
+
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Email</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap">role</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Bio</th>
@@ -123,8 +118,11 @@ export const ManageProvider = (props) => {
                     key={user._id}
                     role={user.role}
                     userInfo={user}
-                    onEdit={editModalHandler}
+                    // onEdit={editModalHandler}
                     onDelete={props.onShowDelete}
+                    showEditModal={showEditModal}
+                    setShowEditModal={setShowEditModal}
+                    setCurrentUser={setCurrentUser}
                   />
                 );
               })}
@@ -133,87 +131,30 @@ export const ManageProvider = (props) => {
         </div>
       )}
       <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
-      {jobProviderList.length === 0 && (
+      {filteredJobProviderList.length === 0 && (
         <h3 className="text-center fw-bold">No user Data!</h3>
       )}
 
-      {/* <Row className={classes.rowStyle}>
-        <Col className={`${classes.manageUsers} col-md-3`}>
-          <span className={classes.span}>Manage Provider</span>
-        </Col>
-        <Col className={`${classes.col} col-md-6  `}>
-          <Col
-            className={`${classes.search}d-flex justify-content-center align-items-center`}
-          >
-            <input
-              type="text"
-              id="search"
-              placeholder="Search Users"
-              className={classes.searchBar}
-              onChange={searchUserHandler}
-            />
-          </Col>
-          <Col className={classes.input}>
-            <label htmlFor="type">Role</label>
-            <select
-              name="type"
-              id="type"
-              ref={roleInputRef}
-              onChange={roleChangeHandler}
-            >
-              <option value="All">All</option>
-              <option value="User">User</option>
-              <option value="Job Provider">Job Provider</option>
-            </select>
-          </Col>
-        </Col>
-        <Col className={`${classes.addUser} col-md-3`}>
-          <Button
-            id="add-new-user"
-            className={classes.button}
-            onClick={addModalHandler}
-          >
-            Add New User
-          </Button>
-        </Col>
-      </Row>
-      {showSpinner && <SpinnerComponent />}
-      {jobProviderList.length > 0 && (
-        <div className={classes.tableBox}>
-          <Table striped hover>
-            <thead>
-              <tr className={classes.tableHeader}>
-                <th>Name</th>
-                <th>Email</th>
-                <th>role</th>
-                <th>Bio</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody className={classes.tableBody}>
-              {slice.map((user) => {
-                return (
-                  <ManageProviderItem
-                    key={user._id}
-                    role={user.role}
-                    userInfo={user}
-                    onEdit={editModalHandler}
-                    onDelete={props.onShowDelete}
-                  />
-                );
-              })}
-            </tbody>
-          </Table>
-        </div>
-      )}
-      <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
-      {jobProviderList.length === 0 && (
-        <h3 className="text-center fw-bold">No user Data!</h3>
-      )} */}
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>add Provider</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AddProvider />
+        </Modal.Body>
+      </Modal>
+      <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit User</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          
+            <EditeProvider provider={currentUser} />
+        
+        </Modal.Body>
+      </Modal>
     </React.Fragment>
   );
 };
 
-// export default ManageUsers;
-
-// export default ManageProvider;
+export default ManageProvider;

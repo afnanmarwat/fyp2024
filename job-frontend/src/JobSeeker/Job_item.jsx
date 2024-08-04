@@ -7,7 +7,7 @@ import { useState } from "react";
 
 function Jobitem({ item, jobApply }) {
   const tag = item.title.split(" ")[0].toLowerCase();
-
+console.log(item)
   const [buttons, setButtons] = useState(false)
   const showButtons = () => {
     setButtons(!buttons);
@@ -61,7 +61,7 @@ function Jobitem({ item, jobApply }) {
               {/* View Job and Apply btn */}
               <div className="flex items-center sm:gap-2 md:gap-3">
                 {/* View Job button */}
-                <NavLink to="/viewJobDetails">
+                <NavLink   to={{ pathname: `/viewJobDetails/${item._id}`, state: { item } }}>
                   <button className="text-nowrap xs:text-xs md:text-lg text-[#0f1137]  border-1 border-[#1d81ca] hover:bg-[#1d81ca] hover:text-white px-3 py-2 rounded-3xl transition-all duration-300 hover:shadow-md">View Job</button>
                 </NavLink>
                 {/* Apply now button */}

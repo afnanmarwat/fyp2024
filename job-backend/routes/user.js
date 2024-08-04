@@ -27,6 +27,11 @@ router.get(
   isUser,
   userController.getAvailableJobs
 );
+router.get('/job/:jobId', 
+  isAuthenticated,
+  isAuthorized,
+  isUser,
+  userController.getJobById);
 // done 
 router.get(
   "/jobsApplied",

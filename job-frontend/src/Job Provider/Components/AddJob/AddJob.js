@@ -18,7 +18,8 @@ export default function AddJob(props) {
     numberOfPositions: "",
     salaryRange: "",
     age: "",
-    qualification: ""
+    qualification: "",
+    type:""
   };
 
   if (props.jobInfo) {
@@ -32,7 +33,8 @@ export default function AddJob(props) {
       numberOfPositions: props.jobInfo.numberOfPositions,
       salaryRange: props.jobInfo.salaryRange,
       age: props.jobInfo.age,
-      qualification: props.jobInfo.qualification
+      qualification: props.jobInfo.qualification,
+      type: props.jobInfo.type, // add this line for editing purpose
     };
   }
 
@@ -74,10 +76,17 @@ export default function AddJob(props) {
               <TextField label="Description" name="description" type="textarea" />
               <SelectInput label="Category" name="category">
                 <option value="">Select</option>
-                <option value="Software Development">Software Development</option>
-                <option value="HR Department">HR Department</option>
-                <option value="Technical and Hardware">Technical and Hardware</option>
-                <option value="Front Desk">Front Desk</option>
+                <option value="Development">Development</option>
+                <option value="Design">Design</option>
+                <option value="Gaming">Gaming</option>
+                <option value="Finance">Finance</option>
+              </SelectInput>
+              <SelectInput label="type" name="type">
+                <option value="">Select</option>
+                <option value="fullTime">full time</option>
+                <option value="partTime">part time</option>
+                <option value="contract">contract</option>
+                <option value="remote">remote</option>
               </SelectInput>
               <TextField label="Location" name="location" type="text" />
               <TextField label="Number of Positions" name="numberOfPositions" type="number" />

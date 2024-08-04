@@ -7,15 +7,15 @@ const ManageProviderItem = (props) => {
   const token = localStorage.getItem("token");
   const editButtonHandler = () => {
     axios
-      .get(`${Config.SERVER_URL + "admin/users/" + props.userInfo._id}`, {
+      .get(`${Config.SERVER_URL + "admin/jobprovider/" + props.userInfo._id}`, {
         headers: {
           Authorization: "Bearer " + token,
         },
       })
 
       .then((res) => {
-        console.log(res.data.user);
-        props.onEdit(res.data.user);
+        props.setCurrentUser(res.data.user);
+        props.setShowEditModal(true);
       })
       .catch((err) => console.log(err));
   };
@@ -25,6 +25,8 @@ const ManageProviderItem = (props) => {
   return (
     <tr className="text-[#808080] hover:bg-[#0000001f] border-2">
       <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.company}</td>
+      <td> <img src={`http://localhost:8080/${props.userInfo?.profilePic}`} alt="" className='w-[150px] h-[100px]' /></td>
+
       <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.email}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.role}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.bio}</td>
