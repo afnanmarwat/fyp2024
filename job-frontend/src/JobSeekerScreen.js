@@ -48,7 +48,7 @@ export default function JobSeekerScreen() {
 
             <Route path="/dashboard" element={<JobSeekerPage />} />
             <Route path="/appliedJobs" element={<AppliedJobsPage />} />
-            <Route path="/viewJobDetails" element={<ViewJobDetails />} />
+            <Route path="/viewJobDetails/:jobId" element={<ViewJobDetails />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/change-password" element={<Changepassword />} />
 

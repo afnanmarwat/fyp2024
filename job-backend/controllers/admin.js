@@ -134,46 +134,102 @@ console.log('admin role ', role);
       next(err);
     });
 };
-
-exports.getUser = (req, res, next) => {
+exports.getJobSeeker = (req, res, next) => {
   const userId = req.params.userId;
-console.log(`getUser`, userId);
-  let user; // Variable to store user details
+  console.log(`getJobSeeker`, userId);
 
-  // First, try to find the user as a JobSeeker
   JobSeeker.findById(userId)
     .lean()
     .then((foundUser) => {
       if (foundUser) {
-        user = foundUser;
-        user.role = 'JobSeeker'; // Add role information
-        return Promise.resolve(); // Continue to the next then block
+        console.log(`JobSeeker found:`, foundUser);
+        foundUser.role = 'JobSeeker'; // Add role information
+        res.status(200).json({ message: 'Fetched the JobSeeker successfully', user: foundUser });
+      } else {
+        const error = new Error('JobSeeker not found');
+        error.statusCode = 404;
+        throw error;
       }
-      // If not found as JobSeeker, try JobProvider
-      return JobProvider.findById(userId).lean();
-    })
-    .then((foundUser) => {
-      if (foundUser) {
-        user = foundUser;
-        user.role = 'JobProvider'; // Add role information
-        return Promise.resolve(); // Continue to the next then block
-      }
-      // If user is not found in both collections
-      const error = new Error('User not found');
-      error.statusCode = 404;
-      throw error;
-    })
-    .then(() => {
-      // Respond with the user details
-      res.status(200).json({ message: 'Fetched the user successfully', user: user });
     })
     .catch((err) => {
+      console.error(`Error occurred:`, err);
       if (!err.statusCode) {
         err.statusCode = 500;
       }
       next(err);
     });
 };
+exports.getJobProvider = (req, res, next) => {
+  const userId = req.params.userId;
+  console.log(`getJobProvider`, userId);
+
+  JobProvider.findById(userId)
+    .lean()
+    .then((foundUser) => {
+      if (foundUser) {
+        console.log(`JobProvider found:`, foundUser);
+        foundUser.role = 'JobProvider'; // Add role information
+        res.status(200).json({ message: 'Fetched the JobProvider successfully', user: foundUser });
+      } else {
+        const error = new Error('JobProvider not found');
+        error.statusCode = 404;
+        throw error;
+      }
+    })
+    .catch((err) => {
+      console.error(`Error occurred:`, err);
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+// exports.getUser = (req, res, next) => {
+//   const userId = req.params.userId;
+//   console.log(`getUser`, userId);
+//   let user; // Variable to store user details
+
+//   // First, try to find the user as a JobSeeker
+//   JobSeeker.findById(userId)
+//     .lean()
+//     .then((foundUser) => {
+//       if (foundUser) {
+//         console.log(`JobSeeker found:`, foundUser);
+//         user = foundUser;
+//         user.role = 'JobSeeker'; // Add role information
+//         return Promise.resolve(); // Continue to the next then block
+//       }
+//       // If not found as JobSeeker, try JobProvider
+//       console.log(`JobSeeker not found, trying JobProvider`);
+//       return JobProvider.findById(userId).lean();
+//     })
+//     .then((foundUser) => {
+//       if (foundUser) {
+//         console.log(`JobProvider found:`, foundUser);
+//         user = foundUser;
+//         user.role = 'JobProvider'; // Add role information
+//         return Promise.resolve(); // Continue to the next then block
+//       }
+//       // If user is not found in both collections
+//       console.log(`User not found in both JobSeeker and JobProvider`);
+//       const error = new Error('User not found');
+//       error.statusCode = 404;
+//       throw error;
+//     })
+//     .then(() => {
+//       // Respond with the user details
+//       console.log(`Fetched user successfully:`, user);
+//       res.status(200).json({ message: 'Fetched the user successfully', user: user });
+//     })
+//     .catch((err) => {
+//       console.error(`Error occurred:`, err);
+//       if (!err.statusCode) {
+//         err.statusCode = 500;
+//       }
+//       next(err);
+//     });
+// };
+
 exports.editUser = (req, res, next) => {
   const userId = req.params.userId;
 console.log(`Edit user ${userId}`);
@@ -231,7 +287,55 @@ console.log(`Edit user ${userId}`);
     next(err);
   });
 };
-exports.deleteUser = (req, res, next) => {
+exports.editJobProvider = (req, res, next) => {
+  const userId = req.params.userId;
+  console.log(`Edit JobProvider ${userId}`);
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    const error = new Error("Validation failed");
+    error.statusCode = 422;
+    error.data = errors.array();
+    throw error;
+  }
+
+  if (userId === req.userId) {
+    const error = new Error("Cannot edit the current User");
+    error.statusCode = 401;
+    throw error;
+  }
+
+  const updateData = {
+    email: req.body.email,
+    password: req.body.password,
+    company: req.body.company,
+    bio: req.body.bio,
+    location: req.body.location,
+  };
+
+  if (req.file) {
+    updateData.profilePic = req.file.path;
+  }
+
+  JobProvider.findByIdAndUpdate(userId, updateData, { new: true, useFindAndModify: false })
+    .then((data) => {
+      if (!data) {
+        res.status(404).json({
+          message: `Cannot update JobProvider with id=${userId}. Maybe JobProvider was not found!`,
+        });
+      } else {
+        res.status(200).json({ message: "JobProvider was updated successfully.", user: data });
+      }
+    })
+    .catch((err) => {
+      console.error(`Update error:`, err);
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+exports.deleteUser = async (req, res, next) => {
   const userId = req.params.userId;
 
   if (userId === req.userId) {
@@ -240,65 +344,69 @@ exports.deleteUser = (req, res, next) => {
     return next(error);
   }
 
-  let jobs = [];
   let role;
-  let resumes = [];
-  let applicants = [];
+  let user;
 
-  // Find the user and determine their role
-  User.findById(userId)
-    .then(user => {
-      if (!user) {
+  try {
+    // First, try to find the user as a JobSeeker
+    user = await JobSeeker.findById(userId).lean();
+    if (user) {
+      role = "JobSeeker";
+    } else {
+      // If not found as JobSeeker, try JobProvider
+      user = await JobProvider.findById(userId).lean();
+      if (user) {
+        role = "JobProvider";
+      } else {
+        // If user is not found in both collections
         const error = new Error("User not found!");
         error.statusCode = 404;
         throw error;
       }
-      role = user.role;
+    }
 
-      // Delete the user
-      return User.findByIdAndDelete(userId);
-    })
-    .then(() => {
-      if (role === "JobProvider") {
-        // Get the jobs posted by the Job Provider
-        return JobProvider.findById(userId).populate('jobsPosted');
-      } else if (role === "JobSeeker") {
-        // Handle specific logic for JobSeeker
-        return JobSeeker.findById(userId);
-      }
-    })
-    .then(user => {
-      if (role === "JobProvider" && user.jobsPosted.length > 0) {
-        jobs = user.jobsPosted;
-        // Delete the jobs associated with the Job Provider
-        return Job.deleteMany({ _id: { $in: jobs } });
-      } else if (role === "JobSeeker") {
-        // Handle specific logic for JobSeeker if needed
-        return Applicant.find({ userId: userId });
-      }
-      // If no associated jobs or no additional cleanup needed
-      return [];
-    })
-    .then(docs => {
-      docs.forEach(doc => {
-        resumes.push(doc.resume);
-        applicants.push(doc._id);
-      });
+    if (role === "JobSeeker") {
+      // Delete the JobSeeker
+      await JobSeeker.findByIdAndDelete(userId);
+
+      // Handle specific logic for JobSeeker
+      const applicants = await Applicant.find({ userId: userId }).lean();
+      const resumes = applicants.map(applicant => applicant.resume);
+      const applicantIds = applicants.map(applicant => applicant._id);
+
       // Delete applicants
-      return Applicant.deleteMany({ _id: { $in: applicants } });
-    })
-    .then(() => {
+      await Applicant.deleteMany({ _id: { $in: applicantIds } });
+
       // Clear resumes
       resumes.forEach(resume => clearResume(resume));
-      res.json({ message: "User record was deleted successfully!" });
-    })
-    .catch(err => {
-      if (!err.statusCode) {
-        err.statusCode = 500;
+    } else if (role === "JobProvider") {
+      // Get the jobs posted by the Job Provider
+      const jobProvider = await JobProvider.findById(userId).populate('jobsPosted').lean();
+      const jobs = jobProvider.jobsPosted.map(job => job._id);
+
+      // Delete the jobs associated with the Job Provider
+      if (jobs.length > 0) {
+        await Job.deleteMany({ _id: { $in: jobs } });
       }
-      next(err);
-    });
+
+      // Delete the JobProvider
+      await JobProvider.findByIdAndDelete(userId);
+    }
+
+    res.json({ message: "User record was deleted successfully!" });
+  } catch (err) {
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
+  }
 };
+
+// Function to clear resumes (assuming this is defined somewhere)
+// function clearResume(resume) {
+//   // Implement the logic to delete or clear the resume file
+// }
+
 exports.getJobs = (req, res, next) => {
   Job.find()
     .lean()

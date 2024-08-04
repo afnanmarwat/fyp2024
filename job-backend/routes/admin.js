@@ -70,12 +70,29 @@ router.post(
   adminController.postUser
 );
 
+// router.get(
+//   "/users/:userId",
+//   isAuthenticated,
+//   isAuthorized,
+//   isAdmin,
+//   adminController.getUser
+// );
+
 router.get(
-  "/users/:userId",
+  "/jobseeker/:userId",
   isAuthenticated,
   isAuthorized,
   isAdmin,
-  adminController.getUser
+  adminController.getJobSeeker
+);
+
+
+router.get(
+  "/jobprovider/:userId",
+  isAuthenticated,
+  isAuthorized,
+  isAdmin,
+  adminController.getJobProvider
 );
 
 router.put(
@@ -103,6 +120,30 @@ router.put(
   adminController.editUser
 );
 
+router.put(
+  "/edit-provider/:userId",
+  isAuthenticated,
+  isAuthorized,
+  isAdmin,
+  // [
+  //   body("name").trim().not().isEmpty(),
+  //   body("age").isInt({ min: 18, max: 60 }),
+  //   body("mobile")
+  //     .trim()
+  //     .custom((value, { req }) => {
+  //       const mobile_pattern = /^[1-9]{1}[0-9]{9}$/;
+  //       if (!mobile_pattern.test(value)) {
+  //         return Promise.reject("Invalid Mobile Number");
+  //       }
+  //       return true;
+  //     }),
+  //   body("gender").trim().not().isEmpty(),
+  //   body("qualification").trim().not().isEmpty(),
+  //   body("experience").trim().not().isEmpty(),
+  //   body("role").trim().not().isEmpty(),
+  // ],
+  adminController.editJobProvider
+);
 router.delete(
   "/users/:userId",
   isAuthenticated,

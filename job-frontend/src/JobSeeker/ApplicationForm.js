@@ -30,6 +30,7 @@ function Register(props) {
       };
     });
   };
+  console.log('provider id ',props.providerId);
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -38,7 +39,7 @@ function Register(props) {
       formData.append("email", inputs.email);
       formData.append("resume", inputs.Resume);
       formData.append("jobId", props.job._id);
-      formData.append("providerId", props.job.providerId);
+      formData.append("providerId", props.job.providerId._id);
 
       setSpinner(true);
       axios

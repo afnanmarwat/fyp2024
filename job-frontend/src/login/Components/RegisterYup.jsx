@@ -146,16 +146,20 @@ const Register = (props) => {
               </div>
               {rolcheck === 'JobSeeker' ? (
                 <Form className="flex flex-col gap-3">
-                  <div className="flex flex-col gap-1">
-                    <label htmlFor="role">Role</label>
-                    <Form.Control
-                      id="role"
-                      name="role"
-                      placeholder="role"
-                      value={formData.role}
-                      onChange={handleFormChange}
-                    />
-                  </div>
+                 
+                 <div className="flex flex-col gap-1">
+                  <label htmlFor="role">Role</label>
+                  <FormSelect
+                    id="role"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleFormChange}
+                  >
+                    <option value="">Select Role</option>
+                    <option value="JobSeeker">Job Seeker</option>
+                    <option value="JobProvider">Job Provider</option>
+                  </FormSelect>
+                </div>
                   <div className="flex flex-col justify-center">
                     <Form.Control
                       id="name"
@@ -280,13 +284,16 @@ const Register = (props) => {
                 <Form className="flex flex-col gap-3">
                   <div className="flex flex-col gap-1">
                     <label htmlFor="role">Role</label>
-                    <Form.Control
-                      id="role"
-                      name="role"
-                      placeholder="role"
-                      value={providerForm.role}
-                      onChange={handleFormChangeProvider}
-                    />
+                    <FormSelect
+                    id="role"
+                    name="role"
+                    value={providerForm.role}
+                    onChange={handleFormChangeProvider}
+                  >
+                    <option value="">Select Role</option>
+                    <option value="JobSeeker">Job Seeker</option>
+                    <option value="JobProvider">Job Provider</option>
+                  </FormSelect>
                   </div>
                   <div className="flex flex-col justify-center">
                     <Form.Control

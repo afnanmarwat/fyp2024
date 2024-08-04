@@ -41,7 +41,7 @@ const ManageUsersPage = () => {
   };
 
   const deleteItemHandler = () => {
-    // console.log("delete click", userId);
+    console.log("delete click", userId);
     setDeleteModal(false);
     setSpinner(true);
     axios
@@ -93,6 +93,7 @@ const ManageUsersPage = () => {
   };
   const editUserItemHandler = (values) => {
     const u_id = values._id;
+    console.log('hit edite',values)
     const updatedValues = {
       name: values.name,
       email: values.email,

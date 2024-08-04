@@ -204,6 +204,7 @@ exports.addJob = (req, res, next) => {
     salaryRange: req.body.salaryRange,
     age: req.body.age,
     qualification: req.body.qualification,
+    type:req.body.type,
     providerId: req.userId, // Assuming req.userId is set to the logged-in job provider's ID
   });
 

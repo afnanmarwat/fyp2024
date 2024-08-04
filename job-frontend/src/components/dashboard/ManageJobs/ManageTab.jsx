@@ -32,7 +32,7 @@ const ManageTab = (props) => {
       const jobData = response.data.jobs;
       setShowSpinner(false);
 
-      // console.log(data);
+      console.log('hiii',jobData);
       setJobData(jobData);
       setStaticJobData(jobData);
     };
