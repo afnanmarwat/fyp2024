@@ -155,7 +155,6 @@ const Login = () => {
                     <p style={{ color: "red" }}> {errors.password} </p>
                   </div>
                   <div className="flex flex-col gap-1">
-                  <label htmlFor="role">Role</label>
                   <FormSelect
                     id="role"
                     name="role"
@@ -165,6 +164,7 @@ const Login = () => {
                     <option value="">Select Role</option>
                     <option value="JobSeeker">Job Seeker</option>
                     <option value="JobProvider">Job Provider</option>
+                    <option value="Admin">Admin</option>
                   </FormSelect>
                 </div>
                   

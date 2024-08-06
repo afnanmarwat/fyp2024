@@ -9,7 +9,7 @@ const TableFooter = ({ range, setPage, page, slice }) => {
     }
   }, [slice, page, setPage]);
   return (
-    <div className={classes.tableFooter}>
+    <div className="p-2 flex justify-end bg-[#f9f9f9]">
       {range.map((el, index) => (
         <button
           key={index}
