@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const View_job_details = () => {
     const { jobId } = useParams();
-    const [job, setJob] = useState(null);
+    const [job, setJob] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     console.log('veiwjob',job)
