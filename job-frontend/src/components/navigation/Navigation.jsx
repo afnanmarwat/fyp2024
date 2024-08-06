@@ -136,12 +136,12 @@ const Navigation = ({showSideBarProps}) => {
               >
                 Applied Jobs
               </NavLink>
-              {/* <NavLink
+              <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/"
               >
                 Companies
-              </NavLink> */}
+              </NavLink>
               {/* <NavLink
                 className={(navData) =>
                   navData.isActive ? classes.active : ""

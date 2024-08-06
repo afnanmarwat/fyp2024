@@ -119,12 +119,12 @@ console.log("jobs", jobs);
               </p>
             </div>
             {/* 6 */}
-            {/* <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
+            <div className="group w-[150px] xl:w-[170px] h-[130px] xl:h-[150px] bg-[#f5f6f8] hover:bg-[#1a75e8] hover:cursor-pointer hover:text-white flex flex-col gap-2 justify-center items-center  rounded-xl hover:scale-110 transition-all duration-300">
               <SiVorondesign className="group-hover:text-white text-2xl text-[#aeb4c1]" />
               <p className="group-hover:text-white text-xl text-[#0f1137]">
                 Design
               </p>
-            </div> */}
+            </div>
           </div>
         </div>
         {/* joblist section */}
