@@ -178,12 +178,12 @@ const Login = () => {
                   >
                     Login
                   </button>
-                  <div className="text-nowrap">
+                  {/* <div className="text-nowrap">
                     <Link className="underline" to="/Reset">
                       {" "}
                       Forgot Password?{" "}
                     </Link>
-                  </div>
+                  </div> */}
                 </div>
                 {/* </Link> */}
                 {/* Link for sign-up */}
