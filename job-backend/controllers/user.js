@@ -129,6 +129,7 @@ exports.getAvailableJobs = async (req, res, next) => {
     next(err);
   }
 };
+
 // job by id 
 exports.getJobById = async (req, res, next) => {
   const jobId = req.params.jobId;
