@@ -51,7 +51,7 @@ const ManageUserItem = (props) => {
     <>
       <tr className="text-[#808080] hover:bg-[#0000001f] border-2">
         <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.name}</td>
-        <td> <img src={`http://localhost:8080/${props.userInfo?.profilePic}`} alt="" className='w-[150px] h-[100px]' /></td>
+        <td className="px-4 py-3 whitespace-nowrap"> <img src={`http://localhost:8080/${props.userInfo?.profilePic}`} alt="" className='w-[150px] h-[100px]' /></td>
         <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.email}</td>
         <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.mobile}</td>
         <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.role}</td>
