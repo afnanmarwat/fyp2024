@@ -102,12 +102,10 @@ export const ManageProvider = (props) => {
           <table className="w-[100%]">
             <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
               <tr className="text-white border-0 text-lg">
+                <th className="font-medium px-4 py-3 whitespace-nowrap">Company</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Name</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap">profile pic</th>
-
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Email</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap">role</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap">Bio</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Actions</th>
               </tr>
             </thead>

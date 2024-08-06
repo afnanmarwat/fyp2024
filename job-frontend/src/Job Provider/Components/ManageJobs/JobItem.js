@@ -24,7 +24,6 @@ const JobItem = (props) => {
   return (
     <tr className="text-[#808080] hover:bg-[#0000001f] border-2" key={props.jobInfo._id}>
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.title}</td>
-      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.description}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.category}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.startDate}</td> 
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.endDate}</td>

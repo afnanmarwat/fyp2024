@@ -93,7 +93,6 @@ const ManageTab = (props) => {
               <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
                 <tr className="text-white border-0 text-lg">
                   <th className="font-medium px-4 py-3 whitespace-nowrap"> Job Title</th>
-                  <th className="font-medium px-4 py-3 whitespace-nowrap">Job Description</th>
                   <th className="font-medium px-4 py-3 whitespace-nowrap">Start Date</th>
                   <th className="font-medium px-4 py-3 whitespace-nowrap">End Date</th>
                   <th className="font-medium px-4 py-3 whitespace-nowrap">Actions</th>

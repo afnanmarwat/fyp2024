@@ -47,7 +47,7 @@ export default function AddJob(props) {
   const validate = Yup.object({
     title: Yup.string().max(30).required("Required"),
     description: Yup.string()
-      .max(100, "Must be 100 characters or less")
+      // .max(100, "Must be 100 characters or less")
       .required("Required"),
     startDate: Yup.date().required("Required"),
     endDate: Yup.date().required("Required"),

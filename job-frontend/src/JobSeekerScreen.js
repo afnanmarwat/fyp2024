@@ -52,7 +52,6 @@ export default function JobSeekerScreen() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/change-password" element={<Changepassword />} />
 
-            {/* </Route> */}
           </Routes>
         </div>
         <Footer />
