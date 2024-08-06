@@ -174,7 +174,7 @@ console.log("jobs", jobs);
               ))}
             </div>
             {/* Job Type */}
-            <div className="hidden xl:flex flex-col gap-4 justify-center border-1 hover:border-[#1a75e8] p-3 rounded w-[20%] h-full">
+            {/* <div className="hidden xl:flex flex-col gap-4 justify-center border-1 hover:border-[#1a75e8] p-3 rounded w-[20%] h-full">
               <h5 className="text-xl font-bold">Job Type</h5>
               <form className="flex flex-col gap-1">
                 <div className="flex gap-2">
@@ -194,7 +194,7 @@ console.log("jobs", jobs);
                   <label htmlFor="internship" className="text-[#aeb4c1] hover:cursor-pointer">Internship</label>
                 </div>
               </form>
-            </div>
+            </div> */}
           </div>
         </div>
       </main>
