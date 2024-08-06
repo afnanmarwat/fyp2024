@@ -113,12 +113,12 @@ const Sidebar = ({ showSidebarProps }) => {
                                 </div>
                             </NavLink>
                             {/* Change password */}
-                            <NavLink to="/change-password" onClick={showSidebarProps}>
+                            {/* <NavLink to="/change-password" onClick={showSidebarProps}>
                                 <div className="flex gap-2 items-center p-2 hover:text-[#1d81ca] hover:bg-[#f9f9f9] rounded transition-all duration-300 ease-in-out" >
                                 <RiLockPasswordLine className=" text-lg" />
                                 <p className='font-semibold'>Change Password</p>
                                 </div>
-                            </NavLink>
+                            </NavLink> */}
                         </div>
                     </div>
                 )}

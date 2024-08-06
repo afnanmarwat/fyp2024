@@ -202,7 +202,6 @@ function Reports() {
               <thead className="bg-gradient-to-r from-[#57b7fc] to-[#2085cf] border-b-0 ">
                 <tr className="text-white border-0 text-lg">
                   <th className="font-medium px-4 py-3 whitespace-nowrap">Title</th>
-                  <th className="font-medium px-4 py-3 whitespace-nowrap">description</th>
                   <th className="font-medium px-4 py-3 whitespace-nowrap">Category</th>
                   <th className="font-medium px-4 py-3 whitespace-nowrap">StartDate</th>
                   <th className="font-medium px-4 py-3 whitespace-nowrap">EndDate</th>
@@ -212,7 +211,6 @@ function Reports() {
                 {slice.map((contact) => (
                   <tr className="text-[#808080] hover:bg-[#0000001f] border-2" key={contact._id}>
                     <td className="px-4 py-3 whitespace-nowrap">{contact.title}</td>
-                    <td className="px-4 py-3 whitespace-nowrap">{contact.description}</td>
                     <td className="px-4 py-3 whitespace-nowrap">{contact.category}</td>
                     <td className="px-4 py-3 whitespace-nowrap">{contact.startDate}</td>
                     <td className="px-4 py-3 whitespace-nowrap">{contact.endDate}</td>
@@ -222,7 +220,14 @@ function Reports() {
             </table>
           </div>
         )}
-
+        <div>
+          <TableFooter
+            range={range}
+            slice={slice}
+            setPage={setPage}
+            page={page}
+          />
+        </div>
         {reportsData.length === 0 && <h3>No Reports Data!</h3>}
 
       </div>

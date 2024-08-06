@@ -59,7 +59,7 @@ const Navigation = ({showSideBarProps}) => {
         </div>
         {/* <div aria-controls="navbar-dark-example" /> */}
         <div className="hidden md:inline-block" id="navbar-dark-example">
-          {redAuthToken.role === "Admin" && (
+          {/* {redAuthToken.role === "Admin" && (
             <div className={`me-auto ${classes.pageLinks}`}>
               <NavLink
                 className={(navData) =>
@@ -115,7 +115,7 @@ const Navigation = ({showSideBarProps}) => {
                 Reports
               </NavLink>
             </div>
-          )}
+          )} */}
           {redAuthToken.role === "JobSeeker" && (
             <div className="w-full font-sans p-1 flex gap-4 justify-center items-center text-[#0f1137] text-md tracking-tighter">
               <NavLink
@@ -136,12 +136,12 @@ const Navigation = ({showSideBarProps}) => {
               >
                 Applied Jobs
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
                 to="/"
               >
-                Companies
-              </NavLink>
+                Jobs
+              </NavLink> */}
               {/* <NavLink
                 className={(navData) =>
                   navData.isActive ? classes.active : ""
@@ -203,12 +203,12 @@ const Navigation = ({showSideBarProps}) => {
                   <p>Profile</p>
                 </NavLink>
               </Dropdown.Item>
-              <Dropdown.Item>
+              {/* <Dropdown.Item>
                 <Link className="flex gap-2 items-center" to="/change-password">
                   <RiLockPasswordLine className="text-green-600 text-lg" />
                   Change Password
                 </Link>
-              </Dropdown.Item>
+              </Dropdown.Item> */}
               <Dropdown.Divider />
               <Dropdown.Item
                 as={"button"}

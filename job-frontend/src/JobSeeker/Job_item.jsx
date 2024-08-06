@@ -39,7 +39,7 @@ console.log(item)
                 <div className="grid xs:grid-cols-2 md:grid-cols-3 gap-2 text-nowrap">
                   {/* Type */}
                   <span className="bg-[#1a81ffb0] text-xs text-white xs:px-1 md:px-2 md:py-0.5 border rounded">
-                    Full Time
+                    {item.type}
                   </span>
                   {/* Salary */}
                   <span className="text-[#aeb4c1] text-xs bg-[#f5f6f8] xs:px-1 md:px-2 md:py-0.5 border rounded">
