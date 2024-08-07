@@ -7,7 +7,7 @@ import { useState } from "react";
 
 function Jobitem({ item, jobApply }) {
   const tag = item.title.split(" ")[0].toLowerCase();
-console.log(item)
+  console.log(item)
   const [buttons, setButtons] = useState(false)
   const showButtons = () => {
     setButtons(!buttons);
@@ -21,10 +21,11 @@ console.log(item)
             {/* company name, title and detail section */}
             <div className="flex flex-row gap-4 items-center">
               {/* company image */}
-              <div className="w-[60px] h-[60px] border-1 border-gray-600 rounded-xl overflow-hidden shadow">
-              <img  src={`http://localhost:8080/${item?.providerImage}`} alt="Company Logo" />
-
-              </div>
+              {!item.status && (
+                <div className="w-[60px] h-[60px] border-1 border-gray-600 rounded-xl overflow-hidden shadow">
+                  <img src={`http://localhost:8080/${item?.providerImage}`} alt="Company Logo" />
+                </div>
+              )}
               {/* company div */}
               <div className="flex flex-col">
                 {/* Company name */}
@@ -61,7 +62,7 @@ console.log(item)
               {/* View Job and Apply btn */}
               <div className="flex items-center sm:gap-2 md:gap-3">
                 {/* View Job button */}
-                <NavLink   to={{ pathname: `/viewJobDetails/${item._id}`, state: { item } }}>
+                <NavLink to={{ pathname: `/viewJobDetails/${item._id}` }}>
                   <button className="text-nowrap xs:text-xs md:text-lg text-[#0f1137]  border-1 border-[#1d81ca] hover:bg-[#1d81ca] hover:text-white px-3 py-2 rounded-3xl transition-all duration-300 hover:shadow-md">View Job</button>
                 </NavLink>
                 {/* Apply now button */}
@@ -78,9 +79,9 @@ console.log(item)
 
                   <button
                     className={`
-                    ${"sm:text-sm lg:text-lg text-white text-nowrap self-end border-2 bg-[#1d81ca] px-3 py-2 rounded-xl"}
+                    ${"sm:text-sm lg:text-lg text-white text-nowrap self-end border-2  px-3 py-2 rounded-xl"}
                     ${item.status === "Shortlisted" ? "text-red-600" : ""} 
-                    ${item.status.includes("Applied") ? "bg-blue-600" : "bg-green-600"}} `}
+                    ${item.status.includes("Applied") ? "bg-purple-600" : "bg-green-600"} `}
                     disabled={true}
                   >
                     {item.status === "Shortlisted" ? (
@@ -200,7 +201,7 @@ console.log(item)
       <div className="sm:hidden inline-block border-1 w-full p-2 rounded-lg hover:border-[#1d81ca] hover:drop-shadow-2xl hover:bg-white  hover:cursor-pointer transition-all ease-in-out duration-100">
         <div className="relative flex justify-between overflow-hidden">
           {/* company name, image, title and detail section */}
-          <div  onClick={()=> {return setButtons(false)}} className="flex flex-row gap-2 items-start">
+          <div onClick={() => { return setButtons(false) }} className="flex flex-row gap-2 items-start">
             {/* company image */}
             <div className="w-[50px] h-[50px] rounded-xl overflow-hidden">
               <img src="./images/Jobitems/company1.jpeg" alt="" />
@@ -234,7 +235,7 @@ console.log(item)
           </div>
           {/* viewjob and apply job bars */}
           <div className="text-xl">
-            <BsThreeDotsVertical onClick={showButtons}  className="flex py-1 hover:cursor-pointer hover:text-[#1a75e8]"/>
+            <BsThreeDotsVertical onClick={showButtons} className="flex py-1 hover:cursor-pointer hover:text-[#1a75e8]" />
           </div>
           {/* View Job and Apply btn */}
           <div className={` ${buttons ? "translate-x-0" : "translate-x-[100vw]"} absolute right-1 top-6 bg-gradient-to-r from-[#3fa1e8] to-[#1d81ca] p-2 rounded transition-all duration-500`}>
@@ -243,7 +244,7 @@ console.log(item)
               {/* View Job and Apply btn */}
               <div className="flex flex-col gap-1 w-full text-white">
                 {/* View Job button */}
-                <NavLink to="/viewJobDetails">
+                <NavLink to={{ pathname: `/viewJobDetails/${item._id}` }}>
                   <div onClick={() => { return setButtons(false) }} className="text-nowrap px-3 py-1 text-xs hover:text-[#1a75e8] hover:bg-white rounded transition-all duration-200">View Job</div>
                 </NavLink>
                 {/* Apply now button */}

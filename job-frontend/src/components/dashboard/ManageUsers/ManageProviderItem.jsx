@@ -33,7 +33,7 @@ const ManageProviderItem = (props) => {
 
       <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.email}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.userInfo.role}</td>
-      <td className="flex gap-3 px-5 py-4 ">
+      <td className="flex gap-3 px-4 py-3 ">
         <button
           className="w-[100px] flex gap-2 items-center border-2 hover:border-green-700 hover:bg-[#18f97d39] hover:text-green-700  p-2 rounded-lg transition-all ease-in-out text-lg"
           onClick={editButtonHandler}

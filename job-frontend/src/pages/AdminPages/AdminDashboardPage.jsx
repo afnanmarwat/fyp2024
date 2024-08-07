@@ -54,7 +54,7 @@ const AdminDashboardPage = () => {
         {showSpinner && <SpinnerComponent />}
         {!showSpinner && (
           <>
-            <UserTable usersData={userData} />
+            {/* <UserTable usersData={userData} /> */}
             <JobsTable jobData={jobData} />
           </>
         )}

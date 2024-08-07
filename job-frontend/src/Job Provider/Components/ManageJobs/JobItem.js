@@ -25,7 +25,10 @@ const JobItem = (props) => {
     <tr className="text-[#808080] hover:bg-[#0000001f] border-2" key={props.jobInfo._id}>
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.title}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.category}</td>
-      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.startDate}</td> 
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.numberOfPositions}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.qualification}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.type}</td> 
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.salaryRange}</td> 
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.endDate}</td>
       <td className="flex gap-3 px-4 py-3 ">
         <button

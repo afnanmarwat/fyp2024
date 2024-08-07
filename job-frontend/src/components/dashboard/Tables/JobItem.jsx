@@ -13,8 +13,10 @@ const JobItem = (props) => {
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.location}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.qualification}</td>
       <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.numberOfPositions}</td>
-      <td className="px-4 py-3 whitespace-nowrap">{formattedCreatedAt}</td>
-      <td className="px-4 py-3 whitespace-nowrap">{formattedUpdatedAt}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.type}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.salaryRange}</td>
+      <td className="px-4 py-3 whitespace-nowrap">{props.jobInfo.endDate}</td>
+
     </tr>
   );
 };

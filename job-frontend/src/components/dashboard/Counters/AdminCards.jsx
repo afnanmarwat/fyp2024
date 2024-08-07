@@ -39,7 +39,7 @@ const AdminCards = ({ stats, ...props }) => {
         <AdminCard
           color="#ff5500"
           logo={<i className="bi bi-person-circle"></i>}
-          heading={"Total Users"}
+          heading={"Total Job Seeker"}
           statistics={stats.seekerCount}
           animate={"animate-[rtl_1.3s]"}
         />

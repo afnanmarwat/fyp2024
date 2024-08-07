@@ -68,7 +68,7 @@ const Profile = () => {
                             {/* update and message */}
                             <div className='flex gap-2'>
                                 <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] bg-[#2085cf] hover:bg-white text-[#f9f9f9] hover:text-[#2085cf] rounded-sm transition-all duration-300'>Update</button>
-                                <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] hover:bg-[#2085cf] text-[#2085cf] hover:text-[#f9f9f9]  rounded-sm transition-all duration-300'>Message</button>
+                                {/* <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] hover:bg-[#2085cf] text-[#2085cf] hover:text-[#f9f9f9]  rounded-sm transition-all duration-300'>Message</button> */}
                             </div>
                         </div>
                         {/* Bio part */}
@@ -118,7 +118,7 @@ const Profile = () => {
                             {/* update and message */}
                             <div className='flex gap-2'>
                                 <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] bg-[#2085cf] hover:bg-white text-[#f9f9f9] hover:text-[#2085cf] rounded-sm transition-all duration-300'>Update</button>
-                                <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] hover:bg-[#2085cf] text-[#2085cf] hover:text-[#f9f9f9]  rounded-sm transition-all duration-300'>Message</button>
+                                {/* <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] hover:bg-[#2085cf] text-[#2085cf] hover:text-[#f9f9f9]  rounded-sm transition-all duration-300'>Message</button> */}
                             </div>
                         </div>
                     </div>
