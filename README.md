@@ -76,3 +76,4 @@ Improved file structure
 Enhanced user authentication and authorization
 Additional features for employers and job seekers
 Thank you for checking out the Job Portal project! If you have any questions or feedback, please don't hesitate to reach out. Happy coding!
+
