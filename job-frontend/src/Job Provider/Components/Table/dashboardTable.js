@@ -16,7 +16,7 @@ const Table1 = (props) => {
         {/* Heading and View Btn */}
         <div className="flex justify-between items-center py-2">
           <h4 className="text-xl font-bold text-[#686868]">
-            Applicant Details
+            Recent Jobs
           </h4>
           {/* view all btn */}
           <button className="p-2 rounded-xl bg-[#2085cf] hover:bg-white hover:text-[#686868] font-medium shadow transition-all ease-in-out border-1 hover:border-[#2085cf]" onClick={recentJobsHandler}>
@@ -33,8 +33,9 @@ const Table1 = (props) => {
                 <th className="font-medium px-4 py-3 whitespace-nowrap ">Location</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap ">Qualification</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap ">Positions</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap ">First Created</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap ">Last Modified</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap ">Job Type</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap ">Salary</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap ">End Date</th>
               </tr>
             </thead>
             <tbody>

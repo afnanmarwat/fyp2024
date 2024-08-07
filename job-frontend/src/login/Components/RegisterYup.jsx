@@ -277,7 +277,7 @@ const Register = (props) => {
                     </div>
                   </div>
                   <div>
-                    <Button variant="primary" type="submit" onClick={formSubmitHandler}>Submit</Button>
+                    <Button variant="primary" type="submit" onClick={formSubmitHandler}>Signup</Button>
                   </div>
                 </Form>
               ) : (
@@ -352,7 +352,7 @@ const Register = (props) => {
                     </div>
                   </div>
                   <div>
-                    <Button variant="primary" type="submit" onClick={formSubmitHandler}>Submit</Button>
+                    <Button variant="primary" type="submit" onClick={formSubmitHandler}>Signup</Button>
                   </div>
                 </Form>
               )}

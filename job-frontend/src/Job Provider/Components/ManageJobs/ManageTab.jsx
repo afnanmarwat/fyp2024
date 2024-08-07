@@ -96,7 +96,10 @@ const ManageTab = (props) => {
                   <tr className="text-white border-0 text-lg">
                     <th className="font-medium px-4 py-3 whitespace-nowrap">Job Title</th>
                     <th className="font-medium px-4 py-3 whitespace-nowrap">Category</th>
-                    <th className="font-medium px-4 py-3 whitespace-nowrap">Start Date</th>
+                    <th className="font-medium px-4 py-3 whitespace-nowrap">Positions</th>
+                    <th className="font-medium px-4 py-3 whitespace-nowrap">Qualification</th>
+                    <th className="font-medium px-4 py-3 whitespace-nowrap">Job Type</th>
+                    <th className="font-medium px-4 py-3 whitespace-nowrap">Salary</th>
                     <th className="font-medium px-4 py-3 whitespace-nowrap">End Date</th>
                     <th className="font-medium px-4 py-3 whitespace-nowrap">Actions</th>
                   </tr>

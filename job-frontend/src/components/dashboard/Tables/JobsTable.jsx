@@ -38,8 +38,9 @@ const JobsTable = (props) => {
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Location</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Qualification</th>
                 <th className="font-medium px-4 py-3 whitespace-nowrap">Positions</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap">First Created</th>
-                <th className="font-medium px-4 py-3 whitespace-nowrap">Last Modified</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap">Job type</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap">Salary</th>
+                <th className="font-medium px-4 py-3 whitespace-nowrap">End date</th>
               </tr>
             </thead>
             <tbody>

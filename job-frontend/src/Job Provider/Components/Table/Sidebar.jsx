@@ -142,7 +142,7 @@ const Sidebar = ({ showSidebarProps }) => {
                                 to="/manage-users"
                             >
                                 <FaUsers className='text-xl' />
-                                <p className='font-medium'>Users</p>
+                                <p className='font-medium'>Job Seeker</p>
                             </NavLink>
                             <NavLink
                                 onClick={showSidebarProps}
