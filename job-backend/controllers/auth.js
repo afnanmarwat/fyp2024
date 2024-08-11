@@ -55,29 +55,37 @@ exports.signup = (req, res) => {
     throw error;
   }
 
-  const password = req.body.password;
-  const role = req.body.role; // Expecting 'JobSeeker' or 'JobProvider'
-  const profilePic = req.file ? req.file.path : null; // Get the path of the uploaded file
-console.log(profilePic, role);
-  bcryptjs
-    .hash(password, 12)
-    .then((hashedPw) => {
-      let newUser;
-      if (role === "JobSeeker") {
-        newUser = new JobSeeker({ ...req.body, password: hashedPw, profilePic });
-      } else if (role === "JobProvider") {
-        newUser = new JobProvider({ ...req.body, password: hashedPw, profilePic });
-      } else {
-        const error = new Error("Invalid role");
+  const { password, role, email } = req.body;
+  const profilePic = req.file ? req.file.path : null;
+
+  let UserModel;
+  if (role === "JobSeeker") {
+    UserModel = JobSeeker;
+  } else if (role === "JobProvider") {
+    UserModel = JobProvider;
+  } else {
+    const error = new Error("Invalid role");
+    error.statusCode = 422;
+    throw error;
+  }
+
+  UserModel.findOne({ email: email })
+    .then(user => {
+      if (user) {
+        const error = new Error("Email already in use");
         error.statusCode = 422;
         throw error;
       }
+      return bcryptjs.hash(password, 12);
+    })
+    .then(hashedPw => {
+      const newUser = new UserModel({ ...req.body, password: hashedPw, profilePic });
       return newUser.save();
     })
-    .then((user) => {
+    .then(user => {
       res.status(201).json({ message: "Registered Successfully!" });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       if (!err.statusCode) {
         err.statusCode = 500;
@@ -85,6 +93,7 @@ console.log(profilePic, role);
       res.status(err.statusCode).json({ message: err.message });
     });
 };
+
 
 exports.login = (req, res, next) => {
   // const errors = validationResult(req);
