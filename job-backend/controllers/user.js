@@ -3,11 +3,12 @@
 const Job = require("../models/job");
 const Applicant = require("../models/applicant");
 const JobSeeker = require("../models/jobseeker");
-
+const { validationResult } = require('express-validator');
 const { clearResume } = require("../util/helper");
 const { dateFormatter } = require("../util/helper");
 
-
+const fs = require('fs');
+const path = require('path');
 
 // profile 
 exports.getProfile = (req, res, next) => {
@@ -33,63 +34,92 @@ exports.getProfile = (req, res, next) => {
     });
 };
 
-// exports.editProfile = (req, res, next) => {
-//   const errors = validationResult(req);
-//   if (!errors.isEmpty()) {
-//     const error = new Error('Validation failed');
-//     error.statusCode = 422;
-//     error.data = errors.array();
-//     throw error;
-//   }
 
-//   const updatedProfile = {
-//     name: req.body.name,
-//     email: req.body.email,
-//     // Add more fields as needed
-//   };
 
-//   JobSeeker.findByIdAndUpdate(req.userId, updatedProfile, { new: true })
-//     .select('-password')
-//     .lean()
-//     .then((jobSeeker) => {
-//       if (!jobSeeker) {
-//         const error = new Error('JobSeeker not found');
-//         error.statusCode = 404;
-//         throw error;
-//       }
-//       res.status(200).json({
-//         message: 'JobSeeker profile updated successfully',
-//         profile: jobSeeker,
-//       });
-//     })
-//     .catch((err) => {
-//       if (!err.statusCode) {
-//         err.statusCode = 500;
-//       }
-//       next(err);
-//     });
-// };
-// exports.getAvailableJobs = (req, res, next) => {
-//   let appliedJobs = [];
-//   Applicant.find({ userId: req.userId })
-//     .lean()
-//     .then((applicants) => {
-//       applicants.forEach((applicant) => appliedJobs.push(applicant.jobId));
-//       return Job.find({ _id: { $not: { $in: appliedJobs } } }).lean();
-//     })
-//     .then((jobs) => {
-//       res.status(200).json({
-//         message: "Fetched the list of jobs",
-//         jobs: jobs,
-//       });
-//     })
-//     .catch((err) => {
-//       if (!err.statusCode) {
-//         err.statusCode = 500;
-//       }
-//       next(err);
-//     });
-// };
+exports.editProfile = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    const error = new Error('Validation failed');
+    error.statusCode = 422;
+    error.data = errors.array();
+    throw error;
+  }
+
+  const updatedProfile = {
+    name: req.body.name,
+    email: req.body.email,
+    age: req.body.age,
+    mobile: req.body.mobile,
+    gender: req.body.gender,
+    qualification: req.body.qualification,
+    experience: req.body.experience,
+    role: req.body.role, // Optional: If you allow users to update their role, but usually this should be handled by the backend
+    profilePic: req.body.profilePic, // This will be overridden if a new file is uploaded
+};
+
+// Check if a new profile picture was uploaded
+if (req.file) {
+    updatedProfile.profilePic = req.file.path.replace("\\", "/"); // Save the path of the uploaded file
+}
+
+
+  JobSeeker.findById(req.userId)
+    .then(jobSeeker => {
+      if (!jobSeeker) {
+        const error = new Error('JobSeeker not found');
+        error.statusCode = 404;
+        throw error;
+      }
+
+      // If a new profile picture was uploaded and the user already had a profile picture, delete the old one
+      if (req.file && jobSeeker.profilePic) {
+        const oldImagePath = path.join(__dirname, '..', jobSeeker.profilePic);
+        fs.unlink(oldImagePath, (err) => {
+          if (err) {
+            console.log("Failed to delete old profile picture:", err);
+          }
+        });
+      }
+
+      return JobSeeker.findByIdAndUpdate(req.userId, updatedProfile, { new: true })
+        .select('-password')
+        .lean();
+    })
+    .then(updatedJobSeeker => {
+      res.status(200).json({
+        message: 'JobSeeker profile updated successfully',
+        profile: updatedJobSeeker,
+      });
+    })
+    .catch(err => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+exports.getAvailableJobs = (req, res, next) => {
+  let appliedJobs = [];
+  Applicant.find({ userId: req.userId })
+    .lean()
+    .then((applicants) => {
+      applicants.forEach((applicant) => appliedJobs.push(applicant.jobId));
+      return Job.find({ _id: { $not: { $in: appliedJobs } } }).lean();
+    })
+    .then((jobs) => {
+      res.status(200).json({
+        message: "Fetched the list of jobs",
+        jobs: jobs,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
 exports.getAvailableJobs = async (req, res, next) => {
   try {
     // Fetch applied job IDs

@@ -2,6 +2,7 @@ const express = require("express");
 const { body } = require("express-validator");
 
 const providerController = require("../controllers/provider");
+const uplaod =require("../middleware/multerConfig");
 
 const isAuthenticated = require("../middleware/is-authenticated");
 const { isAuthorized, isProvider } = require("../middleware/is-authorized");
@@ -40,13 +41,6 @@ router.post(
   isAuthenticated,
   isAuthorized,
   isProvider,
-  // [
-  //   body("title").trim().not().isEmpty(),
-  //   body("description").trim().not().isEmpty(),
-  //   body("startDate").trim().not().isEmpty(),
-  //   body("endDate").trim().not().isEmpty(),
-  //   body("category").trim().not().isEmpty(),
-  // ],
   providerController.addJob
 );
 // done 
@@ -63,13 +57,6 @@ router.put(
   isAuthenticated,
   isAuthorized,
   isProvider,
-  [
-    body("title").trim().not().isEmpty(),
-    body("description").trim().not().isEmpty(),
-    body("startDate").trim().not().isEmpty(),
-    body("endDate").trim().not().isEmpty(),
-    body("category").trim().not().isEmpty(),
-  ],
   providerController.editJob
 );
 // done 
@@ -114,13 +101,14 @@ router.get(
   providerController.getProfile
 );
 // update profile
-// router.put(
-//   "/profile",
-//   isAuthenticated,
-//   isAuthorized,
-//   isProvider,
-//   providerController.editProfile
-// );
+router.put(
+  "/edit-profile",
+  uplaod.single('profilePic'),
+  isAuthenticated,
+  isAuthorized,
+  isProvider,
+  providerController.editProfile
+);
 
 router.patch(
   "/applicants/shortlist/:applicantItemId",
