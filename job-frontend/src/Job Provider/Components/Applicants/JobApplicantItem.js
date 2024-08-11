@@ -1,4 +1,3 @@
-// import classes from "./ApplicantItem.module.css";
 import { useNavigate } from "react-router-dom";
 
 const ApplicantItem = (props) => {

@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Row, Col, Button, Table, Container } from "react-bootstrap";
 import axios from "axios";
-// import { BsSearch } from "react-icons/bs";
 
-// import data from "../../../store/jobData.json";
 import TableFooter from "../Tables/TableFooter";
 import useTable from "../../../hooks/useTable";
 import SpinnerComponent from "../../UI/SpinnerComponent";
 import Config from "../../../config/Config.json";
-import classes from "./ManageTab.module.css";
 import JobItem from "./JobItem";
 import { IoSearch } from "react-icons/io5";
 
@@ -127,7 +123,7 @@ const ManageTab = (props) => {
 
       {/* <Container/> */}
       {jobData.length === 0 && (
-        <h3 className="text-center fw-bold">No jobs Data!</h3>
+        <h3 className="text-center font-bold">No jobs Data!</h3>
       )}
     </>
   );

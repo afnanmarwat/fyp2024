@@ -73,10 +73,10 @@ const Register = (props) => {
 
   return (
     <React.Fragment>
-      <section className="h-full bg-[rgba(243,247,250,255)] sm:py-4 sm:px-1 grid place-items-center overflow-hidden">
+      <section className="h-full bg-[rgba(243,247,250,255)] overflow-hidden">
         <div className="relative">
           {showSpinner && <SpinnerComponent />}
-          <div className="flex flex-col gap-4 relative z-20 bg-white px-2 sm:px-5 py-3 shadow-lg xs:min-w-[300] sm:min-w-[500px] rounded">
+          <div className="flex flex-col gap-4 relative z-20 bg-white px-2 sm:px-5 py-3 shadow-lg xs:min-w-[300] rounded">
             <Form className="flex flex-col gap-3" onSubmit={formSubmitHandler}>
               <div className="flex flex-col gap-1">
                 <label htmlFor="role">Role</label>

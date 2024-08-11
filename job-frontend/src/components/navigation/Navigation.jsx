@@ -1,10 +1,9 @@
 import React from "react";
 
-import { Link, useNavigate, NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
-import { RiLockPasswordLine } from "react-icons/ri";
 import { IoIosLogOut } from "react-icons/io";
-import classes from "./Navigation.module.css";
+// import classes from "./Navigation.module.css";
 import { Dropdown } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
@@ -136,55 +135,11 @@ const Navigation = ({showSideBarProps}) => {
               >
                 Applied Jobs
               </NavLink>
-              {/* <NavLink
-                className=" border-b-2 border-b-transparent hover:border-b-[#1d81ca] hover:text-[#1d81ca] focus:text-[#1d81ca] focus:border-b-[#1d81ca] transition-all duration-300 ease-in-out"
-                to="/"
-              >
-                Jobs
-              </NavLink> */}
-              {/* <NavLink
-                className={(navData) =>
-                  navData.isActive ? classes.active : ""
-                }
-                to="/ProviderReport"
-                onClick={(event) => event.preventDefault()}
-              >
-                Reports
-              </NavLink> */}
             </div>
           )}
         </div>
         {/* DropDown Section */}
         <div>
-          {/* <Nav>
-              <NavDropdown
-                id="nav-dropdown-dark-example"
-                title={
-                  <span className={classes.username}>
-                    <span className={classes.userLogo}>
-                      <i className="bi bi-person-circle"></i>
-                    </span>
-                    {authToken.username}
-                  </span>
-                }
-                menuVariant="light"
-                align="end"
-                className={classes.user}
-                as={"button"}
-              >
-                <NavDropdown.Item>
-                  <NavLink
-                    className={classes.changePassword}
-                    to="/change-password"
-                  >
-                    Change Password
-                  </NavLink>
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-
-                <Dropdown.Item href="/login">Logout</Dropdown.Item>
-              </NavDropdown>
-            </Nav> */}
           <Dropdown>
             <Dropdown.Toggle className="bg-gray-200 hover:bg-[#1d81ca] text-[#0f1137] px-3 rounded-full flex items-center justify-center transition-all duration-300 ease-in-out">
               <span>

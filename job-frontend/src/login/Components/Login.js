@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { Form, Button, FormCheck, FormSelect } from "react-bootstrap";
+import { Form, FormSelect } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import Header from "./Header";
 // import classes from "./Register.module.css";

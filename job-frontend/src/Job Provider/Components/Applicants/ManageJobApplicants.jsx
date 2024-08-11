@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import { Row, Col, Table, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import TableFooter from "../Table/TableFooter";
 import useTable from "../Hooks/useTable";
 
 import SpinnerComponent from "../../../components/UI/SpinnerComponent";
-// import classes from "./ApplicantTab.module.css";
 import ManageApplicantItem from "./ManageApplicantItem";
 import { IoSearch } from "react-icons/io5";
 let applicantsdata = [];
@@ -115,64 +113,6 @@ const ManageJobApplicants = () => {
           <h3 className="text-center fw-bold">No Applicant Data!</h3>
         )}
       </div>
-
-      {/* <Container>
-        <Row className={classes.rowStyle}>
-          <Col className={`${classes.manageUsers} col-md-3`}>
-            <span className={classes.span}>Manage Applicants</span>
-          </Col>
-          <Col className={`${classes.col} col-md-6  `}>
-            <Col className="d-flex justify-content-center align-items-center">
-              <input
-                type="text"
-                id="search"
-                placeholder="Search Applicants"
-                className={classes.searchBar}
-                onChange={searchApplicantHandler}
-              />
-            </Col>
-          </Col>
-        </Row>
-      </Container>
-      {applicantsData.length > 0 && (
-        <Container>
-          <div className={classes.tableBox}>
-            {showSpinner && <SpinnerComponent />}
-
-            <Table striped hover>
-              <thead>
-                <tr className={classes.tableHeader}>
-                  <th>Job Title</th>
-                  <th>Resume</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody className={classes.tableBody}>
-                {slice.map((applicantItem) => {
-                  return (
-                    <ManageApplicantItem
-                      key={applicantItem._id}
-                      applicantItem={applicantItem}
-                      setAction={setAction}
-                      token={token}
-                    />
-                  );
-                })}
-              </tbody>
-            </Table>
-          </div>
-          <TableFooter
-            range={range}
-            slice={slice}
-            setPage={setPage}
-            page={page}
-          />
-        </Container>
-      )} */}
-
-      {/* {applicantsData.length === 0 && (
-        <h3 className="text-center fw-bold">No Applicant Data!</h3>
-      )} */}
     </>
   );
 };

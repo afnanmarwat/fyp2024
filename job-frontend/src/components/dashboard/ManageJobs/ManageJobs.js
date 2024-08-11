@@ -3,7 +3,6 @@ import { Container } from "react-bootstrap";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import ManageTab from "./ManageTab";
 import ReactModal from "../../UI/ReactModal";
 import AddJob from "./AddJob/AddJob";

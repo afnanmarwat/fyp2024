@@ -1,12 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-// import { Container } from "react-bootstrap";
 import { IoSearch } from "react-icons/io5";
 import { SiVorondesign } from "react-icons/si";
 import axios from "axios";
 import Jobitem from "./Job_item";
 import ApplyModal from "./ApplyModal";
-// import classes from "./Modalf.module.css";
 import Config from "../config/Config.json";
 
 let jobsData = [];
@@ -15,7 +13,7 @@ const Jobs = () => {
   const [action, setAction] = useState(false);
   const [jobSet, setjobSet] = useState("");
   const [jobs, setJobs] = useState([]);
-console.log("jobs", jobs);
+  console.log("jobs", jobs);
   const closeModalHandler = () => {
     setModal(false);
   };
@@ -43,7 +41,7 @@ console.log("jobs", jobs);
       })
       .then((response) => {
         jobsData = response.data.jobs;
-     
+
         setJobs(response.data.jobs);
       })
       .catch((err) => {
@@ -178,19 +176,19 @@ console.log("jobs", jobs);
               <h5 className="text-xl font-bold">Job Type</h5>
               <form className="flex flex-col gap-1">
                 <div className="flex gap-2">
-                  <input type="checkbox" id="full-time"/>
+                  <input type="checkbox" id="full-time" />
                   <label htmlFor="full-time" className="text-[#aeb4c1] hover:cursor-pointer">Full-Time</label>
                 </div>
                 <div className="flex gap-2">
-                  <input type="checkbox" id="part-time"/>
+                  <input type="checkbox" id="part-time" />
                   <label htmlFor="part-time" className="text-[#aeb4c1] hover:cursor-pointer">Part-Time</label>
                 </div>
                 <div className="flex gap-2">
-                  <input type="checkbox" id="remote"/>
+                  <input type="checkbox" id="remote" />
                   <label htmlFor="remote" className="text-[#aeb4c1] hover:cursor-pointer">Remote</label>
                 </div>
                 <div className="flex gap-2">
-                  <input type="checkbox" id="internship"/>
+                  <input type="checkbox" id="internship" />
                   <label htmlFor="internship" className="text-[#aeb4c1] hover:cursor-pointer">Internship</label>
                 </div>
               </form>

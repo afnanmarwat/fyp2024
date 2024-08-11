@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import { Row, Col, Table, Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import TableFooter from "../Table/TableFooter";
 import useTable from "../Hooks/useTable";
 
 import SpinnerComponent from "../../../components/UI/SpinnerComponent";
-// import classes from "./ApplicantTab.module.css";
 import ManageShortlistItem from "./ManageShortlistItem";
 import Config from "../../../config/Config.json";
 import { IoSearch } from "react-icons/io5";

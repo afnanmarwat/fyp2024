@@ -108,7 +108,7 @@ const Register = (props) => {
 
   return (
     <React.Fragment>
-      <section className="h-full bg-[rgba(243,247,250,255)] sm:py-4 sm:px-1 grid place-items-center overflow-hidden">
+      <section className="min-h-[100vh] bg-[rgba(243,247,250,255)] sm:py-4 sm:px-1 grid place-items-center overflow-hidden">
         <div className="relative">
           <div className="hidden md:block bg-[rgba(28,220,199,255)] absolute top-[-90px] left-[300px] z-10 shadow-lg rounded-full w-[300px] h-[300px]"></div>
           <div className="hidden md:block bg-[rgba(152,145,212,255)] absolute top-[450px] left-[-120px] z-10 shadow-lg rounded-full w-[300px] h-[300px]"></div>
@@ -146,20 +146,20 @@ const Register = (props) => {
               </div>
               {rolcheck === 'JobSeeker' ? (
                 <Form className="flex flex-col gap-3">
-                 
-                 <div className="flex flex-col gap-1">
-                  <label htmlFor="role">Role</label>
-                  <FormSelect
-                    id="role"
-                    name="role"
-                    value={formData.role}
-                    onChange={handleFormChange}
-                  >
-                    <option value="">Select Role</option>
-                    <option value="JobSeeker">Job Seeker</option>
-                    <option value="JobProvider">Job Provider</option>
-                  </FormSelect>
-                </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label htmlFor="role">Role</label>
+                    <FormSelect
+                      id="role"
+                      name="role"
+                      value={formData.role}
+                      onChange={handleFormChange}
+                    >
+                      <option value="">Select Role</option>
+                      <option value="JobSeeker">Job Seeker</option>
+                      <option value="JobProvider">Job Provider</option>
+                    </FormSelect>
+                  </div>
                   <div className="flex flex-col justify-center">
                     <Form.Control
                       id="name"
@@ -285,15 +285,15 @@ const Register = (props) => {
                   <div className="flex flex-col gap-1">
                     <label htmlFor="role">Role</label>
                     <FormSelect
-                    id="role"
-                    name="role"
-                    value={providerForm.role}
-                    onChange={handleFormChangeProvider}
-                  >
-                    <option value="">Select Role</option>
-                    <option value="JobSeeker">Job Seeker</option>
-                    <option value="JobProvider">Job Provider</option>
-                  </FormSelect>
+                      id="role"
+                      name="role"
+                      value={providerForm.role}
+                      onChange={handleFormChangeProvider}
+                    >
+                      <option value="">Select Role</option>
+                      <option value="JobSeeker">Job Seeker</option>
+                      <option value="JobProvider">Job Provider</option>
+                    </FormSelect>
                   </div>
                   <div className="flex flex-col justify-center">
                     <Form.Control

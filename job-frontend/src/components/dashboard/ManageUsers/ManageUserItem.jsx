@@ -1,8 +1,5 @@
-import React, { useState } from "react";
 import axios from "axios";
-import classes from "./ManageUserItem.module.css";
 import Config from "../../../config/Config.json";
-// import Modal from 'react-bootstrap/Modal';
 
 const ManageUserItem = (props) => {
   console.log(`ManageUserItem`,props.userInfo);

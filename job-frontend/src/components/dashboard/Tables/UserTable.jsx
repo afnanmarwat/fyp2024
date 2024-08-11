@@ -1,6 +1,4 @@
 import React from "react";
-import classes from "./UserTable.module.css";
-import { Table, Row, Col, Button } from "react-bootstrap";
 import UserItem from "./UserItem";
 // import usersData from "../../../store/userData.json";
 import { useNavigate } from "react-router-dom";

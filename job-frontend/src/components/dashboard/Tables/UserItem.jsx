@@ -1,5 +1,4 @@
 import dateFormatter from "../../../util/dateFormatter";
-import classes from "./UserItem.module.css";
 const UserItem = (props) => {
   let formattedCreatedAt = dateFormatter(props.userInfo.createdAt);
   let formattedUpdatedAt = dateFormatter(props.userInfo.updatedAt);

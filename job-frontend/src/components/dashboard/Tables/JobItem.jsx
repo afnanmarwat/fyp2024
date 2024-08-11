@@ -2,8 +2,8 @@
 import dateFormatter from "../../../util/dateFormatter";
 
 const JobItem = (props) => {
-  let formattedCreatedAt = dateFormatter(props.jobInfo.createdAt);
-  let formattedUpdatedAt = dateFormatter(props.jobInfo.updatedAt);
+  // let formattedCreatedAt = dateFormatter(props.jobInfo.createdAt);
+  // let formattedUpdatedAt = dateFormatter(props.jobInfo.updatedAt);
   console.log("Jobs", props.jobInfo)
   return (
     <tr className="text-[#808080] hover:bg-[#0000001f] border-2">
