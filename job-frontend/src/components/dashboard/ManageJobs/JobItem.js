@@ -1,5 +1,4 @@
 import axios from "axios";
-import classes from "../ManageUsers/ManageUserItem.module.css";
 import Config from "../../../config/Config.json";
 
 const JobItem = (props) => {

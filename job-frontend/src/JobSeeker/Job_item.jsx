@@ -1,17 +1,15 @@
-// import { Card, ListGroupItem, ListGroup, Button } from "react-bootstrap";
-// import classes from "./Modalf.module.css";
-
 import { NavLink } from "react-router-dom";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { useState } from "react";
 
 function Jobitem({ item, jobApply }) {
-  const tag = item.title.split(" ")[0].toLowerCase();
   console.log(item)
   const [buttons, setButtons] = useState(false)
+
   const showButtons = () => {
     setButtons(!buttons);
   }
+
   return (
     <>
       <div className="hidden sm:inline-block border-1 w-full rounded-lg md:rounded-xl px-4 py-3 hover:border-[#1d81ca] hover:drop-shadow-2xl hover:bg-white  hover:cursor-pointer transition-all ease-in-out duration-100">
@@ -114,88 +112,6 @@ function Jobitem({ item, jobApply }) {
             </h5>
           </div>
         </div>
-
-
-
-
-        {/* <div className={classes.images}>
-        <Card.Img
-          variant="top"
-          src={`https://source.unsplash.com/276x170?${tag}+computer`}
-        />
-      </div> */}
-        {/* <Card.Body>
-        <Card.Title>
-          <h4>{item.title} Role</h4>
-        </Card.Title>
-      </Card.Body> */}
-        {/* <ListGroup className="list-group-flush">
-        <ListGroupItem>
-          <div className="d-flex justify-content-between">
-            <span className="badge bg-primary ">Full time</span>
-            <span className="badge bg-primary">Min.1 Year</span>
-            <span className="badge bg-primary">Senior Level</span>
-          </div>
-        </ListGroupItem>
-
-        <ListGroupItem>
-          <Card.Text className={classes.description}>
-            {item.description}
-          </Card.Text>
-        </ListGroupItem>
-        <ListGroupItem>
-          <h6>{item.category} </h6>
-        </ListGroupItem>
-        
-        <ListGroupItem>
-          <div className={classes.deadlines}>
-            <div>Apply From:</div>
-            <div className={classes.dates}>
-              <i className="bi bi-calendar2-check"></i>
-              <span className="mx-2">{item.startDate}</span>
-            </div>
-          </div>
-        </ListGroupItem>
-
-        <ListGroupItem>
-          <div className={classes.deadlines}>
-            <div>Apply Before:</div>
-            <div className={classes.dates}>
-              <i className="bi bi-calendar-x"></i>
-              <span className="mx-2">{item.endDate}</span>
-            </div>
-          </div>
-        </ListGroupItem>
-      </ListGroup> */}
-        {/* <Card.Body>
-        {!item.status && (
-          <Button
-            variant="primary"
-            onClick={() => {
-              jobApply(item);
-            }}
-          >
-            Apply Now
-          </Button>
-        )}
-        {item.status && (
-          <Button
-            variant={item.status.includes("Applied") ? "secondary" : "success"}
-            className={
-              item.status === "Shortlisted" ? classes.shortlistedButton : ""
-            }
-            disabled={true}
-          >
-            {item.status === "Shortlisted" ? (
-              <span>
-                Shortlisted <i className="bi bi-heart-fill"></i>
-              </span>
-            ) : (
-              item.status
-            )}
-          </Button>
-        )}
-      </Card.Body> */}
       </div >
       {/* for Small Device*/}
       <div className="sm:hidden inline-block border-1 w-full p-2 rounded-lg hover:border-[#1d81ca] hover:drop-shadow-2xl hover:bg-white  hover:cursor-pointer transition-all ease-in-out duration-100">

@@ -1,8 +1,6 @@
 import React from 'react'
 import { RiArrowDropLeftLine } from 'react-icons/ri';
 import { NavLink ,useParams} from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
-import Config from "../config/Config.json";
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 

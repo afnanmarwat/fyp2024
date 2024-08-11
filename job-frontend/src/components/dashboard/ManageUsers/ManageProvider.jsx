@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Row, Col, Button, Table } from "react-bootstrap";
 import axios from "axios";
 import useTable from "../../../hooks/useTable";
 import TableFooter from "../Tables/TableFooter";
@@ -7,7 +6,6 @@ import SpinnerComponent from "../../UI/SpinnerComponent";
 import Config from "../../../config/Config.json";
 // import data from "../../../store/userData.json";
 
-import classes from "./ManageUsers.module.css";
 import ManageProviderItem from "./ManageProviderItem";
 import { IoSearch } from "react-icons/io5";
 import Modal from 'react-bootstrap/Modal';
@@ -135,7 +133,7 @@ export const ManageProvider = (props) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>add Provider</Modal.Title>
+          <Modal.Title>Add Provider</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <AddProvider />

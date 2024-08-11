@@ -1,6 +1,4 @@
 import axios from "axios";
-
-// import classes from "./ApplicantItem.module.css";
 import Config from "../../../config/Config.json";
 
 const ApplicantItem = ({ setAction, ...props }) => {

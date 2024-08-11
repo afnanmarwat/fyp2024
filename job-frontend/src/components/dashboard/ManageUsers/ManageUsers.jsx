@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Row, Col, Button, Table } from "react-bootstrap";
 import axios from "axios";
 import useTable from "../../../hooks/useTable";
 import TableFooter from "../Tables/TableFooter";
@@ -7,7 +6,6 @@ import SpinnerComponent from "../../UI/SpinnerComponent";
 import Config from "../../../config/Config.json";
 // import data from "../../../store/userData.json";
 
-import classes from "./ManageUsers.module.css";
 import ManageUserItem from "./ManageUserItem";
 import { IoSearch } from "react-icons/io5";
 
@@ -146,83 +144,6 @@ const ManageUsers = (props) => {
       {jobSeekerList.length === 0 && (
         <h3 className="text-center fw-bold">No user Data!</h3>
       )}
-
-      {/* <Row className={classes.rowStyle}>
-        <Col className={`${classes.manageUsers} col-md-3`}>
-          <span className={classes.span}>Manage Users</span>
-        </Col>
-        <Col className={`${classes.col} col-md-6  `}>
-          <Col
-            className={`${classes.search}d-flex justify-content-center align-items-center`}
-          >
-            <input
-              type="text"
-              id="search"
-              placeholder="Search Users"
-              className={classes.searchBar}
-              onChange={searchUserHandler}
-            />
-          </Col>
-          <Col className={classes.input}>
-            <label htmlFor="type">Role</label>
-            <select
-              name="type"
-              id="type"
-              ref={roleInputRef}
-              onChange={roleChangeHandler}
-            >
-              <option value="All">All</option>
-              <option value="User">User</option>
-              <option value="Job Provider">Job Provider</option>
-            </select>
-          </Col>
-        </Col>
-        <Col className={`${classes.addUser} col-md-3`}>
-          <Button
-            id="add-new-user"
-            className={classes.button}
-            onClick={addModalHandler}
-          >
-            Add New User
-          </Button>
-        </Col>
-      </Row>
-      {showSpinner && <SpinnerComponent />}
-      {jobProviderList.length > 0 && (
-        <div className={classes.tableBox}>
-          <Table striped hover>
-            <thead>
-              <tr className={classes.tableHeader}>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Mobile</th>
-                <th>role</th>
-                <th>gender</th>
-                <th>qualification</th>
-                <th>experience</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody className={classes.tableBody}>
-              {slice.map((user) => {
-                return (
-                  <ManageUserItem
-                    key={user._id}
-                    role={user.role}
-                    userInfo={user}
-                    onEdit={editModalHandler}
-                    onDelete={props.onShowDelete}
-                  />
-                );
-              })}
-            </tbody>
-          </Table>
-        </div>
-      )}
-      <TableFooter range={range} slice={slice} setPage={setPage} page={page} />
-      {jobSeekerList.length === 0 && (
-        <h3 className="text-center fw-bold">No user Data!</h3>
-      )} */}
     </React.Fragment>
   );
 };

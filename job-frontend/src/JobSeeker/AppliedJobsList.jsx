@@ -99,37 +99,6 @@ const AppliedJobs = () => {
           ))}
         </div>
       </div>
-      {/* <Container>
-        <Row >
-          <Col sm={6}>
-            <input
-              className="form-control float-end"
-              type="search"
-              onChange={jobSearchHandler}
-              placeholder="Search Jobs"
-            ></input>
-          </Col>
-          <Col sm={6}>
-            <select
-              className="form-control float-end"
-              type="select"
-              onChange={statusChangeHandler}
-              ref={statusInputRef}
-            >
-              <option value="All">All</option>
-              <option value="Applied">Applied Only</option>
-              <option value="Shortlisted">Shortlisted Only</option>
-            </select>
-          </Col>
-        </Row>
-      </Container>
-      <Container fluid>
-        <div className={classes.grid}>
-          {jobs.map((jobItem) => (
-            <Jobitem key={jobItem._id} item={jobItem} />
-          ))}
-        </div>
-      </Container> */}
     </div>
   );
 };

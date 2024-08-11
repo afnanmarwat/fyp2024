@@ -1,5 +1,4 @@
 // import classes from "./JobItem.module.css";
-// import { Button } from "react-bootstrap";
 import axios from "axios";
 
 import Config from "../../../config/Config.json";
