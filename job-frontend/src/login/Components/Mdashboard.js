@@ -1,4 +1,4 @@
-// import { useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import AdminScreen from "../../AdminScreen";
 import Login from "./Login";
 import ProviderScreen from "../../ProviderScreen";
@@ -7,10 +7,10 @@ import jwtDecode from "jwt-decode";
 
 function Mdashboard() {
   // const dispatch = useDispatch();
-  // const selectauthToken = (rootstate) => rootstate.authToken;
+  const selectauthToken = (rootstate) => rootstate.authToken;
 
   const authToken = localStorage.getItem("token");
-  // const redToken = useSelector(selectauthToken);
+  const redToken = useSelector(selectauthToken);
 
   // if(redToken == {}){
   //   if(authToken){
