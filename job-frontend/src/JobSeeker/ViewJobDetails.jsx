@@ -5,12 +5,14 @@ import { useLocation } from 'react-router-dom';
 import Config from "../config/Config.json";
 import { useState,useEffect } from 'react';
 import axios from 'axios';
-
+import ApplyModal from "./ApplyModal";
 const View_job_details = () => {
     const { jobId } = useParams();
     const [job, setJob] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [applyModule, setApplyModule] = useState(false)
+    const [action, setAction] = useState(false);
     console.log('veiwjob',job)
     useEffect(() => {
         const fetchJobDetails = async () => {
@@ -30,6 +32,13 @@ const View_job_details = () => {
     
         fetchJobDetails();
       }, [jobId]);
+
+
+      // apply for job 
+
+      const jobApply = () => {
+        setApplyModule(true);
+      };
     return (
         <>
             <div className="md:m-10 p-3 flex flex-col gap-4">
@@ -58,7 +67,7 @@ const View_job_details = () => {
                                 <img src={`http://localhost:8080/${job?.providerImage}`} alt="" className='w-[100px] h-[100px]' />
                             </div>
                             <h5 className='text-2xl text-black font-bold'>{job.providerCompany}</h5>
-                            <button className='font-semibold bg-[#1a75e8] hover:text-black hover:bg-white border-1 hover:border-[#1a75e8] px-3 py-2 rounded-full transition-all duration-300'>Apply for this position</button>
+                            <button className='font-semibold bg-[#1a75e8] hover:text-black hover:bg-white border-1 hover:border-[#1a75e8] px-3 py-2 rounded-full transition-all duration-300' onClick={jobApply}>Apply for this position</button>
                         </div>
                         {/* job type, Location, Start and End date */}
                         <div className='m-4 py-4 flex flex-col gap-4'>
@@ -106,6 +115,14 @@ const View_job_details = () => {
                     </div>
                 </div>
             </div>
+            {applyModule && (
+        <ApplyModal
+          job={job}
+          onOpen={applyModule}
+          onClose={()=>setApplyModule(false)}
+          changes={setAction}
+        />
+      )}
         </>
     )
 }

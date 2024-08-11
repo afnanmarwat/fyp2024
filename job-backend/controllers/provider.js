@@ -50,27 +50,45 @@ exports.editProfile = (req, res, next) => {
   const updatedData = {
     company: req.body.company,
     email: req.body.email,
-    phone: req.body.profilePic,
+    phone: req.body.phone,
     bio: req.body.bio,
-
     // Add other fields as necessary
   };
 
-  JobProvider.findByIdAndUpdate(req.userId, updatedData, { new: true })
-    .select('-password') // Exclude password from the result
-    .lean()
-    .then((updatedJobProvider) => {
-      if (!updatedJobProvider) {
+  // Check if a new profile picture was uploaded
+  if (req.file) {
+    updatedData.profilePic = req.file.path.replace("\\", "/"); // Save the path of the uploaded file
+  }
+
+  JobProvider.findById(req.userId)
+    .then(jobProvider => {
+      if (!jobProvider) {
         const error = new Error('Job provider not found');
         error.statusCode = 404;
         throw error;
       }
+
+      // If a new profile picture was uploaded and the user already had a profile picture, delete the old one
+      if (req.file && jobProvider.profilePic) {
+        const oldImagePath = path.join(__dirname, '..', jobProvider.profilePic);
+        fs.unlink(oldImagePath, (err) => {
+          if (err) {
+            console.log("Failed to delete old profile picture:", err);
+          }
+        });
+      }
+
+      return JobProvider.findByIdAndUpdate(req.userId, updatedData, { new: true })
+        .select('-password') // Exclude password from the result
+        .lean();
+    })
+    .then(updatedJobProvider => {
       res.status(200).json({
         message: 'Job provider profile updated successfully',
         profile: updatedJobProvider,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       if (!err.statusCode) {
         err.statusCode = 500;
       }

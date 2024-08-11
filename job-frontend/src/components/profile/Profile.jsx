@@ -3,15 +3,21 @@ import { useState, useEffect } from "react";
 import { FaFacebook, FaLinkedin } from 'react-icons/fa6'
 import Config from "../../config/Config.json";
 import axios from "axios";
-
+import { Modal, Button } from 'react-bootstrap';
+import ProviderEditeModule from './ProviderEditeModule'
+import SeekerEditModule from './SeekerEditModule'
 let Data = [];
 const Profile = () => {
 
     const [userProfile, setUserProfile] = useState([]);
     const [proProfile, setProProfile] = useState([]);
+    const [userModule, setUserModule] = useState(false);
+    const [providerModule, setProviderModule] = useState(false);
 
     const authToken = localStorage.getItem("token");
     const redAuthToken = jwtDecode(authToken);
+    const role=redAuthToken.role;
+    console.log(role)
 
     // user Profile
     useEffect(() => {
@@ -31,6 +37,7 @@ const Profile = () => {
             });
     }, []);
 
+
     //   provider Profile
     useEffect(() => {
         axios
@@ -48,6 +55,45 @@ const Profile = () => {
                 console.log(err);
             });
     }, []);
+// ********* handel user module ******************
+const handleUserModal = () => {
+    setUserModule(true);
+};
+
+    // ************* handel provider  module ****************
+    const handleProviderModal = () => {
+        setProviderModule(true);
+    };
+// api hiting for edite profile
+const handleFormSubmit = (updatedProfile) => {
+    const apiUrl = role === 'JobSeeker' ? 'user/edite-Profile' : 'provider/edit-Profile';
+    const formData = new FormData();
+
+    Object.keys(updatedProfile).forEach((key) => {
+        formData.append(key, updatedProfile[key]);
+    });
+
+    axios
+        .put(`${Config.SERVER_URL + apiUrl}`, formData, {
+            headers: {
+                Authorization: 'Bearer ' + authToken,
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+        .then((response) => {
+            if (role === 'JobSeeker') {
+                setUserProfile(response.data.profile);
+                setUserModule(false)
+            } else {
+                setProProfile(response.data.profile);
+                setProviderModule(false)
+            }
+           
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+};
 
     return (
         <>
@@ -67,7 +113,7 @@ const Profile = () => {
                             </div>
                             {/* update and message */}
                             <div className='flex gap-2'>
-                                <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] bg-[#2085cf] hover:bg-white text-[#f9f9f9] hover:text-[#2085cf] rounded-sm transition-all duration-300'>Update</button>
+                                <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] bg-[#2085cf] hover:bg-white text-[#f9f9f9] hover:text-[#2085cf] rounded-sm transition-all duration-300' onClick={handleProviderModal}>Edite Profile</button>
                                 {/* <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] hover:bg-[#2085cf] text-[#2085cf] hover:text-[#f9f9f9]  rounded-sm transition-all duration-300'>Message</button> */}
                             </div>
                         </div>
@@ -117,7 +163,7 @@ const Profile = () => {
                             </div>
                             {/* update and message */}
                             <div className='flex gap-2'>
-                                <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] bg-[#2085cf] hover:bg-white text-[#f9f9f9] hover:text-[#2085cf] rounded-sm transition-all duration-300'>Update</button>
+                                <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] bg-[#2085cf] hover:bg-white text-[#f9f9f9] hover:text-[#2085cf] rounded-sm transition-all duration-300' onClick={handleUserModal}>Edit Profile</button>
                                 {/* <button className='w-[100px] py-1 px-3 border-1 border-[#2085cf] hover:bg-[#2085cf] text-[#2085cf] hover:text-[#f9f9f9]  rounded-sm transition-all duration-300'>Message</button> */}
                             </div>
                         </div>
@@ -154,6 +200,7 @@ const Profile = () => {
                             <p className='text-gray-400 text-md font-semibold py-1'>Contact us</p>
                             <p className='text-lg'>0{userProfile.mobile}</p>
                         </div>
+                        <div className=' d flex '></div>
                         {/* Social media part */}
                         <div className='pb-3'>
                             <p className='text-gray-400 text-md font-semibold py-2'>Social media links</p>
@@ -165,6 +212,24 @@ const Profile = () => {
                     </div>
                 </div>
             )}
+            {/*Provider Modal for Editing Profile */}
+             <Modal show={providerModule} onHide={()=>setProviderModule(false)}>
+            <Modal.Header closeButton>
+                <Modal.Title>Edit Profile</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <ProviderEditeModule profileData={proProfile} onSubmit={handleFormSubmit} />
+            </Modal.Body>
+        </Modal>
+          {/*Seeker Modal for Editing Profile */}
+          <Modal show={userModule} onHide={()=>setUserModule(false)}>
+            <Modal.Header closeButton>
+                <Modal.Title>Edit Profile</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <SeekerEditModule profileData={userProfile} onSubmit={handleFormSubmit} />
+            </Modal.Body>
+        </Modal>
         </>
 
     )

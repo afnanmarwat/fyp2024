@@ -6,6 +6,7 @@ const userController = require("../controllers/user");
 const isAuthenticated = require("../middleware/is-authenticated");
 const isApply = require("../middleware/is-apply");
 const { isAuthorized, isUser } = require("../middleware/is-authorized");
+const uplaod =require("../middleware/multerConfig");
 
 const router = express.Router();
 
@@ -17,6 +18,14 @@ router.get(
   isAuthorized,
   isUser,
   userController.getProfile
+);
+router.put(
+  "/edite-profile",
+  uplaod.single('profilePic'),
+  isAuthenticated,
+  isAuthorized,
+  isUser,
+  userController.editProfile
 );
 // job routes
 
