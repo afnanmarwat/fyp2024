@@ -120,7 +120,7 @@ function Jobitem({ item, jobApply }) {
           <div onClick={() => { return setButtons(false) }} className="flex flex-row gap-2 items-start">
             {/* company image */}
             <div className="w-[50px] h-[50px] rounded-xl overflow-hidden">
-              <img src="./images/Jobitems/company1.jpeg" alt="" />
+              <img src={`http://localhost:8080/${item?.providerImage}`} alt="" />
             </div>
             {/* company div */}
             <div className="flex flex-col">

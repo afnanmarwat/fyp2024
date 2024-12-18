@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Register from "./login/Components/RegisterYup";
 import ForgotPassword from "./login/Components/ForgotPassword";
